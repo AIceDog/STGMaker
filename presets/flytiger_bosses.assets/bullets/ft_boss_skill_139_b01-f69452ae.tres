@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(36, 36)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(36, 36)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_139_b01"
+title = "西海王 · 强化触手五式轮换 · 弹体 2"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 145 行。
+源码类：SeaKing
+阶段与可达性：P4
+组合数量：长短5；中央3+3；侧4+顶3；顶4+底4；左右5+5
+弹丸 / 机关：触手Actor
+运动：长330–585，错峰0.14..0.17，左右延0.55/0.35、横纵延0.8
+时序：每2.4s，首轮longShort
+伤害口径：16×A；0.6s冷却
+备注：两侧中央封锁保留上下通路；纵向对涌也是实体危险
+源码位置：js/bosses.js:11707–11721、11738–11786
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(36, 36)

@@ -1,0 +1,22 @@
+{
+	"files": {
+		"barrages/barrage_53p8v-1c62c2fa.tres": "3690612cb01fefbbcc7a5ae9ed81afafd38d638794e7b5d45282ae08ae3d7066",
+		"barrages/barrage_6objx-fa39ab21.tres": "ea3713df4053bd0dd9135ed870a4b343d9437f36c9d5d8f7b3ed0a6b32f1c2a6",
+		"barrages/barrage_a7iel-22aca0ad.tres": "6e9156e8172ee58561bf71ccce09e6d1e81c3b928635c757375d0f74cc67ce65",
+		"barrages/barrage_dud3s-962c25a6.tres": "d68847fb78be2236e03ae00b22a7031755f330a99df973636b15843a3208f655",
+		"barrages/barrage_q3fyu-a6dbe8a3.tres": "7307d2b74bacd5877b17be6988b41bd7fd9857fe977147d86d50c4e85af93f6e",
+		"barrages/barrage_rsrt2-b5e9e08f.tres": "6d8a4220d829611fc8e77e595cad1bdb986eae559495ad8115473e79899ec92f",
+		"barrages/bullet_area_projectile-bdb67c76.tres": "80ed1627268b1c827dd815b4cde3a3063f78455873ea73d9e5557e567b86e02e",
+		"barrages/bullet_green_projectile-b8b6c03a.tres": "0472b2f2b72ad8e78acc8b2d4385fc38b604ac3f0744d0a393b4fac7af030333",
+		"barrages/bullet_laser_projectile-41f4b2a5.tres": "7f95a20659fd48d6873c4d29d92a53ea264268a0edf9c2d6a01f672ca70d1d78",
+		"barrages/bullet_trail_projectile-0d3b6f50.tres": "fe4b218625516b8af5b574b7eacbb6fa9cd7021163233bbf82a82ebe20a9d382",
+		"behaviors/barrage_53p8v_demo_behavior-5f6f09ff.tres": "27cd444250b61f5ca9898da7a0f96dcfd542d056737d2808e2c137a840dde9aa",
+		"bosses/boss_f4fro-e34c339b.tres": "199dd305c738f60eb777720b1f28b03bf1a071faf570ab8ab6a05a021fdfbc7c",
+		"bullets/bullet_area-61eec9ee.tres": "ed8c5d80f6d5e4e5ac9360ad3f05fba1bb66a4c03354d81049b097f9b83ebf12",
+		"bullets/bullet_green-da9193ab.tres": "464d712bb4bf1fee08bfafffb290f04ab2b84aacdf5c8c88c1b59bd3d1287aee",
+		"bullets/bullet_laser-b6c051fc.tres": "6ae8dcf11efd9a3b5f6795f9749c8878c4a50876dad37e009d587d555261ac18",
+		"bullets/bullet_trail-916f72b9.tres": "dd51a462f846621630143f4f13c6b4e63030f2630027520c7ac1669db8eeb284"
+	},
+	"owner": "trail_roundtrip.tres",
+	"version": 1.0
+}

@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Resource" path="res://game/extensions/emissions/spiral.tres" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_3"]
+[ext_resource type="Resource" path="res://game/extensions/effects/hit_burst.tres" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_8"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_2")
+definition = ExtResource("ext_1")
+parameters = {
+"count": 12,
+"radius": 20,
+"spacing": 0.04
+}
+
+[sub_resource type="Curve2D" id="sub_2"]
+_data = {
+"points": PackedVector2Array(0, -16.666666, 0, 16.666666, 0, -100, 0, -33.333332, 0, 33.333332, 0, 0, 0, -16.666666, 0, 16.666666, 0, 100)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+extension = SubResource("sub_1")
+path = SubResource("sub_2")
+angle = 180.0
+rounds = 3
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_2")
+definition = ExtResource("ext_4")
+parameters = {
+"skill": "modular_followup"
+}
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+hit_effects = Array[ExtResource("ext_2")]([SubResource("sub_4")])
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_7"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_8"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_9"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_10"]
+script = ExtResource("ext_6")
+title = "沿发射方向直飞"
+mode = "velocity"
+path = SubResource("sub_7")
+speed = 110.0
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_8")
+visual_scale_curve = SubResource("sub_9")
+collision_scale_curve = SubResource("sub_6")
+
+[sub_resource type="Resource" id="sub_11"]
+script = ExtResource("ext_7")
+bullet_id = "modular_orb"
+motion_stages = Array[ExtResource("ext_6")]([SubResource("sub_10")])
+lifecycle = SubResource("sub_5")
+
+[resource]
+script = ExtResource("ext_8")
+id = "modular_spiral"
+title = "模块示例 · 分批螺旋"
+fire_pattern = SubResource("sub_3")
+projectile = SubResource("sub_11")

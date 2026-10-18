@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(36, 36)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(36, 36)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_146_b02"
+title = "西海王 · 三轮机关组合时间线 · 弹体 3"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 152 行。
+源码类：SeaKing
+阶段与可达性：P7
+组合数量：触手/头/戟→夹击/喷水/戟→多头/墙/交叉戟
+弹丸 / 机关：混合器官
+运动：锚点0.4/2.2/4.0；5.4/6.8/8.2；9.4/10.6/11.8s
+时序：进入P7一次排程，阶段结束清未出事件
+伤害口径：按载体：触16、头18、戟15、水13、流10（×A）
+备注：不是所有机关同帧齐发，残留可能重叠
+源码位置：js/bosses.js:12126–12156
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(36, 36)

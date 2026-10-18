@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="STGBehaviorFlow" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_2"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+id = "fire_0"
+title = "释放 · ft_boss_skill_010_part_01"
+kind = "attack"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+barrage_id = "ft_boss_skill_010_part_01"
+wait_mode = "emission"
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_2")
+title = "铁鹰 · 羽毛密/疏齐射"
+entry_id = "fire_0"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_1")])
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_1")
+id = "fire_1"
+title = "释放 · ft_boss_skill_010_part_02"
+kind = "attack"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+barrage_id = "ft_boss_skill_010_part_02"
+wait_mode = "emission"
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_2")
+title = "铁鹰 · 羽毛密/疏齐射"
+entry_id = "fire_1"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_3")])
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_1")
+id = "parallel"
+title = "同时启动各招式"
+kind = "parallel"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+children = Array[Resource]([SubResource("sub_2"), SubResource("sub_4")])
+
+[resource]
+script = ExtResource("ext_2")
+id = "ft_boss_skill_010"
+title = "铁鹰 · 羽毛密/疏齐射"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 16 行。
+源码类：SwordEagle
+阶段与可达性：fight
+组合数量：密9发×0.11rad；每第3次疏3发×0.5rad
+弹丸 / 机关：feather
+运动：320px/s，瞄准基角直射
+时序：密1.6–2.1s；疏2.1–2.6s
+伤害口径：10×A；r7、寿命6s
+备注：密度由featherVolley控制，非随机
+源码位置：js/bosses.js:439–462
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+entry_id = "parallel"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_5")])

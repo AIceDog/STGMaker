@@ -1,0 +1,9 @@
+{
+	"files": {
+		"barrages/barrage_kfenm-bec75aa6.tres": "6518281cc231a6d85e45b5ed24c27224b0880d53f8740f835eb63d529d52acbe",
+		"barrages/bullet_green_projectile-b8b6c03a.tres": "8aaed9ef9db514f8bfee9cfd4d962caf06eb8e99d17451957d5aa406df415187",
+		"bullets/bullet_green-da9193ab.tres": "464d712bb4bf1fee08bfafffb290f04ab2b84aacdf5c8c88c1b59bd3d1287aee"
+	},
+	"owner": "simple_attack_library.tres",
+	"version": 1.0
+}

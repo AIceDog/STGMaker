@@ -1,0 +1,771 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+body_radius = 24.0
+contact_damage = 0.0
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_044"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+path = SubResource("sub_4")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_7")
+title = "追踪羽针"
+attack = SubResource("sub_2")
+movement = SubResource("sub_5")
+presentation = SubResource("sub_6")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p0_n00"
+title = "追踪羽针"
+next_id = "ft_boss_CraneSage_p0_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_7")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_045"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_10"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_11"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_12"]
+script = ExtResource("ext_5")
+path = SubResource("sub_11")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_10")
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_14"]
+script = ExtResource("ext_7")
+title = "三层声波圈"
+attack = SubResource("sub_9")
+movement = SubResource("sub_12")
+presentation = SubResource("sub_13")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_15"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p0_n01"
+title = "三层声波圈"
+next_id = "ft_boss_CraneSage_p0_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_14")
+
+[sub_resource type="Resource" id="sub_16"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_046"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_17"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_18"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_19"]
+script = ExtResource("ext_5")
+mode = "ballistic"
+duration = 1.0
+path = SubResource("sub_18")
+target_mode = "player"
+target = Vector2(0, 0)
+body_attack = true
+body_radius = 26.0
+body_damage = 26.0
+orbit_progress_curve = SubResource("sub_17")
+initial_velocity = Vector2(0, 780)
+gravity = 0.0
+
+[sub_resource type="Resource" id="sub_20"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_21"]
+script = ExtResource("ext_7")
+title = "顶部锁点下落＋落地环弹"
+attack = SubResource("sub_16")
+movement = SubResource("sub_19")
+presentation = SubResource("sub_20")
+windup = 0.85
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_22"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p0_n02"
+title = "顶部锁点下落＋落地环弹"
+next_id = "ft_boss_CraneSage_p0_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_21")
+
+[sub_resource type="Resource" id="sub_23"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_24"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_25"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_26"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 0.8
+path = SubResource("sub_25")
+target_mode = "world"
+target = Vector2(270, -30)
+orbit_progress_curve = SubResource("sub_24")
+
+[sub_resource type="Resource" id="sub_27"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_28"]
+script = ExtResource("ext_7")
+title = "返回攻击位置"
+attack = SubResource("sub_23")
+movement = SubResource("sub_26")
+presentation = SubResource("sub_27")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_29"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p0_n03"
+title = "返回攻击位置"
+next_id = "ft_boss_CraneSage_p0_n04"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_28")
+
+[sub_resource type="Resource" id="sub_30"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_047"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_31"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_32"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_33"]
+script = ExtResource("ext_5")
+path = SubResource("sub_32")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_31")
+
+[sub_resource type="Resource" id="sub_34"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_35"]
+script = ExtResource("ext_7")
+title = "环绕羽领域"
+attack = SubResource("sub_30")
+movement = SubResource("sub_33")
+presentation = SubResource("sub_34")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_36"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p0_n04"
+title = "环绕羽领域"
+choices = PackedStringArray()
+editor_position = Vector2(250, 790)
+action = SubResource("sub_35")
+
+[sub_resource type="Resource" id="sub_37"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_CraneSage_p0_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_8"), SubResource("sub_15"), SubResource("sub_22"), SubResource("sub_29"), SubResource("sub_36")])
+
+[sub_resource type="Resource" id="sub_38"]
+script = ExtResource("ext_2")
+title = "第一条血 · 羽毛组合"
+behavior_flow = SubResource("sub_37")
+
+[sub_resource type="Resource" id="sub_39"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_048"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_40"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_41"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_42"]
+script = ExtResource("ext_5")
+path = SubResource("sub_41")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_40")
+
+[sub_resource type="Resource" id="sub_43"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_44"]
+script = ExtResource("ext_7")
+title = "全屏四轮落羽"
+attack = SubResource("sub_39")
+movement = SubResource("sub_42")
+presentation = SubResource("sub_43")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_45"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p1_n00"
+title = "全屏四轮落羽"
+next_id = "ft_boss_CraneSage_p1_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_44")
+
+[sub_resource type="Resource" id="sub_46"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_044"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_47"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_48"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_49"]
+script = ExtResource("ext_5")
+path = SubResource("sub_48")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_47")
+
+[sub_resource type="Resource" id="sub_50"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_51"]
+script = ExtResource("ext_7")
+title = "追踪羽针"
+attack = SubResource("sub_46")
+movement = SubResource("sub_49")
+presentation = SubResource("sub_50")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_52"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p1_n01"
+title = "追踪羽针"
+next_id = "ft_boss_CraneSage_p1_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_51")
+
+[sub_resource type="Resource" id="sub_53"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_045"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_54"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_55"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_56"]
+script = ExtResource("ext_5")
+path = SubResource("sub_55")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_54")
+
+[sub_resource type="Resource" id="sub_57"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_58"]
+script = ExtResource("ext_7")
+title = "三层声波圈"
+attack = SubResource("sub_53")
+movement = SubResource("sub_56")
+presentation = SubResource("sub_57")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_59"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p1_n02"
+title = "三层声波圈"
+next_id = "ft_boss_CraneSage_p1_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_58")
+
+[sub_resource type="Resource" id="sub_60"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_046"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_61"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_62"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_63"]
+script = ExtResource("ext_5")
+mode = "ballistic"
+duration = 1.0
+path = SubResource("sub_62")
+target_mode = "player"
+target = Vector2(0, 0)
+body_attack = true
+body_radius = 26.0
+body_damage = 26.0
+orbit_progress_curve = SubResource("sub_61")
+initial_velocity = Vector2(0, 780)
+gravity = 0.0
+
+[sub_resource type="Resource" id="sub_64"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_65"]
+script = ExtResource("ext_7")
+title = "顶部锁点下落＋落地环弹"
+attack = SubResource("sub_60")
+movement = SubResource("sub_63")
+presentation = SubResource("sub_64")
+windup = 0.85
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_66"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p1_n03"
+title = "顶部锁点下落＋落地环弹"
+next_id = "ft_boss_CraneSage_p1_n04"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_65")
+
+[sub_resource type="Resource" id="sub_67"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_68"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_69"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_70"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 0.8
+path = SubResource("sub_69")
+target_mode = "world"
+target = Vector2(270, -30)
+orbit_progress_curve = SubResource("sub_68")
+
+[sub_resource type="Resource" id="sub_71"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_72"]
+script = ExtResource("ext_7")
+title = "返回攻击位置"
+attack = SubResource("sub_67")
+movement = SubResource("sub_70")
+presentation = SubResource("sub_71")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_73"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p1_n04"
+title = "返回攻击位置"
+choices = PackedStringArray()
+editor_position = Vector2(250, 790)
+action = SubResource("sub_72")
+
+[sub_resource type="Resource" id="sub_74"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_CraneSage_p1_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_45"), SubResource("sub_52"), SubResource("sub_59"), SubResource("sub_66"), SubResource("sub_73")])
+
+[sub_resource type="Resource" id="sub_75"]
+script = ExtResource("ext_2")
+title = "半血落羽高潮"
+enter_hp = 50.0
+behavior_flow = SubResource("sub_74")
+
+[sub_resource type="Resource" id="sub_76"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_049"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_77"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_78"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_79"]
+script = ExtResource("ext_5")
+path = SubResource("sub_78")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_77")
+
+[sub_resource type="Resource" id="sub_80"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_81"]
+script = ExtResource("ext_7")
+title = "风炮速射"
+attack = SubResource("sub_76")
+movement = SubResource("sub_79")
+presentation = SubResource("sub_80")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_82"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p2_n00"
+title = "风炮速射"
+next_id = "ft_boss_CraneSage_p2_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_81")
+
+[sub_resource type="Resource" id="sub_83"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_050"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_84"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_85"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_86"]
+script = ExtResource("ext_5")
+path = SubResource("sub_85")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_84")
+
+[sub_resource type="Resource" id="sub_87"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_88"]
+script = ExtResource("ext_7")
+title = "镜面折射束"
+attack = SubResource("sub_83")
+movement = SubResource("sub_86")
+presentation = SubResource("sub_87")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_89"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p2_n01"
+title = "镜面折射束"
+next_id = "ft_boss_CraneSage_p2_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_88")
+
+[sub_resource type="Resource" id="sub_90"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_051"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_91"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_92"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_93"]
+script = ExtResource("ext_5")
+path = SubResource("sub_92")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_91")
+
+[sub_resource type="Resource" id="sub_94"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_95"]
+script = ExtResource("ext_7")
+title = "双龙卷风"
+attack = SubResource("sub_90")
+movement = SubResource("sub_93")
+presentation = SubResource("sub_94")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_96"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p2_n02"
+title = "双龙卷风"
+next_id = "ft_boss_CraneSage_p2_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_95")
+
+[sub_resource type="Resource" id="sub_97"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_052"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_98"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_99"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_100"]
+script = ExtResource("ext_5")
+path = SubResource("sub_99")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_98")
+
+[sub_resource type="Resource" id="sub_101"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_102"]
+script = ExtResource("ext_7")
+title = "5路风刃"
+attack = SubResource("sub_97")
+movement = SubResource("sub_100")
+presentation = SubResource("sub_101")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_103"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p2_n03"
+title = "5路风刃"
+next_id = "ft_boss_CraneSage_p2_n04"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_102")
+
+[sub_resource type="Resource" id="sub_104"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_053"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_105"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_106"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_107"]
+script = ExtResource("ext_5")
+path = SubResource("sub_106")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_105")
+
+[sub_resource type="Resource" id="sub_108"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_109"]
+script = ExtResource("ext_7")
+title = "气波冲击"
+attack = SubResource("sub_104")
+movement = SubResource("sub_107")
+presentation = SubResource("sub_108")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_110"]
+script = ExtResource("ext_3")
+id = "ft_boss_CraneSage_p2_n04"
+title = "气波冲击"
+choices = PackedStringArray()
+editor_position = Vector2(250, 790)
+action = SubResource("sub_109")
+
+[sub_resource type="Resource" id="sub_111"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_CraneSage_p2_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_82"), SubResource("sub_89"), SubResource("sub_96"), SubResource("sub_103"), SubResource("sub_110")])
+
+[sub_resource type="Resource" id="sub_112"]
+script = ExtResource("ext_2")
+title = "第二条血 · 风与镜"
+life = 1
+entry_mode = "sequence"
+entry_delay = 10.0
+entry_invulnerable = true
+entry_barrage_id = "ft_boss_CraneSage_p2_entry"
+behavior_flow = SubResource("sub_111")
+
+[resource]
+script = ExtResource("ext_9")
+id = "ft_boss_CraneSage"
+title = "鹤仙"
+description = "来源：Boss总览 / 阶段与转换，源码类 CraneSage。
+出现条件：通用地图池；基础权重3，见过后权重减半
+阶段结构：2血；第一血空回满并锁血10s；第二血空死亡
+招式组合：追踪羽针、三层声波、俯冲落环、环绕羽领域、全屏落羽；风炮、镜子折射、龙卷与风刃
+移动：第一血4招轮换，半血插万羽天葬；血空转10s锁血风炮，再循环镜面反射/双龙卷/风刃/速射/瞬移
+本体触碰：20
+注意事项：P2镜面可被友弹击碎（10下），但折射第二段实际瞄准玩家，不按镜面法线作物理反射。
+源码位置：js/bosses.js:2505–3390；js/game.js:2276–2355
+模板是可编辑战斗编排。贴图、动画、地图刷怪条件、玩家抓取 / 治疗、龙身 / 肢体 / 分身实体共享血量需要宿主游戏接入；详见各招式适配边界。"
+color = Color(0.7019608, 0.5803922, 0.9372549, 1)
+start_position = Vector2(270, -30)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_38"), SubResource("sub_75"), SubResource("sub_112")])
+entity_settings = SubResource("sub_1")

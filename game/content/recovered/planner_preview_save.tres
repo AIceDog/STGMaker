@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="STGProject" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/level_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/obstacle_definition.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/project_document.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/wave_definition.gd" id="ext_8"]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="type_bullets"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/bullets/bullet_green-da9193ab.tres" id="bullets_0"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/bullets/bullet_laser-b6c051fc.tres" id="bullets_1"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/bullets/bullet_area-61eec9ee.tres" id="bullets_2"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/bullets/bullet_trail-916f72b9.tres" id="bullets_3"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="type_barrages"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/barrage_q81da-1e42e457.tres" id="barrages_0"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/barrage_m7ygk-1d703c84.tres" id="barrages_1"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/barrage_ack6h-4e87a7f5.tres" id="barrages_2"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/barrage_3pmvx-7528659e.tres" id="barrages_3"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/barrage_ly45q-cfd07713.tres" id="barrages_4"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/barrage_3yps2-ab4475e6.tres" id="barrages_5"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/bullet_green_projectile-b8b6c03a.tres" id="barrages_6"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/bullet_laser_projectile-41f4b2a5.tres" id="barrages_7"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/bullet_area_projectile-bdb67c76.tres" id="barrages_8"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/barrages/bullet_trail_projectile-0d3b6f50.tres" id="barrages_9"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="type_behaviors"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/behaviors/barrage_3yps2_demo_behavior-c3fcb563.tres" id="behaviors_0"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="type_bosses"]
+[ext_resource type="Resource" path="res://game/content/recovered/planner_preview_save.assets/bosses/boss_73a8y-d3f04397.tres" id="bosses_0"]
+[ext_resource type="Script" path="res://stg/definitions/wave_definition.gd" id="type_waves"]
+[ext_resource type="Script" path="res://stg/definitions/level_definition.gd" id="type_levels"]
+[ext_resource type="Script" path="res://stg/definitions/obstacle_definition.gd" id="type_obstacles"]
+
+[resource]
+script = ExtResource("ext_7")
+schema_version = 12
+
+bullets = Array[ExtResource("type_bullets")]([ExtResource("bullets_0"), ExtResource("bullets_1"), ExtResource("bullets_2"), ExtResource("bullets_3")])
+barrages = Array[ExtResource("type_barrages")]([ExtResource("barrages_0"), ExtResource("barrages_1"), ExtResource("barrages_2"), ExtResource("barrages_3"), ExtResource("barrages_4"), ExtResource("barrages_5"), ExtResource("barrages_6"), ExtResource("barrages_7"), ExtResource("barrages_8"), ExtResource("barrages_9")])
+behaviors = Array[ExtResource("type_behaviors")]([ExtResource("behaviors_0")])
+bosses = Array[ExtResource("type_bosses")]([ExtResource("bosses_0")])
+waves = Array[ExtResource("type_waves")]([])
+levels = Array[ExtResource("type_levels")]([])
+obstacles = Array[ExtResource("type_obstacles")]([])

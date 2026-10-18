@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(56, 56)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(56, 56)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_017_b01"
+title = "飞天狗王 · 肢体尖端夹击 · 弹体 2"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 23 行。
+源码类：DogKing
+阶段与可达性：P1/P2
+组合数量：P1两腿轮流；P2四肢轮流
+弹丸 / 机关：自定义肢体
+运动：出手锁玩家位置；伸出0.42s、停0.3s、回收0.45s
+时序：P1=2.4–3s；P2=1.6–2.2s
+伤害口径：尖端round(22×A)，每次出击一次；推玩家26px
+备注：P1尖端半径28；P2=30；连接线无专门碰撞
+源码位置：js/bosses.js:663–682、726–769
+【模板适配边界】肢体只用可判伤的尖端运动演示；连接线不判伤，肢体 HP 与 Boss 伤害转发由宿主接入。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(56, 56)

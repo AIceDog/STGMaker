@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="STGBehaviorFlow" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_2"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+id = "fire_0"
+title = "释放 · ft_summoned_ft_skill_22_part_01"
+kind = "attack"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+barrage_id = "ft_summoned_ft_skill_22_part_01"
+wait_mode = "emission"
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_2")
+title = "雷公 · 纵向落雷"
+entry_id = "fire_0"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_1")])
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_1")
+id = "fire_1"
+title = "释放 · ft_summoned_ft_skill_22_part_02"
+kind = "attack"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+barrage_id = "ft_summoned_ft_skill_22_part_02"
+wait_mode = "emission"
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_2")
+title = "雷公 · 纵向落雷"
+entry_id = "fire_1"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_3")])
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_1")
+id = "parallel"
+title = "同时启动各招式"
+kind = "parallel"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+children = Array[Resource]([SubResource("sub_2"), SubResource("sub_4")])
+
+[resource]
+script = ExtResource("ext_2")
+id = "ft_summoned_ft_skill_22"
+title = "雷公 · 纵向落雷"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），招式明细 B28:N28。
+招式：纵向落雷
+每轮数量：1；第4轮起2柱
+弹丸样式：Lightning白芯黄边
+弹道与瞄准逻辑：固定玩家x；第二柱在玩家x±90px；x钳制60..W−60
+初始速度(px/s)：非飞行弹
+触发条件/重复节奏：2.6–3.4s；x<W−60
+前摇/预警：0.95s黄白虚线
+判定半径/宽度(px)：宽56px
+弹丸寿命/有效期(s)：激活0.3s
+伤害与特殊效果：每柱20×A，激活时结算一次
+实现说明：实际碰撞带为宽/2+玩家半径×0.7。
+模板使用 A=1、speedMul=1；区间冷却取中值。血量缩放、自然刷新、奖励、角色护盾/倒地/最大生命伤害、地形破坏和龙身分裂由宿主游戏接入。
+独立招式使用第 4 轮后的 2 柱版本，第二柱基准 +90px；随机 ±90 和横坐标钳制由宿主游戏处理。敌人流程前 3 轮使用单柱副本。"
+entry_id = "parallel"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_5")])

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(12, 12)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "polygon"
+size = Vector2(1, 1)
+polygon_mode = "custom"
+points = PackedVector2Array(-14, 0, 0, -5, 20, 0, 0, 5)
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(0.3764706, 0.8901961, 0.6, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_bullet_spikebird_leaf_ring"
+title = "刺羽鸟 · 扩散叶片"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），弹丸样式 B15:G15。
+样式名称：绿色叶片
+使用者：刺羽鸟
+实际外观与拖尾：绿色双层尖叶+白绿叶轴；沿飞行方向朝前；无历史光带
+弹道/特殊交互：普通直线；單发瞄准／10向环弹
+判定与视觉差异：圆形r=6，叶尖视觉长于判定"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(12, 12)

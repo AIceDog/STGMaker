@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(18, 18)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(18, 18)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_054_b00"
+title = "狮身人面像 · 单爪/双爪碎片扇 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 60 行。
+源码类：Sphinx
+阶段与可达性：P1
+组合数量：单爪8；双爪2×7
+弹丸 / 机关：shard
+运动：单扇2.1rad，双扇各1.6rad，落爪点瞄玩家；210–290px/s
+时序：落点预警0.62s，每2.35s轮换
+伤害口径：13×A；r9、4.5s
+备注：右/左/双固定顺序
+源码位置：js/bosses.js:3596–3603、3664–3700
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(18, 18)

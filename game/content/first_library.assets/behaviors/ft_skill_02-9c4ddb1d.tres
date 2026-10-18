@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="STGBehaviorFlow" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_2"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+id = "complete"
+title = "完成"
+kind = "wait"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+delay = 0.0
+
+[resource]
+script = ExtResource("ext_2")
+id = "ft_skill_02"
+title = "飞鹰 · 长冲扫场"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），招式明细 B8:N8。
+招式：长冲扫场
+每轮数量：无
+弹丸样式：无
+弹道与瞄准逻辑：50%概率；水平固定向左全速，前0.45s下坠，之后垂直速度衰减
+初始速度(px/s)：500×speedMul
+触发条件/重复节奏：同锁点俯冲；持续冲到屏外
+前摇/预警：0.4s抖动
+判定半径/宽度(px)：本体16px
+弹丸寿命/有效期(s)：直到离屏
+伤害与特殊效果：接触12×A
+实现说明：地面−46px限高；不走recover。
+模板使用 A=1、speedMul=1；区间冷却取中值。血量缩放、自然刷新、奖励、角色护盾/倒地/最大生命伤害、地形破坏和龙身分裂由宿主游戏接入。
+攻击模板用固定扫场测试路径：前 0.45 秒下坠、后段拉平；原游戏触地限高和离屏回收需要游戏层接入。"
+entry_id = "complete"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_1")])

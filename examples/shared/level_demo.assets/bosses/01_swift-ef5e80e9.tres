@@ -1,0 +1,219 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+[ext_resource type="Texture2D" path="res://assets/enemies/01_swift.svg" id="ext_10"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+movement_policy = "scroll"
+exit_boundary = "left"
+require_screen_entry = false
+lifetime = 7.0
+persist_across_segments = true
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "scout_fan"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 2.2
+path = SubResource("sub_4")
+target_mode = "world"
+target = Vector2(280, 210)
+orbit_progress_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_7")
+title = "向下巡航并扇射"
+attack = SubResource("sub_2")
+movement = SubResource("sub_5")
+presentation = SubResource("sub_6")
+windup = 0.35
+recovery = 0.25
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_3")
+id = "flow_gmk8h"
+title = "向下巡航并扇射"
+next_id = "flow_1eax8"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_7")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_10"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_11"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_12"]
+script = ExtResource("ext_5")
+path = SubResource("sub_11")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_10")
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_14"]
+script = ExtResource("ext_7")
+title = "停留观察 0.5 秒"
+attack = SubResource("sub_9")
+movement = SubResource("sub_12")
+presentation = SubResource("sub_13")
+windup = 0.0
+recovery = 0.0
+
+[sub_resource type="Resource" id="sub_15"]
+script = ExtResource("ext_3")
+id = "flow_1eax8"
+title = "停留观察 0.5 秒"
+next_id = "flow_aot0u"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_14")
+
+[sub_resource type="Resource" id="sub_16"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "scout_fan"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_17"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_18"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_19"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 2.2
+path = SubResource("sub_18")
+target_mode = "world"
+target = Vector2(280, -210)
+orbit_progress_curve = SubResource("sub_17")
+
+[sub_resource type="Resource" id="sub_20"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_21"]
+script = ExtResource("ext_7")
+title = "向上巡航并扇射"
+attack = SubResource("sub_16")
+movement = SubResource("sub_19")
+presentation = SubResource("sub_20")
+windup = 0.35
+recovery = 0.25
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_22"]
+script = ExtResource("ext_3")
+id = "flow_aot0u"
+title = "向上巡航并扇射"
+next_id = "flow_pt3eb"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_21")
+
+[sub_resource type="Resource" id="sub_23"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_24"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_25"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_26"]
+script = ExtResource("ext_5")
+path = SubResource("sub_25")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_24")
+
+[sub_resource type="Resource" id="sub_27"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_28"]
+script = ExtResource("ext_7")
+title = "停留观察 0.5 秒"
+attack = SubResource("sub_23")
+movement = SubResource("sub_26")
+presentation = SubResource("sub_27")
+windup = 0.0
+recovery = 0.0
+
+[sub_resource type="Resource" id="sub_29"]
+script = ExtResource("ext_3")
+id = "flow_pt3eb"
+title = "停留观察 0.5 秒"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_28")
+
+[sub_resource type="Resource" id="sub_30"]
+script = ExtResource("ext_8")
+entry_id = "flow_gmk8h"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_8"), SubResource("sub_15"), SubResource("sub_22"), SubResource("sub_29")])
+
+[sub_resource type="Resource" id="sub_31"]
+script = ExtResource("ext_2")
+title = "常规行为"
+behavior_flow = SubResource("sub_30")
+
+[resource]
+script = ExtResource("ext_9")
+id = "01_swift"
+title = "01 雨燕侦察机"
+texture = ExtResource("ext_10")
+color = Color(0.33333334, 0.8745098, 0.7372549, 1)
+start_position = Vector2(280, -210)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_31")])
+entity_settings = SubResource("sub_1")

@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="STGExtensionDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/extension_definition.gd" id="1"]
+[ext_resource type="Script" path="res://game/extensions/actions/dive.gd" id="2"]
+
+[resource]
+script = ExtResource("1")
+kind = "action"
+id = "actions_dive"
+title = "俯冲并发招"
+help = "在公开接口中组合移动与发射；完成后返回行为流程。"
+implementation = ExtResource("2")
+fields = Array[Dictionary]([
+  {
+    "name": "duration",
+    "label": "俯冲时长 s",
+    "type": "float",
+    "default": 0.8,
+    "min": 0.05,
+    "max": 5,
+    "step": 0.05
+  },
+  {
+    "name": "vertical",
+    "label": "纵向位移",
+    "type": "float",
+    "default": 80,
+    "min": -200,
+    "max": 200,
+    "step": 1
+  },
+  {
+    "name": "skill",
+    "label": "俯冲招式",
+    "type": "resource_id",
+    "default": "",
+    "collection": "barrages",
+    "help": "选择随俯冲发出的招式；引用会自动进入构建依赖。"
+  }
+])
+

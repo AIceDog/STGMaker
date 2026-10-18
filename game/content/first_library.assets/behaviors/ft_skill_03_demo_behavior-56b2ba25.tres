@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="STGBehaviorFlow" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_6"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_2")
+enabled = true
+behavior_id = "ft_skill_03"
+
+[sub_resource type="Curve" id="sub_2"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -11.875, 11.015583, 0, 0, 0, 0, -23.75, 19.956131, 0, 0, 0, 0, -35.625, 25.137491, 0, 0, 0, 0, -47.5, 25.583635, 0, 0, 0, 0, -59.375, 21.210522, 0, 0, 0, 0, -71.25, 12.841928, 0, 0, 0, 0, -83.125, 2.0542657, 0, 0, 0, 0, -95, -9.120364, 0, 0, 0, 0, -106.875, -18.576967, 0, 0, 0, 0, -118.75, -24.534178, 0, 0, 0, 0, -130.625, -25.86982, 0, 0, 0, 0, -142.5, -22.332296, 0, 0, 0, 0, -154.375, -14.58798, 0, 0, 0, 0, -166.25, -4.0956874, 0, 0, 0, 0, -178.125, 7.1681213, 0, 0, 0, 0, -190, 17.081652, 0, 0, 0, 0, -201.875, 23.777466, 0, 0, 0, 0, -213.75, 25.994257, 0, 0, 0, 0, -225.625, 23.314442, 0, 0, 0, 0, -237.5, 16.242823, 0, 0, 0, 0, -249.375, 6.1115007, 0, 0, 0, 0, -261.25, -5.1710606, 0, 0, 0, 0, -273.125, -15.479535, 0, 0, 0, 0, -285, -22.87209, 0, 0, 0, 0, -296.875, -25.95617, 0, 0, 0, 0, -308.75, -24.150814, 0, 0, 0, 0, -320.625, -17.796108, 0, 0, 0, 0, -332.5, -8.089104, 0, 0, 0, 0, -344.375, 3.1416683, 0, 0, 0, 0, -356.25, 13.780636, 0, 0, 0, 0, -368.125, 21.823708, 0, 0, 0, 0, -380, 25.75579, 0, 0, 0, 0, -391.875, 24.836187, 0, 0, 0, 0, -403.75, 19.238127, 0, 0, 0, 0, -415.625, 10.0161295, 0, 0, 0, 0, -427.5, -1.0926331, 0, 0, 0, 0, -439.375, -11.995573, 0, 0, 0, 0, -451.25, -20.638876, 0, 0, 0, 0, -463.125, -25.394379, 0, 0, 0, 0, -475, -25.366276, 0, 0, 0, 0, -486.875, -20.55986, 0, 0, 0, 0, -498.75, -11.88053, 0, 0, 0, 0, -510.625, -0.9632335, 0, 0, 0, 0, -522.5, 10.13551, 0, 0, 0, 0, -534.375, 19.325, 0, 0, 0, 0, -546.25, 24.874191, 0, 0, 0, 0, -558.125, 25.737764, 0, 0, 0, 0, -570, 21.753046)
+}
+point_count = 49
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_3")
+mode = "curve"
+duration = 3.0
+path = SubResource("sub_3")
+target = Vector2(-100, 0)
+body_attack = true
+body_radius = 13.0
+body_damage = 8.0
+orbit_progress_curve = SubResource("sub_2")
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_5")
+title = "演示 · 蝙蝠 · 波浪群袭"
+attack = SubResource("sub_1")
+movement = SubResource("sub_4")
+presentation = SubResource("sub_5")
+windup = 0.0
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_1")
+id = "perform"
+title = "演示 · 蝙蝠 · 波浪群袭"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_6")
+
+[resource]
+script = ExtResource("ext_6")
+id = "ft_skill_03_demo_behavior"
+title = "演示行为 · 蝙蝠 · 波浪群袭"
+description = "显式保存原招式预览使用的动作；敌人的正式行为独立引用招式。"
+entry_id = "perform"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_7")])

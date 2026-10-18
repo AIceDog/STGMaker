@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_6"]
+
+[sub_resource type="Curve2D" id="sub_1"]
+_data = {
+"points": PackedVector2Array(-33.333332, 0, 33.333332, 0, -100, 0, -33.333332, 0, 33.333332, 0, 100, 0)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+radius = 65.0
+path = SubResource("sub_1")
+spread = 70.0
+count = 3
+rotation_per_round = 12.0
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+
+[sub_resource type="Curve" id="sub_4"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_5"]
+_data = {
+"points": PackedVector2Array(0, -86.666664, 0, 86.666664, 0, 0, 0, -86.666664, 0, 86.666664, 0, 520)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_7"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_4")
+duration = 4.0
+path = SubResource("sub_5")
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_6")
+visual_scale_curve = SubResource("sub_7")
+collision_scale_curve = SubResource("sub_4")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_5")
+bullet_id = "bullet_seed"
+motion_stages = Array[ExtResource("ext_4")]([SubResource("sub_8")])
+lifecycle = SubResource("sub_3")
+
+[resource]
+script = ExtResource("ext_6")
+id = "barrage_seed"
+title = "延迟生成左右激光"
+fire_pattern = SubResource("sub_2")
+projectile = SubResource("sub_9")

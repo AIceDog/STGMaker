@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/area.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "ring"
+size = Vector2(52.5, 52.5)
+points = PackedVector2Array()
+inner_ratio = 0.1619047619047619
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "ring"
+size = Vector2(52.5, 52.5)
+points = PackedVector2Array()
+inner_ratio = 0.1619047619047619
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(1, 0.7372549, 0.39607844, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_109_b00_expire_b01"
+title = "深海恶霸 · 抛掷深海炸弹 · 到期后继 · 弹体 2"
+description = "辅助后继招式；继承原弹丸的归属与位置。"
+form = "area"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(60, 60)

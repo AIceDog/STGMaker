@@ -1,0 +1,90 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_6"]
+
+[sub_resource type="Curve2D" id="sub_1"]
+_data = {
+"points": PackedVector2Array(0, -16.666666, 0, 16.666666, 0, -100, 0, -33.333332, 0, 33.333332, 0, 0, 0, -16.666666, 0, 16.666666, 0, 100)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+path = SubResource("sub_1")
+angle = 165.0
+aim_spread = true
+angle_jitter = 5.72957795130823
+spread = 330.0
+count = 12
+interval = 0.0
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+fade = 0.0
+damage = 12.0
+exit_mode = "bounds"
+
+[sub_resource type="Curve" id="sub_4"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_5"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_7"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_4")
+title = "沿发射方向直飞"
+mode = "velocity"
+duration = 3.2
+path = SubResource("sub_5")
+speed = 150.0
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_6")
+visual_scale_curve = SubResource("sub_7")
+collision_scale_curve = SubResource("sub_4")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_5")
+bullet_id = "ft_bullet_pig_flame_hit"
+motion_stages = Array[ExtResource("ext_4")]([SubResource("sub_8")])
+lifecycle = SubResource("sub_3")
+
+[resource]
+script = ExtResource("ext_6")
+id = "ft_skill_25_part_01"
+title = "火焰飞猪 · 火球碰玩家分裂 · 火焰飞猪 · 命中碎火"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），招式明细 B31:N31。
+招式：火球碰玩家分裂
+每轮数量：12
+弹丸样式：flame橙黄碎火
+弹道与瞄准逻辑：12向环形分裂
+初始速度(px/s)：150
+触发条件/重复节奏：火球撞玩家
+前摇/预警：无
+判定半径/宽度(px)：碎片6；爆炸90
+弹丸寿命/有效期(s)：3.2
+伤害与特殊效果：爆炸和每片12×A（原火球×0.75）
+实现说明：撞玩家时不用原onExpire的4碎片参数。
+模板使用 A=1、speedMul=1；区间冷却取中值。血量缩放、自然刷新、奖励、角色护盾/倒地/最大生命伤害、地形破坏和龙身分裂由宿主游戏接入。"
+fire_pattern = SubResource("sub_2")
+projectile = SubResource("sub_9")

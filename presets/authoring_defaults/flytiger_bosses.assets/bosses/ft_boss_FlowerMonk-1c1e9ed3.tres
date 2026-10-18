@@ -1,0 +1,772 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+body_radius = 24.0
+contact_damage = 0.0
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_126"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+path = SubResource("sub_4")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_7")
+title = "底部光谱与顶部尖刺"
+attack = SubResource("sub_2")
+movement = SubResource("sub_5")
+presentation = SubResource("sub_6")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p0_n00"
+title = "底部光谱与顶部尖刺"
+next_id = "ft_boss_FlowerMonk_p0_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_7")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_127"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_10"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_11"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_12"]
+script = ExtResource("ext_5")
+path = SubResource("sub_11")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_10")
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_14"]
+script = ExtResource("ext_7")
+title = "无敌肉球弹跳与喷弹"
+attack = SubResource("sub_9")
+movement = SubResource("sub_12")
+presentation = SubResource("sub_13")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_15"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p0_n01"
+title = "无敌肉球弹跳与喷弹"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_14")
+
+[sub_resource type="Resource" id="sub_16"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_FlowerMonk_p0_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_8"), SubResource("sub_15")])
+
+[sub_resource type="Resource" id="sub_17"]
+script = ExtResource("ext_2")
+title = "第一条血 P1 · 花球"
+entry_mode = "sequence"
+time_limit = 12.0
+behavior_flow = SubResource("sub_16")
+
+[sub_resource type="Resource" id="sub_18"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_128"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_19"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_20"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_21"]
+script = ExtResource("ext_5")
+path = SubResource("sub_20")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_19")
+
+[sub_resource type="Resource" id="sub_22"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_23"]
+script = ExtResource("ext_7")
+title = "巨型光刃横扫"
+attack = SubResource("sub_18")
+movement = SubResource("sub_21")
+presentation = SubResource("sub_22")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_24"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p1_n00"
+title = "巨型光刃横扫"
+next_id = "ft_boss_FlowerMonk_p1_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_23")
+
+[sub_resource type="Resource" id="sub_25"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_129"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_26"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_27"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_28"]
+script = ExtResource("ext_5")
+path = SubResource("sub_27")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_26")
+
+[sub_resource type="Resource" id="sub_29"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_30"]
+script = ExtResource("ext_7")
+title = "三层抛射光刃"
+attack = SubResource("sub_25")
+movement = SubResource("sub_28")
+presentation = SubResource("sub_29")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_31"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p1_n01"
+title = "三层抛射光刃"
+next_id = "ft_boss_FlowerMonk_p1_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_30")
+
+[sub_resource type="Resource" id="sub_32"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_130"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_33"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_34"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_35"]
+script = ExtResource("ext_5")
+path = SubResource("sub_34")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_33")
+
+[sub_resource type="Resource" id="sub_36"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_37"]
+script = ExtResource("ext_7")
+title = "双侧巨刃夹击"
+attack = SubResource("sub_32")
+movement = SubResource("sub_35")
+presentation = SubResource("sub_36")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_38"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p1_n02"
+title = "双侧巨刃夹击"
+next_id = "ft_boss_FlowerMonk_p1_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_37")
+
+[sub_resource type="Resource" id="sub_39"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_131"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_40"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_41"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_42"]
+script = ExtResource("ext_5")
+path = SubResource("sub_41")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_40")
+
+[sub_resource type="Resource" id="sub_43"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_44"]
+script = ExtResource("ext_7")
+title = "肉球延时爆炸"
+attack = SubResource("sub_39")
+movement = SubResource("sub_42")
+presentation = SubResource("sub_43")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_45"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p1_n03"
+title = "肉球延时爆炸"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_44")
+
+[sub_resource type="Resource" id="sub_46"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_FlowerMonk_p1_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_24"), SubResource("sub_31"), SubResource("sub_38"), SubResource("sub_45")])
+
+[sub_resource type="Resource" id="sub_47"]
+script = ExtResource("ext_2")
+title = "第一条血 P2 · 飞刀"
+entry_mode = "sequence"
+time_limit = 12.0
+time_exit = "life_start"
+behavior_flow = SubResource("sub_46")
+
+[sub_resource type="Resource" id="sub_48"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_126"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_49"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_50"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_51"]
+script = ExtResource("ext_5")
+path = SubResource("sub_50")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_49")
+
+[sub_resource type="Resource" id="sub_52"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_53"]
+script = ExtResource("ext_7")
+title = "底部光谱与顶部尖刺"
+attack = SubResource("sub_48")
+movement = SubResource("sub_51")
+presentation = SubResource("sub_52")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_54"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p2_n00"
+title = "底部光谱与顶部尖刺"
+next_id = "ft_boss_FlowerMonk_p2_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_53")
+
+[sub_resource type="Resource" id="sub_55"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_132"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_56"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_57"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_58"]
+script = ExtResource("ext_5")
+path = SubResource("sub_57")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_56")
+
+[sub_resource type="Resource" id="sub_59"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_60"]
+script = ExtResource("ext_7")
+title = "自旋格挡缺口刃环"
+attack = SubResource("sub_55")
+movement = SubResource("sub_58")
+presentation = SubResource("sub_59")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_61"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p2_n01"
+title = "自旋格挡缺口刃环"
+next_id = "ft_boss_FlowerMonk_p2_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_60")
+
+[sub_resource type="Resource" id="sub_62"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_133"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_63"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_64"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_65"]
+script = ExtResource("ext_5")
+path = SubResource("sub_64")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_63")
+
+[sub_resource type="Resource" id="sub_66"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_67"]
+script = ExtResource("ext_7")
+title = "360°光刃爆发"
+attack = SubResource("sub_62")
+movement = SubResource("sub_65")
+presentation = SubResource("sub_66")
+windup = 0.8
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_68"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p2_n02"
+title = "360°光刃爆发"
+next_id = "ft_boss_FlowerMonk_p2_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_67")
+
+[sub_resource type="Resource" id="sub_69"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_134"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_70"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_71"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_72"]
+script = ExtResource("ext_5")
+path = SubResource("sub_71")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_70")
+
+[sub_resource type="Resource" id="sub_73"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_74"]
+script = ExtResource("ext_7")
+title = "光谱巨浪"
+attack = SubResource("sub_69")
+movement = SubResource("sub_72")
+presentation = SubResource("sub_73")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_75"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p2_n03"
+title = "光谱巨浪"
+next_id = "ft_boss_FlowerMonk_p2_n04"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_74")
+
+[sub_resource type="Resource" id="sub_76"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_135"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_77"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_78"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_79"]
+script = ExtResource("ext_5")
+path = SubResource("sub_78")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_77")
+
+[sub_resource type="Resource" id="sub_80"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_81"]
+script = ExtResource("ext_7")
+title = "和尚上下摆动发刃＋6肉球"
+attack = SubResource("sub_76")
+movement = SubResource("sub_79")
+presentation = SubResource("sub_80")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_82"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p2_n04"
+title = "和尚上下摆动发刃＋6肉球"
+choices = PackedStringArray()
+editor_position = Vector2(250, 790)
+action = SubResource("sub_81")
+
+[sub_resource type="Resource" id="sub_83"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_FlowerMonk_p2_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_54"), SubResource("sub_61"), SubResource("sub_68"), SubResource("sub_75"), SubResource("sub_82")])
+
+[sub_resource type="Resource" id="sub_84"]
+script = ExtResource("ext_2")
+title = "第二条血 P3 · 刀阵"
+life = 1
+entry_mode = "sequence"
+entry_delay = 5.0
+entry_invulnerable = true
+behavior_flow = SubResource("sub_83")
+
+[sub_resource type="Resource" id="sub_85"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_126"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_86"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_87"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_88"]
+script = ExtResource("ext_5")
+path = SubResource("sub_87")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_86")
+
+[sub_resource type="Resource" id="sub_89"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_90"]
+script = ExtResource("ext_7")
+title = "底部光谱与顶部尖刺"
+attack = SubResource("sub_85")
+movement = SubResource("sub_88")
+presentation = SubResource("sub_89")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_91"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p3_n00"
+title = "底部光谱与顶部尖刺"
+next_id = "ft_boss_FlowerMonk_p3_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_90")
+
+[sub_resource type="Resource" id="sub_92"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_136"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_93"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_94"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_95"]
+script = ExtResource("ext_5")
+path = SubResource("sub_94")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_93")
+
+[sub_resource type="Resource" id="sub_96"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_97"]
+script = ExtResource("ext_7")
+title = "交叉旋转双刃"
+attack = SubResource("sub_92")
+movement = SubResource("sub_95")
+presentation = SubResource("sub_96")
+windup = 0.4
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_98"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p3_n01"
+title = "交叉旋转双刃"
+next_id = "ft_boss_FlowerMonk_p3_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_97")
+
+[sub_resource type="Resource" id="sub_99"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_137"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_100"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_101"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_102"]
+script = ExtResource("ext_5")
+path = SubResource("sub_101")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_100")
+
+[sub_resource type="Resource" id="sub_103"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_104"]
+script = ExtResource("ext_7")
+title = "六槽缺口刃环"
+attack = SubResource("sub_99")
+movement = SubResource("sub_102")
+presentation = SubResource("sub_103")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_105"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p3_n02"
+title = "六槽缺口刃环"
+next_id = "ft_boss_FlowerMonk_p3_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_104")
+
+[sub_resource type="Resource" id="sub_106"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_131"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_107"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_108"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_109"]
+script = ExtResource("ext_5")
+path = SubResource("sub_108")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_107")
+
+[sub_resource type="Resource" id="sub_110"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_111"]
+script = ExtResource("ext_7")
+title = "肉球延时爆炸"
+attack = SubResource("sub_106")
+movement = SubResource("sub_109")
+presentation = SubResource("sub_110")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_112"]
+script = ExtResource("ext_3")
+id = "ft_boss_FlowerMonk_p3_n03"
+title = "肉球延时爆炸"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_111")
+
+[sub_resource type="Resource" id="sub_113"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_FlowerMonk_p3_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_91"), SubResource("sub_98"), SubResource("sub_105"), SubResource("sub_112")])
+
+[sub_resource type="Resource" id="sub_114"]
+script = ExtResource("ext_2")
+title = "第三条血 P4 · 变体"
+life = 2
+entry_mode = "sequence"
+life_hp = 70.0
+behavior_flow = SubResource("sub_113")
+
+[resource]
+script = ExtResource("ext_9")
+id = "ft_boss_FlowerMonk"
+title = "花和尚"
+description = "来源：Boss总览 / 阶段与转换，源码类 FlowerMonk。
+出现条件：霓虹喵都（cyber）限定；普通模式仅Boss序号5/7/11/13（注册早轮forceChance被此限制过滤）
+阶段结构：第一血P1/P2循环→锁5s满血P3→第三血70%P4
+招式组合：肉球喷弹/爆炸、横扫/抛射/夹击光刃、格挡刃环、全向刃、光谱涨潮
+移动：赛博肉球与和尚交替→强化五招→最终狂暴；场地底光谱/顶刺常驻
+本体触碰：26
+注意事项：肉球虽isBoss=true，但未注册独立Boss；完全无敌且伤害不转发。P4 atkCycle仅ring6结束递增：不是注释所写简单四招两轮，达到8才终章且下一sub可能跳过前面招。
+源码位置：js/bosses.js:10551–11444；js/game.js:2276–2355
+模板是可编辑战斗编排。贴图、动画、地图刷怪条件、玩家抓取 / 治疗、龙身 / 肢体 / 分身实体共享血量需要宿主游戏接入；详见各招式适配边界。"
+color = Color(0.5137255, 0.7176471, 0.9490196, 1)
+start_position = Vector2(270, -30)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_17"), SubResource("sub_47"), SubResource("sub_84"), SubResource("sub_114")])
+entity_settings = SubResource("sub_1")

@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://stg/runtime/prefab_root.gd" id="1_drv8t"]
+[ext_resource type="Resource" path="res://examples/shared/enemy_library.tres" id="2_tp1j7"]
+
+[node name="01_swift" type="Node2D" unique_id=1834824106]
+script = ExtResource("1_drv8t")
+library = ExtResource("2_tp1j7")
+kind = "bosses"
+resource_id = "01_swift"

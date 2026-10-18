@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_6"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+direction = "parallel"
+angle = 0.0
+count = 1
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_3")
+warning = 0.15
+fade = 0.8
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_5"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_4")
+title = "停留"
+mode = "wait"
+duration = 0.6
+path = SubResource("sub_4")
+progress_curve = SubResource("sub_5")
+visual_scale_curve = SubResource("sub_6")
+collision_scale_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_5")
+bullet_id = "mine_trail"
+motion_stages = Array[ExtResource("ext_4")]([SubResource("sub_7")])
+lifecycle = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_6")
+id = "mine_patrol_trail"
+title = "布雷手 · 巡航播雷与尾迹 · 尾迹"
+fire_pattern = SubResource("sub_1")
+projectile = SubResource("sub_8")
+trail_duration = 4.0

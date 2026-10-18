@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(150, 300)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(150, 300)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_120_b00"
+title = "火遮眼 · 火焰斩与三连波 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 126 行。
+源码类：FireBlind
+阶段与可达性：slash
+组合数量：普通每轮1、狂暴每轮3；指定轮再发2波
+弹丸 / 机关：fireSlash
+运动：瞄玩家；普通300px/s，狂暴330px/s角偏±0.28
+时序：首蓄0.78/0.5s，轮间2/1.4s；追加0.22/0.44s
+伤害口径：普通15×A、box150×300；狂暴13×A、box104×128
+备注：同kind不同box；普通off112，狂暴off100
+源码位置：js/bosses.js:9982–10048
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(150, 300)

@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(18, 18)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(18, 18)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_061_b00"
+title = "狮身人面像 · 双源反向螺旋 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 67 行。
+源码类：Sphinx
+阶段与可达性：P3自旋
+组合数量：每0.15s两发
+弹丸 / 机关：eyeGem
+运动：左右源按±spirA射225px/s
+时序：13–18.4s自旋段
+伤害口径：12×A；r9、5s
+备注：与中心缺口环并行
+源码位置：js/bosses.js:3813–3835
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(18, 18)

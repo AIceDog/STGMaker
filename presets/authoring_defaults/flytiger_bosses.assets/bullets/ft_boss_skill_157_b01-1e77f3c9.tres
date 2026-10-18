@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(26, 26)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(26, 26)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_157_b01"
+title = "靓星 · 本体单/双环＋双卡 · 弹体 2"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 163 行。
+源码类：LiangStar
+阶段与可达性：P5
+组合数量：交替16或14+14；卡2
+弹丸 / 机关：小海星 / 卡牌
+运动：单168；双172/134且第二圈偏π/14
+时序：环每1.7s；双卡2.5s、错0.22
+伤害口径：环14×A；卡14×A
+备注：本体与最多5头共同发射源
+源码位置：js/bosses.js:12905–12931
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(26, 26)

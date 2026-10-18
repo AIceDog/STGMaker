@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://stg/runtime/prefab_root.gd" id="1_c7fmq"]
+[ext_resource type="Resource" path="res://game/content/recovered/behavior_boss_library.tres" id="2_osjif"]
+
+[node name="BossPrefab" type="Node2D" unique_id=421050032]
+script = ExtResource("1_c7fmq")
+library = ExtResource("2_osjif")
+kind = "bosses"
+resource_id = "boss_l2yos"

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(116, 80)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(116, 80)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_184_b00"
+title = "刺客之王 · 上下左右大卡与尖刺尾 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 190 行。
+源码类：AssassinKing
+阶段与可达性：P6
+组合数量：4张大卡
+弹丸 / 机关：BigSaw / SawTrail Actor
+运动：四正向340走0.7s→R120..300、1.6rad/s绕3s→半径渐缩；自旋10
+时序：每saws子段4.2s；每2组加轮；尖刺间隔max(0.12,0.34−0.06×(轮−1))
+伤害口径：大卡17×A、r58、0.7s冷却；尖刺12×A、r7、寿1.1+0.25×(轮−1)
+备注：名称bigSaws但画的是大卡牌；尖刺触碰一次移除；第3轮或血≤25%整轮结束进终章
+源码位置：js/bosses.js:14343–14388、14565–14614、14871–14967
+【模板适配边界】四向大卡片去程 / 环绕 / 缩圈已配置；沿真实卡片轨迹播撒尖刺与按轮次终结需宿主接入。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(116, 80)

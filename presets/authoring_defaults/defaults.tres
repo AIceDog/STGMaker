@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="STGProject" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/level_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/obstacle_definition.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/project_document.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/wave_definition.gd" id="ext_8"]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="type_bullets"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/bullets/bullet_green-da9193ab.tres" id="bullets_0"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/bullets/bullet_laser-b6c051fc.tres" id="bullets_1"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/bullets/bullet_area-61eec9ee.tres" id="bullets_2"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/bullets/bullet_trail-916f72b9.tres" id="bullets_3"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="type_barrages"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/barrage_jjuur-07bb2d08.tres" id="barrages_0"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/barrage_82rnv-04bc201e.tres" id="barrages_1"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/barrage_c8rir-77e976ab.tres" id="barrages_2"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/barrage_727if-95e130c6.tres" id="barrages_3"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/barrage_naaxo-32738ebb.tres" id="barrages_4"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/barrage_4bjml-d5d23831.tres" id="barrages_5"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/bullet_green_projectile-b8b6c03a.tres" id="barrages_6"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/bullet_laser_projectile-41f4b2a5.tres" id="barrages_7"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/bullet_area_projectile-bdb67c76.tres" id="barrages_8"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/barrages/bullet_trail_projectile-0d3b6f50.tres" id="barrages_9"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="type_behaviors"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/behaviors/barrage_4bjml_demo_behavior-4c2a8acb.tres" id="behaviors_0"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="type_bosses"]
+[ext_resource type="Resource" path="res://presets/authoring_defaults/defaults.assets/bosses/boss_ftqoc-57a36b1c.tres" id="bosses_0"]
+[ext_resource type="Script" path="res://stg/definitions/wave_definition.gd" id="type_waves"]
+[ext_resource type="Script" path="res://stg/definitions/level_definition.gd" id="type_levels"]
+[ext_resource type="Script" path="res://stg/definitions/obstacle_definition.gd" id="type_obstacles"]
+
+[resource]
+script = ExtResource("ext_7")
+schema_version = 12
+
+bullets = Array[ExtResource("type_bullets")]([ExtResource("bullets_0"), ExtResource("bullets_1"), ExtResource("bullets_2"), ExtResource("bullets_3")])
+barrages = Array[ExtResource("type_barrages")]([ExtResource("barrages_0"), ExtResource("barrages_1"), ExtResource("barrages_2"), ExtResource("barrages_3"), ExtResource("barrages_4"), ExtResource("barrages_5"), ExtResource("barrages_6"), ExtResource("barrages_7"), ExtResource("barrages_8"), ExtResource("barrages_9")])
+behaviors = Array[ExtResource("type_behaviors")]([ExtResource("behaviors_0")])
+bosses = Array[ExtResource("type_bosses")]([ExtResource("bosses_0")])
+waves = Array[ExtResource("type_waves")]([])
+levels = Array[ExtResource("type_levels")]([])
+obstacles = Array[ExtResource("type_obstacles")]([])

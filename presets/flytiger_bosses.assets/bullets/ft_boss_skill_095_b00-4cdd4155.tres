@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(44, 44)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(44, 44)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_095_b00"
+title = "火龙将军 · 烈焰半圆回旋斩【仅视觉，无伤害】 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 101 行。
+源码类：FireDragonGeneral
+阶段与可达性：B1近距
+组合数量：9发
+弹丸 / 机关：fireSlash
+运动：面向玩家πrad扇，从本体90px外出弹，380..500px/s
+时序：蓄0.5s，0.9s动作完；设硬直1.2s但未阻断judge
+伤害口径：配置16×A；r22、2.2s；当前noTouch且缺自管hurt，实际无命中扣血
+备注：noTouch跳过Game碰撞；entities的此kind更新仅粒子/轨迹，未补hurt判定。
+源码位置：js/bosses.js:7729–7759
+【仅视觉】源码缺少有效命中入口，模板不会补造伤害。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(44, 44)

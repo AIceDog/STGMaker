@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/area.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "ring"
+size = Vector2(57.5, 57.5)
+points = PackedVector2Array()
+inner_ratio = 0.09565217391304348
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "ring"
+size = Vector2(57.5, 57.5)
+points = PackedVector2Array()
+inner_ratio = 0.09565217391304348
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(1, 0.7372549, 0.39607844, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_098_b01"
+title = "癫狂鬣狗 · 双重咆哮 · 弹体 2"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 104 行。
+源码类：MadHyena
+阶段与可达性：roar
+组合数量：2圈
+弹丸 / 机关：自定义环
+运动：嘴部r26向外330px/s，上限230；环带26
+时序：咆哮0.4/0.75s各一圈
+伤害口径：12×A／圈，一圈只伤一次
+备注：空心环，中心不持续伤人
+源码位置：js/bosses.js:8067–8092、8217–8246
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+form = "area"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(60, 60)

@@ -1,0 +1,222 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+body_radius = 22.0
+contact_damage = 8.0
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 1.0
+path = SubResource("sub_4")
+target_mode = "world"
+target = Vector2(200, 200)
+orbit_progress_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_7")
+title = "走到投斧位置"
+attack = SubResource("sub_2")
+movement = SubResource("sub_5")
+presentation = SubResource("sub_6")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_3")
+id = "ft_enemy_axeMinion_p0_n00"
+title = "走到投斧位置"
+next_id = "ft_enemy_axeMinion_p0_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_7")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_10"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_11"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_12"]
+script = ExtResource("ext_5")
+path = SubResource("sub_11")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_10")
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_14"]
+script = ExtResource("ext_7")
+title = "冷却 3.10 秒"
+attack = SubResource("sub_9")
+movement = SubResource("sub_12")
+presentation = SubResource("sub_13")
+windup = 0.0
+duration = 3.1
+recovery = 0.0
+
+[sub_resource type="Resource" id="sub_15"]
+script = ExtResource("ext_3")
+id = "ft_enemy_axeMinion_p0_n01"
+title = "冷却 3.10 秒"
+next_id = "ft_enemy_axeMinion_p0_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_14")
+
+[sub_resource type="Resource" id="sub_16"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_summoned_ft_skill_19"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_17"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_18"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_19"]
+script = ExtResource("ext_5")
+path = SubResource("sub_18")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_17")
+
+[sub_resource type="Resource" id="sub_20"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_21"]
+script = ExtResource("ext_7")
+title = "高弧慢抛斧"
+attack = SubResource("sub_16")
+movement = SubResource("sub_19")
+presentation = SubResource("sub_20")
+windup = 0.21
+recovery = 0.21
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_22"]
+script = ExtResource("ext_3")
+id = "ft_enemy_axeMinion_p0_n02"
+title = "高弧慢抛斧"
+next_id = "ft_enemy_axeMinion_p0_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_21")
+
+[sub_resource type="Resource" id="sub_23"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_24"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_25"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_26"]
+script = ExtResource("ext_5")
+path = SubResource("sub_25")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_24")
+
+[sub_resource type="Resource" id="sub_27"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_28"]
+script = ExtResource("ext_7")
+title = "冷却 3.10 秒"
+attack = SubResource("sub_23")
+movement = SubResource("sub_26")
+presentation = SubResource("sub_27")
+windup = 0.0
+duration = 3.1
+recovery = 0.0
+
+[sub_resource type="Resource" id="sub_29"]
+script = ExtResource("ext_3")
+id = "ft_enemy_axeMinion_p0_n03"
+title = "冷却 3.10 秒"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_28")
+
+[sub_resource type="Resource" id="sub_30"]
+script = ExtResource("ext_8")
+entry_id = "ft_enemy_axeMinion_p0_n00"
+loop_entry_id = "ft_enemy_axeMinion_p0_n02"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_8"), SubResource("sub_15"), SubResource("sub_22"), SubResource("sub_29")])
+
+[sub_resource type="Resource" id="sub_31"]
+script = ExtResource("ext_2")
+title = "攻击模板 · A=1"
+behavior_flow = SubResource("sub_30")
+
+[resource]
+script = ExtResource("ext_9")
+id = "ft_summoned_ft_enemy_axeMinion"
+title = "斧头兵"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），小怪总览 B19:K19。
+分类：Boss召唤地面
+攻击模式：高弧抛斧／死亡落地爆炸
+弹丸/攻击对象：axe
+行为状态机与移动逻辑：walk到按序分配的haltX → idle → throwAnim → idle；死亡另走deathFly直到落地爆炸
+自然出场/召唤条件：斧王开场专属召唤（12只，间隔0.38s），不进入自然池
+基础接触伤害：8
+出场保护/免疫：出场0.6s；死亡演出不可受伤
+实现说明：斧王开场12只，0.38s错峰；奖励在死亡起飞时结算，落地才清除实体。
+模板使用 A=1、speedMul=1；区间冷却取中值。血量缩放、自然刷新、奖励、角色护盾/倒地/最大生命伤害、地形破坏和龙身分裂由宿主游戏接入。
+死亡技能单独挂载，普通投斧循环不会主动播放死亡飞行或落地爆炸。"
+on_death_behavior_id = "ft_summoned_ft_skill_20_death_behavior"
+color = Color(0.68235296, 0.75686276, 0.8156863, 1)
+start_position = Vector2(270, 200)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_31")])
+entity_settings = SubResource("sub_1")

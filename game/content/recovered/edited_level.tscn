@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://stg/runtime/prefab_root.gd" id="1_7d30u"]
+[ext_resource type="Resource" path="res://game/content/recovered/edited_level_library.tres" id="2_fi542"]
+
+[node name="LevelPrefab" type="Node2D" unique_id=634673754]
+script = ExtResource("1_7d30u")
+library = ExtResource("2_fi542")
+kind = "levels"
+resource_id = "level_0jvk0"

@@ -1,0 +1,270 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+[ext_resource type="Texture2D" path="res://assets/enemies/06_charger.svg" id="ext_10"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_3")
+id = "flow_xsndv"
+title = "玩家距离是否不超过 180？"
+kind = "condition"
+next_id = "flow_b3elp"
+failure_id = "flow_2ao2b"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+threshold = 180.0
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_4"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_5"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_5")
+mode = "dash"
+duration = 0.42
+path = SubResource("sub_5")
+target_mode = "player"
+target = Vector2(0, 0)
+lock_at = "windup"
+body_attack = true
+body_radius = 22.0
+orbit_progress_curve = SubResource("sub_4")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_7")
+title = "蓄力后冲刺到锁定位置"
+attack = SubResource("sub_3")
+movement = SubResource("sub_6")
+presentation = SubResource("sub_7")
+windup = 0.85
+recovery = 0.15
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_3")
+id = "flow_b3elp"
+title = "蓄力后冲刺到锁定位置"
+next_id = "flow_0bbr2"
+choices = PackedStringArray()
+editor_position = Vector2(60, 240)
+action = SubResource("sub_8")
+
+[sub_resource type="Resource" id="sub_10"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "charger_ranged"
+
+[sub_resource type="Curve" id="sub_11"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_12"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_5")
+path = SubResource("sub_12")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_11")
+
+[sub_resource type="Resource" id="sub_14"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_15"]
+script = ExtResource("ext_7")
+title = "远距离四连点射"
+attack = SubResource("sub_10")
+movement = SubResource("sub_13")
+presentation = SubResource("sub_14")
+windup = 0.5
+recovery = 0.25
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_16"]
+script = ExtResource("ext_3")
+id = "flow_2ao2b"
+title = "远距离四连点射"
+next_id = "flow_gs35f"
+choices = PackedStringArray()
+editor_position = Vector2(460, 240)
+action = SubResource("sub_15")
+
+[sub_resource type="Resource" id="sub_17"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "charger_impact_skill"
+
+[sub_resource type="Curve" id="sub_18"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_19"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_20"]
+script = ExtResource("ext_5")
+path = SubResource("sub_19")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_18")
+
+[sub_resource type="Resource" id="sub_21"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_22"]
+script = ExtResource("ext_7")
+title = "冲刺终点震波"
+attack = SubResource("sub_17")
+movement = SubResource("sub_20")
+presentation = SubResource("sub_21")
+windup = 0.1
+recovery = 0.25
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_23"]
+script = ExtResource("ext_3")
+id = "flow_0bbr2"
+title = "冲刺终点震波"
+next_id = "flow_gs35f"
+choices = PackedStringArray()
+editor_position = Vector2(60, 430)
+action = SubResource("sub_22")
+
+[sub_resource type="Resource" id="sub_24"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_25"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_26"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_27"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 1.2
+path = SubResource("sub_26")
+target_mode = "world"
+target = Vector2(320, 0)
+orbit_progress_curve = SubResource("sub_25")
+
+[sub_resource type="Resource" id="sub_28"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_29"]
+script = ExtResource("ext_7")
+title = "返回正面位置"
+attack = SubResource("sub_24")
+movement = SubResource("sub_27")
+presentation = SubResource("sub_28")
+windup = 0.25
+recovery = 0.15
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_30"]
+script = ExtResource("ext_3")
+id = "flow_gs35f"
+title = "返回正面位置"
+next_id = "flow_7f1jw"
+choices = PackedStringArray()
+editor_position = Vector2(250, 620)
+action = SubResource("sub_29")
+
+[sub_resource type="Resource" id="sub_31"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_32"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_33"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_34"]
+script = ExtResource("ext_5")
+path = SubResource("sub_33")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_32")
+
+[sub_resource type="Resource" id="sub_35"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_36"]
+script = ExtResource("ext_7")
+title = "停留观察 0.8 秒"
+attack = SubResource("sub_31")
+movement = SubResource("sub_34")
+presentation = SubResource("sub_35")
+windup = 0.0
+duration = 0.8
+recovery = 0.0
+
+[sub_resource type="Resource" id="sub_37"]
+script = ExtResource("ext_3")
+id = "flow_7f1jw"
+title = "停留观察 0.8 秒"
+choices = PackedStringArray()
+editor_position = Vector2(250, 810)
+action = SubResource("sub_36")
+
+[sub_resource type="Resource" id="sub_38"]
+script = ExtResource("ext_8")
+entry_id = "flow_xsndv"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_2"), SubResource("sub_9"), SubResource("sub_16"), SubResource("sub_23"), SubResource("sub_30"), SubResource("sub_37")])
+
+[sub_resource type="Resource" id="sub_39"]
+script = ExtResource("ext_2")
+title = "常规行为"
+behavior_flow = SubResource("sub_38")
+
+[resource]
+script = ExtResource("ext_9")
+id = "06_charger"
+title = "06 蛮牛冲锋者"
+texture = ExtResource("ext_10")
+color = Color(1, 0.4627451, 0.4117647, 1)
+start_position = Vector2(320, 0)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_39")])
+entity_settings = SubResource("sub_1")

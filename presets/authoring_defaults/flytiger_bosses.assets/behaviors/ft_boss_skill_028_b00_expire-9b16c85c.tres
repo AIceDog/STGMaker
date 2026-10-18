@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="STGBehaviorFlow" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_2"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+id = "fire_0"
+title = "释放 · ft_boss_skill_028_b00_expire_part_01"
+kind = "attack"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+barrage_id = "ft_boss_skill_028_b00_expire_part_01"
+wait_mode = "emission"
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_2")
+title = "斧王 · 巨大漂浮追踪斧 · 到期后继"
+entry_id = "fire_0"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_1")])
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_1")
+id = "fire_1"
+title = "释放 · ft_boss_skill_028_b00_expire_part_02"
+kind = "attack"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+barrage_id = "ft_boss_skill_028_b00_expire_part_02"
+wait_mode = "emission"
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_2")
+title = "斧王 · 巨大漂浮追踪斧 · 到期后继"
+entry_id = "fire_1"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_3")])
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_1")
+id = "parallel"
+title = "同时启动各招式"
+kind = "parallel"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+children = Array[Resource]([SubResource("sub_2"), SubResource("sub_4")])
+
+[resource]
+script = ExtResource("ext_2")
+id = "ft_boss_skill_028_b00_expire"
+title = "斧王 · 巨大漂浮追踪斧 · 到期后继"
+description = "辅助后继招式；继承原弹丸的归属与位置。"
+entry_id = "parallel"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_5")])

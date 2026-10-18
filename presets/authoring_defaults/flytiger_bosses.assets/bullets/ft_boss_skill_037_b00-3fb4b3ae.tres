@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(18, 18)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(18, 18)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_037_b00"
+title = "怪客 · 紫焰苹果雨 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 43 行。
+源码类：Stranger
+阶段与可达性：knives（实际苹果）
+组合数量：每0.2s 9发
+弹丸 / 机关：apple
+运动：向下360px/s，角间0.16rad、g950；第一次落地反弹
+时序：飞至上方0.6s；喷雨4s
+伤害口径：12×A；r9，5.5s
+备注：紫色尾迹；苹果触地反弹一次后碎裂
+源码位置：js/bosses.js:2215–2240；js/entities.js:1734–1751
+【模板适配边界】苹果重力落下已配置，源码的一次地面反弹需宿主接入。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(18, 18)

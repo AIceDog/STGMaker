@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(12, 12)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(12, 12)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(0.7607843, 0.95686275, 1, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_bullet_stormfish_orb_1"
+title = "风暴飞鱼 · S弹相位1"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），弹丸样式 B19:G19。
+样式名称：白色风暴光球
+使用者：风暴飞鱼
+实际外观与拖尾：冰蓝外晕→淡白→纯白圆芯；白色弱光带
+弹道/特殊交互：3路角度正弦摆动，amp=0.45、freq=8；不追踪
+判定与视觉差异：圆形r=6"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(12, 12)

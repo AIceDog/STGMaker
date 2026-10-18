@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(12, 12)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(12, 12)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(0.78039217, 0.49019608, 1, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_bullet_demon_spark"
+title = "飞天恶魔 · 紫色方弹"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），弹丸样式 B8:G8。
+样式名称：紫色能量方弹
+使用者：飞天恶魔
+实际外观与拖尾：黑色像素方框，紫芯#c77dff，白色小高光
+弹道/特殊交互：直线；单发瞄准或3路扇形；无持续追踪
+判定与视觉差异：圆形r=6"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(12, 12)

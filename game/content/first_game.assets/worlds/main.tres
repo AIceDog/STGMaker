@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="STGWorldDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/world_location.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/world_definition.gd" id="ext_2"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+id = "border"
+title = "边境巡航"
+description = "完成战斗可获得首通奖励，返回地图后进度自动保存。"
+map_position = Vector2(0.28, 0.52)
+level_id = "border_patrol"
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+id = "gate"
+title = "山门试炼"
+description = "完成战斗可获得首通奖励，返回地图后进度自动保存。"
+map_position = Vector2(0.72, 0.37)
+level_id = "mountain_gate"
+requires_completion = Array[String](["border"])
+reward = 300
+
+[resource]
+script = ExtResource("ext_2")
+locations = Array[ExtResource("ext_1")]([SubResource("sub_1"), SubResource("sub_2")])

@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+body_radius = 18.0
+contact_damage = 12.0
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_skill_skull_parallel"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+path = SubResource("sub_4")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_7")
+title = "飞天骷髅 · 三路独立计时器"
+attack = SubResource("sub_2")
+movement = SubResource("sub_5")
+presentation = SubResource("sub_6")
+windup = 0.0
+recovery = 0.0
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_3")
+id = "ft_enemy_skull_p0_n00"
+title = "飞天骷髅 · 三路独立计时器"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_7")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_8")
+entry_id = "ft_enemy_skull_p0_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_8")])
+
+[sub_resource type="Resource" id="sub_10"]
+script = ExtResource("ext_2")
+title = "攻击模板 · A=1"
+behavior_flow = SubResource("sub_9")
+
+[resource]
+script = ExtResource("ext_9")
+id = "ft_enemy_skull"
+title = "飞天骷髅"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），小怪总览 B11:K11。
+分类：常规飞行
+攻击模式：瞄准弹／旋转扇形／8向环弹
+弹丸/攻击对象：orb
+行为状态机与移动逻辑：悬停于玩家右侧约300px；高度缓追；rotA持续旋转；三套独立计时器
+自然出场/召唤条件：自然池：击败1个Boss后
+基础接触伤害：12
+出场保护/免疫：无
+实现说明：实际条件为x>W−30才扣射击计时并开火：进到场内大部分区域后停火，和常见入场门槛相反。
+模板使用 A=1、speedMul=1；区间冷却取中值。血量缩放、自然刷新、奖励、角色护盾/倒地/最大生命伤害、地形破坏和龙身分裂由宿主游戏接入。
+三计时器并行；此为有限发射窗口循环的攻击演示。原游戏 x>930 的开火限制未复刻，避免导入后看不到任何弹幕。"
+color = Color(0.9098039, 0.93333334, 0.96862745, 1)
+start_position = Vector2(300, -110)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_10")])
+entity_settings = SubResource("sub_1")

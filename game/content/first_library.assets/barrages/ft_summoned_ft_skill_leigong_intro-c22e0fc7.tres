@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_6"]
+
+[sub_resource type="Curve2D" id="sub_1"]
+_data = {
+"points": PackedVector2Array(0, -16.666666, 0, 16.666666, 0, -100, 0, -33.333332, 0, 33.333332, 0, 0, 0, -16.666666, 0, 16.666666, 0, 100)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+anchor = "player"
+anchor_axes = "x"
+offset = Vector2(0, -270)
+path = SubResource("sub_1")
+direction = "parallel"
+spread = 0.0
+count = 1
+interval = 0.0
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+warning = 0.95
+fade = 0.0
+damage = 20.0
+hit_mode = "activation"
+
+[sub_resource type="Curve" id="sub_4"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_5"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_7"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_4")
+title = "停留"
+mode = "wait"
+duration = 0.3
+path = SubResource("sub_5")
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_6")
+visual_scale_curve = SubResource("sub_7")
+collision_scale_curve = SubResource("sub_4")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_5")
+bullet_id = "ft_summoned_ft_bullet_lightning"
+motion_stages = Array[ExtResource("ext_4")]([SubResource("sub_8")])
+lifecycle = SubResource("sub_3")
+
+[resource]
+script = ExtResource("ext_6")
+id = "ft_summoned_ft_skill_leigong_intro"
+title = "雷公 · 首三轮单柱"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），招式明细 B28:N28。
+招式：纵向落雷
+每轮数量：1；第4轮起2柱
+弹丸样式：Lightning白芯黄边
+弹道与瞄准逻辑：固定玩家x；第二柱在玩家x±90px；x钳制60..W−60
+初始速度(px/s)：非飞行弹
+触发条件/重复节奏：2.6–3.4s；x<W−60
+前摇/预警：0.95s黄白虚线
+判定半径/宽度(px)：宽56px
+弹丸寿命/有效期(s)：激活0.3s
+伤害与特殊效果：每柱20×A，激活时结算一次
+实现说明：实际碰撞带为宽/2+玩家半径×0.7。
+模板使用 A=1、speedMul=1；区间冷却取中值。血量缩放、自然刷新、奖励、角色护盾/倒地/最大生命伤害、地形破坏和龙身分裂由宿主游戏接入。
+此为同一表行的首轮变体；仅改变发射数量。"
+fire_pattern = SubResource("sub_2")
+projectile = SubResource("sub_9")

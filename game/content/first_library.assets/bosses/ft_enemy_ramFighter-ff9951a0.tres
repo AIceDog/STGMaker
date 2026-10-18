@@ -1,0 +1,232 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+body_radius = 30.0
+contact_damage = 12.0
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+path = SubResource("sub_4")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_7")
+title = "冷却 2.50 秒"
+attack = SubResource("sub_2")
+movement = SubResource("sub_5")
+presentation = SubResource("sub_6")
+windup = 0.0
+duration = 2.5
+recovery = 0.0
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_3")
+id = "ft_enemy_ramFighter_p0_n00"
+title = "冷却 2.50 秒"
+next_id = "ft_enemy_ramFighter_p0_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_7")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_10"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_11"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_12"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 0.55
+path = SubResource("sub_11")
+target_mode = "player"
+target = Vector2(120, 0)
+aiming = "track"
+orbit_progress_curve = SubResource("sub_10")
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_14"]
+script = ExtResource("ext_7")
+title = "助跑跟随玩家"
+attack = SubResource("sub_9")
+movement = SubResource("sub_12")
+presentation = SubResource("sub_13")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_15"]
+script = ExtResource("ext_3")
+id = "ft_enemy_ramFighter_p0_n01"
+title = "助跑跟随玩家"
+next_id = "ft_enemy_ramFighter_p0_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_14")
+
+[sub_resource type="Resource" id="sub_16"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_skill_13"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_17"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_18"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_19"]
+script = ExtResource("ext_5")
+mode = "ballistic"
+duration = 0.933333333333333
+path = SubResource("sub_18")
+target_mode = "player"
+target = Vector2(0, 0)
+body_attack = true
+body_radius = 30.0
+body_damage = 30.0
+orbit_progress_curve = SubResource("sub_17")
+initial_velocity = Vector2(260, -700)
+velocity_mode = "horizontal"
+
+[sub_resource type="Resource" id="sub_20"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_21"]
+script = ExtResource("ext_7")
+title = "助跑跳跃撞击"
+attack = SubResource("sub_16")
+movement = SubResource("sub_19")
+presentation = SubResource("sub_20")
+windup = 0.0
+recovery = 0.0
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_22"]
+script = ExtResource("ext_3")
+id = "ft_enemy_ramFighter_p0_n02"
+title = "助跑跳跃撞击"
+next_id = "ft_enemy_ramFighter_p0_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_21")
+
+[sub_resource type="Resource" id="sub_23"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_24"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_25"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_26"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 1.0
+path = SubResource("sub_25")
+target_mode = "world"
+target = Vector2(0, 200)
+orbit_progress_curve = SubResource("sub_24")
+
+[sub_resource type="Resource" id="sub_27"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_28"]
+script = ExtResource("ext_7")
+title = "落地后返回中线"
+attack = SubResource("sub_23")
+movement = SubResource("sub_26")
+presentation = SubResource("sub_27")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_29"]
+script = ExtResource("ext_3")
+id = "ft_enemy_ramFighter_p0_n03"
+title = "落地后返回中线"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_28")
+
+[sub_resource type="Resource" id="sub_30"]
+script = ExtResource("ext_8")
+entry_id = "ft_enemy_ramFighter_p0_n00"
+loop_entry_id = "ft_enemy_ramFighter_p0_n01"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_8"), SubResource("sub_15"), SubResource("sub_22"), SubResource("sub_29")])
+
+[sub_resource type="Resource" id="sub_31"]
+script = ExtResource("ext_2")
+title = "攻击模板 · A=1"
+behavior_flow = SubResource("sub_30")
+
+[resource]
+script = ExtResource("ext_9")
+id = "ft_enemy_ramFighter"
+title = "羊头斗士"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），小怪总览 B15:K15。
+分类：角斗场地面
+攻击模式：锁点助跑／跳跃撞击
+弹丸/攻击对象：无弹丸
+行为状态机与移动逻辑：walk → windup → leap → recenter（回中线）→ windup循环；起跳时按目标左右定水平朝向
+自然出场/召唤条件：自然池：击败1个Boss后；仅罗马角斗场/月痕沙海解锁
+基础接触伤害：12
+出场保护/免疫：出场1.2s
+实现说明：空中接触伤害从12升至30，落地恢复12；回中线后不再等初始atkT，直接再次助跑。
+模板使用 A=1、speedMul=1；区间冷却取中值。血量缩放、自然刷新、奖励、角色护盾/倒地/最大生命伤害、地形破坏和龙身分裂由宿主游戏接入。"
+color = Color(0.8784314, 0.74509805, 0.5686275, 1)
+start_position = Vector2(210, 200)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_31")])
+entity_settings = SubResource("sub_1")

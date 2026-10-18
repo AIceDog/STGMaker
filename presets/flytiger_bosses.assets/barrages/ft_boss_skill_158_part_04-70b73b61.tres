@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_6"]
+
+[sub_resource type="Curve2D" id="sub_1"]
+_data = {
+"points": PackedVector2Array(0, -16.666666, 0, 16.666666, 0, -100, 0, -33.333332, 0, 33.333332, 0, 0, 0, -16.666666, 0, 16.666666, 0, 100)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+offset = Vector2(0, 180)
+path = SubResource("sub_1")
+angle = 180.0
+aim_spread = true
+spread = 315.0
+count = 8
+rounds = 3
+interval = 2.4
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+fade = 0.0
+damage = 12.0
+exit_mode = "bounds"
+bounds_margin = 80.0
+
+[sub_resource type="Curve" id="sub_4"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_5"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_7"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_4")
+title = "沿发射方向直飞"
+mode = "velocity"
+duration = 5.0
+path = SubResource("sub_5")
+speed = 150.0
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_6")
+visual_scale_curve = SubResource("sub_7")
+collision_scale_curve = SubResource("sub_4")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_5")
+bullet_id = "ft_boss_skill_158_b03"
+motion_stages = Array[ExtResource("ext_4")]([SubResource("sub_8")])
+lifecycle = SubResource("sub_3")
+
+[resource]
+script = ExtResource("ext_6")
+id = "ft_boss_skill_158_part_04"
+title = "靓星 · 各头独立海星环与卡 · 发射 4"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 164 行。
+源码类：LiangStar
+阶段与可达性：P4/P5头群
+组合数量：P4每头8环＋1卡；P5每头10环＋1或2卡
+弹丸 / 机关：海星头 / 小海星 / 卡牌
+运动：P4环150、P5环170；固定锚点轻摆，受伤可暂时离场
+时序：P4环2.9−0.9×损血比+奇数头0.45；卡4.4−1.4×损血比+奇数头0.6；P5环2/2.4、卡2.7/3.2
+伤害口径：头接触16×A（0.8s冷却）；环12×A、卡14×A
+备注：仅settle态发射；P5 50%几率追加卡延0.2；离场/返回无接触伤
+源码位置：js/bosses.js:12932–13043
+【模板适配边界】独立头部发射原点演示；可击破的头部实体与共享血量需宿主实现。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+fire_pattern = SubResource("sub_2")
+projectile = SubResource("sub_9")

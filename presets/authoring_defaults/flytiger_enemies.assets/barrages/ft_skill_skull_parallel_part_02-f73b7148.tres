@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_6"]
+
+[sub_resource type="Curve2D" id="sub_1"]
+_data = {
+"points": PackedVector2Array(0, -16.666666, 0, 16.666666, 0, -100, 0, -33.333332, 0, 33.333332, 0, 0, 0, -16.666666, 0, 16.666666, 0, 100)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+at = 3.0
+path = SubResource("sub_1")
+angle = 275.019741662795
+aim_spread = true
+spread = 55.003948332559
+count = 5
+rounds = 8
+interval = 3.0
+rotation_per_round = 275.019741662795
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+fade = 0.0
+damage = 12.0
+exit_mode = "bounds"
+
+[sub_resource type="Curve" id="sub_4"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_5"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_7"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_4")
+title = "沿发射方向直飞"
+mode = "velocity"
+duration = 6.0
+path = SubResource("sub_5")
+speed = 220.0
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_6")
+visual_scale_curve = SubResource("sub_7")
+collision_scale_curve = SubResource("sub_4")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_5")
+bullet_id = "ft_bullet_skull_fan"
+motion_stages = Array[ExtResource("ext_4")]([SubResource("sub_8")])
+lifecycle = SubResource("sub_3")
+
+[resource]
+script = ExtResource("ext_6")
+id = "ft_skill_skull_parallel_part_02"
+title = "飞天骷髅 · 三路独立计时器 · 飞天骷髅 · 骨白旋转扇弹"
+description = "对应招式明细第 12/13/14 行（ft_skill_06/07/08）。瞄准 1.1 秒、扇形 3 秒、环弹 4.9 秒，计时并行。预览使用 24.5 秒有限窗口，轮间旋转基角按 1.6rad/s；窗口结束后重启各计时器，不作为永久后台 AI。原源码仅 x>W−30 计时；本模板主动展示弹幕，不复刻这个疑似实现缺陷。"
+fire_pattern = SubResource("sub_2")
+projectile = SubResource("sub_9")

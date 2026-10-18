@@ -1,0 +1,18 @@
+{
+	"files": {
+		"barrages/barrage_08bkm-d1a3302b.tres": "114612aa7a9f21954c40a67d1f05ca2bde65ce715d4b6c7ee72a04d719ab04e5",
+		"barrages/barrage_3cs1x-245b0df3.tres": "57db1143293cbe4eb57ffc41c835b224aff231c8733c278017c7422008f2d19e",
+		"barrages/barrage_a661b-9656933d.tres": "3be6ad00fdd26af3b0db3ea852244f98ad646d3d78f8224b69748f728221448f",
+		"barrages/barrage_cg8c0-8f8777e6.tres": "716b2386007a34121b543e4355eb2780dcd863e2c17d87010c28de67131e7ee1",
+		"barrages/barrage_spkuv-5ec0e8af.tres": "dbd76b106ee319da9582e739acb4b0e981a083bd95ae6d69fea36ecb987b0fd5",
+		"barrages/bullet_area_projectile-bdb67c76.tres": "0f9c64e894b49731b0b5a34be25e37f6649eb55fb16ee2142aed8d1051056b7f",
+		"barrages/bullet_green_projectile-b8b6c03a.tres": "d046952a2770320d4e0d502724b9262109de2228524ab280739dac0422f62149",
+		"barrages/bullet_laser_projectile-41f4b2a5.tres": "df662bcf09bf1ebaa1bb3dc0e9e45894dea441ea95e7c6a657b19764bb1c823f",
+		"bosses/boss_l2yos-85262a29.tres": "4afe15db301fda4cabe4436f8d8ce4536ff7ab090ac17b03bac0349191c96c7e",
+		"bullets/bullet_area-61eec9ee.tres": "ed8c5d80f6d5e4e5ac9360ad3f05fba1bb66a4c03354d81049b097f9b83ebf12",
+		"bullets/bullet_green-da9193ab.tres": "464d712bb4bf1fee08bfafffb290f04ab2b84aacdf5c8c88c1b59bd3d1287aee",
+		"bullets/bullet_laser-b6c051fc.tres": "4e8ad5df2fe199501cfdcc89894e09148236c72fb253af17d85af684dbb4702a"
+	},
+	"owner": "behavior_boss_library.tres",
+	"version": 1.0
+}

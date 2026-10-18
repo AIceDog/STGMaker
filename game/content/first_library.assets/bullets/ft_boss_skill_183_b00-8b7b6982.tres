@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/laser.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Curve2D" id="sub_1"]
+_data = {
+"points": PackedVector2Array(-386.66666, 0, 386.66666, 0, -1160, 0, -386.66666, 0, 386.66666, 0, 1160, 0)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(2320, 9)
+along_beam = true
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(2320, 9)
+along_beam = true
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_3")
+color = Color(1, 0.7372549, 0.39607844, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_183_b00"
+title = "刺客之王 · 中心贯穿旋转激光 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 189 行。
+源码类：AssassinKing
+阶段与可达性：P5/P6
+组合数量：P5 2→3→4；P6常驻4
+弹丸 / 机关：Laser Actor
+运动：P5双向长1120，宽参数5→10，spin0.55→1；P6总长1160、宽9、spin0.8+0.2×(轮−1)
+时序：P5预警0.8；P6 shuffle1.2递减至0.7期间repos无伤，之后on；终章spin1.6
+伤害口径：15×A；每束0.7s命中冷却
+备注：从中心向两端延伸，不是单向射线；无Beam对象
+源码位置：js/bosses.js:14274–14342、14382–14388、14510–14529
+【模板适配边界】持续双向旋转激光已配置；停转位移及按轮次加速需 Boss 流程扩展。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+form = "laser"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_4")
+collision = SubResource("sub_2")
+beam_path = SubResource("sub_1")
+beam_path_size = Vector2(2320, 9)

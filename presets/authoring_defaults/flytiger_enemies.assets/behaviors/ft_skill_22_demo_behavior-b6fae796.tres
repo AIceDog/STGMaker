@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="STGBehaviorFlow" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_6"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_2")
+enabled = true
+behavior_id = "ft_skill_22"
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_3")
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_5")
+title = "演示 · 雷公 · 纵向落雷"
+attack = SubResource("sub_1")
+movement = SubResource("sub_2")
+presentation = SubResource("sub_3")
+windup = 0.0
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_1")
+id = "perform"
+title = "演示 · 雷公 · 纵向落雷"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_4")
+
+[resource]
+script = ExtResource("ext_6")
+id = "ft_skill_22_demo_behavior"
+title = "演示行为 · 雷公 · 纵向落雷"
+description = "显式保存原招式预览使用的动作；敌人的正式行为独立引用招式。"
+entry_id = "perform"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_5")])

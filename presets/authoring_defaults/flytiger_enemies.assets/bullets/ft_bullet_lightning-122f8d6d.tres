@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/laser.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(540, 56)
+along_beam = true
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(540, 56)
+along_beam = true
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(1, 0.9137255, 0.5254902, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_bullet_lightning"
+title = "雷公 · 纵向落雷"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），弹丸样式 B35:G35。
+样式名称：纵向落雷
+使用者：雷公
+实际外观与拖尾：预警黄白虚线；激活白芯黄边折线闪电
+弹道/特殊交互：0.95s预警后判伤一次，0.3s淡出；不可普通子弹击爆
+判定与视觉差异：线段宽56，玩家判定半径×0.7"
+form = "laser"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(540, 56)

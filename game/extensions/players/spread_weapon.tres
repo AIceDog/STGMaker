@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="STGExtensionDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/extension_definition.gd" id="1"]
+[ext_resource type="Script" path="res://game/extensions/players/spread_weapon.gd" id="2"]
+
+[resource]
+script = ExtResource("1")
+kind = "player"
+id = "players_spread_weapon"
+title = "三向射击"
+help = "替换主角武器，保持移动与技能模块独立。"
+implementation = ExtResource("2")
+fields = Array[Dictionary]([
+  {
+    "name": "interval",
+    "label": "射击间隔 s",
+    "type": "float",
+    "default": 0.18,
+    "min": 0.02,
+    "max": 2,
+    "step": 0.01
+  }
+])
+

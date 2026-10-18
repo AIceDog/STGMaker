@@ -1,0 +1,259 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+[ext_resource type="Texture2D" path="res://assets/enemies/03_sniper.svg" id="ext_10"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+movement_policy = "scroll"
+exit_boundary = "left"
+require_screen_entry = false
+lifetime = 8.0
+persist_across_segments = true
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(-11.666667, -21.666666, 11.666667, 21.666666, 0, 0, 6.6666665, -46.666668, -6.6666665, 46.666668, 70, 130, 11.666667, -51.666668, -11.666667, 51.666668, -40, 280, -6.6666665, -26.666666, 6.6666665, 26.666666, 0, 440)
+}
+point_count = 4
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+mode = "curve"
+duration = 1.7
+path = SubResource("sub_4")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_7")
+title = "曲线换位到下方"
+attack = SubResource("sub_2")
+movement = SubResource("sub_5")
+presentation = SubResource("sub_6")
+windup = 0.25
+recovery = 0.15
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_3")
+id = "flow_4atgu"
+title = "曲线换位到下方"
+next_id = "flow_moj2n"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_7")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "sniper_burst"
+
+[sub_resource type="Curve" id="sub_10"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_11"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_12"]
+script = ExtResource("ext_5")
+path = SubResource("sub_11")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_10")
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_14"]
+script = ExtResource("ext_7")
+title = "瞄准准备后狙击"
+attack = SubResource("sub_9")
+movement = SubResource("sub_12")
+presentation = SubResource("sub_13")
+windup = 0.85
+recovery = 0.25
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_15"]
+script = ExtResource("ext_3")
+id = "flow_moj2n"
+title = "瞄准准备后狙击"
+next_id = "flow_t2hyj"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_14")
+
+[sub_resource type="Resource" id="sub_16"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_17"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_18"]
+_data = {
+"points": PackedVector2Array(-11.666667, 21.666666, 11.666667, -21.666666, 0, 0, 6.6666665, 46.666668, -6.6666665, -46.666668, 70, -130, 11.666667, 51.666668, -11.666667, -51.666668, -40, -280, -6.6666665, 26.666666, 6.6666665, -26.666666, 0, -440)
+}
+point_count = 4
+
+[sub_resource type="Resource" id="sub_19"]
+script = ExtResource("ext_5")
+mode = "curve"
+duration = 1.7
+path = SubResource("sub_18")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_17")
+
+[sub_resource type="Resource" id="sub_20"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_21"]
+script = ExtResource("ext_7")
+title = "曲线换位到上方"
+attack = SubResource("sub_16")
+movement = SubResource("sub_19")
+presentation = SubResource("sub_20")
+windup = 0.25
+recovery = 0.15
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_22"]
+script = ExtResource("ext_3")
+id = "flow_t2hyj"
+title = "曲线换位到上方"
+next_id = "flow_ktqiw"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_21")
+
+[sub_resource type="Resource" id="sub_23"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "sniper_burst"
+
+[sub_resource type="Curve" id="sub_24"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_25"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_26"]
+script = ExtResource("ext_5")
+path = SubResource("sub_25")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_24")
+
+[sub_resource type="Resource" id="sub_27"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_28"]
+script = ExtResource("ext_7")
+title = "再次锁定射击"
+attack = SubResource("sub_23")
+movement = SubResource("sub_26")
+presentation = SubResource("sub_27")
+windup = 0.85
+recovery = 0.25
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_29"]
+script = ExtResource("ext_3")
+id = "flow_ktqiw"
+title = "再次锁定射击"
+next_id = "flow_f4tfh"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_28")
+
+[sub_resource type="Resource" id="sub_30"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_31"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_32"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_33"]
+script = ExtResource("ext_5")
+path = SubResource("sub_32")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_31")
+
+[sub_resource type="Resource" id="sub_34"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_35"]
+script = ExtResource("ext_7")
+title = "停留观察 0.6 秒"
+attack = SubResource("sub_30")
+movement = SubResource("sub_33")
+presentation = SubResource("sub_34")
+windup = 0.0
+duration = 0.6
+recovery = 0.0
+
+[sub_resource type="Resource" id="sub_36"]
+script = ExtResource("ext_3")
+id = "flow_f4tfh"
+title = "停留观察 0.6 秒"
+choices = PackedStringArray()
+editor_position = Vector2(250, 790)
+action = SubResource("sub_35")
+
+[sub_resource type="Resource" id="sub_37"]
+script = ExtResource("ext_8")
+entry_id = "flow_4atgu"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_8"), SubResource("sub_15"), SubResource("sub_22"), SubResource("sub_29"), SubResource("sub_36")])
+
+[sub_resource type="Resource" id="sub_38"]
+script = ExtResource("ext_2")
+title = "常规行为"
+behavior_flow = SubResource("sub_37")
+
+[resource]
+script = ExtResource("ext_9")
+id = "03_sniper"
+title = "03 折返狙击手"
+texture = ExtResource("ext_10")
+color = Color(0.4745098, 0.78431374, 1, 1)
+start_position = Vector2(280, -220)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_38")])
+entity_settings = SubResource("sub_1")

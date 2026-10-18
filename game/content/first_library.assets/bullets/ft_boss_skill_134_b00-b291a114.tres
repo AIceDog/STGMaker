@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/area.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(960, 90)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(960, 90)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(1, 0.7372549, 0.39607844, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_134_b00"
+title = "花和尚 · 光谱巨浪 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 140 行。
+源码类：FlowerMonk
+阶段与可达性：P3/P4终章
+组合数量：全宽底部上涌
+弹丸 / 机关：环境光谱
+运动：P3目标顶H×0.2（覆盖80%）；P4 target=0.7/0.6使顶约H×0.1（覆盖90%）
+时序：P3涨2.6s、4.2s结束；终章蓄1.4s、总4s
+伤害口径：12×A，碰到光谱触发
+备注：P4注释“70%覆盖”与几何实际目标不符；蓄力周身刃dmg0
+源码位置：js/bosses.js:10588、10962–10966、11085–11100
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+form = "area"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(960, 90)

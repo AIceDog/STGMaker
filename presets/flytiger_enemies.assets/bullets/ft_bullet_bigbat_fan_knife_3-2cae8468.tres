@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(16, 16)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "polygon"
+size = Vector2(1, 1)
+polygon_mode = "custom"
+points = PackedVector2Array(-23, -2, 10, -5, 23, 0, 10, 5, -23, 2)
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(0.654902, 0.6784314, 0.72156864, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_bullet_bigbat_fan_knife_3"
+title = "大型蝙蝠 · S刀相位3"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），弹丸样式 B14:G14。
+样式名称：黑色飞刀
+使用者：大型蝙蝠
+实际外观与拖尾：黑色窄长刃+灰刃高光+红色尾坠，沿飞行方向转向
+弹道/特殊交互：方向角正弦摆动形成S路线；本体无重力与追踪
+判定与视觉差异：圆形r=8"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(16, 16)

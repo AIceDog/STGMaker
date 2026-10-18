@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(18, 18)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(18, 18)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_161_b00"
+title = "刺客之王 · 隐身分身射击 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 167 行。
+源码类：AssassinKing
+阶段与可达性：P1
+组合数量：2–3分身，各双发循环
+弹丸 / 机关：shoot Shadow / 狐火
+运动：真身隐藏contact0；分身持续瞄准±0.09、310px/s
+时序：分身存2.35s、错0.12，首0.6后每0.55s；2.7s真身重现
+伤害口径：狐火13×A；分身本身无接触伤
+备注：隐藏未显式lockHp，不能据视觉推断无敌
+源码位置：js/bosses.js:13840–13862、14446–14482
+【模板适配边界】分身使用独立发射点；本体隐藏和分身随动需宿主实体。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(18, 18)

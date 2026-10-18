@@ -1,0 +1,30 @@
+{
+  "disposal": [
+    {
+      "duration": 0.04,
+      "hash": "6a9bc5d5bd3e06024fbf58a99898eec33305ecc8d614ffeabd518a28563ec408"
+    },
+    {
+      "duration": 0.12,
+      "hash": "b4dae83dfaa0710abb023caf52d34703292693095879887f96a90350f404fd63"
+    },
+    {
+      "duration": 0.07,
+      "hash": "6bd903ae31a0ba018daf750bcf98d41cc5dd2de9c60d9a68b95ea76fa0f78ee7"
+    },
+    {
+      "duration": 0.2,
+      "hash": "f1d40d178cc0ae1d263aa7eb599eb26cc7e66ac39a11a231823d0ede2e75ac12"
+    }
+  ],
+  "lzw": [
+    {
+      "duration": 0.03,
+      "hash": "83e271037e79215b01a90d9e613d8d055d95a5840b355c0ee882df84c10b9160"
+    },
+    {
+      "duration": 0.09,
+      "hash": "f4d636a833485d3a7bb8c773a3571c24577c1d96742799bdeccc5628a1ca25ce"
+    }
+  ]
+}

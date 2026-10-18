@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(12, 12)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "polygon"
+size = Vector2(1, 1)
+polygon_mode = "custom"
+points = PackedVector2Array(10.2, 0, 5.543277, 2.2961006, 7.212489, 7.212489, 2.2961006, 5.543277, -4.4585616e-07, 10.2, -2.2961004, 5.5432773, -7.212489, 7.212489, -5.543277, 2.2961009, -10.2, -8.917123e-07, -5.543277, -2.2961006, -7.2124896, -7.212488, -2.2961016, -5.543277, 1.2163378e-07, -10.2, 2.2961016, -5.543277, 7.2124877, -7.21249, 5.5432773, -2.2961006)
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(0.9607843, 0.96862745, 1, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_bullet_floatflower_spikeball"
+title = "浮空魔花 · 白尖刺球"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），弹丸样式 B18:G18。
+样式名称：白色旋转尖刺球
+使用者：浮空魔花
+实际外观与拖尾：十根白色旋转尖刺+淡蓝白亮核心；弱光带
+弹道/特殊交互：12向直线；不是fireball，不自动爆炸分裂
+判定与视觉差异：圆形r=6；视觉尖刺到1.7r"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(12, 12)

@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/area.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "sector"
+size = Vector2(720, 720)
+points = PackedVector2Array()
+sector_angle = 63.0253574643906
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "sector"
+size = Vector2(720, 720)
+points = PackedVector2Array()
+sector_angle = 63.0253574643906
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(1, 0.7372549, 0.39607844, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_002_b00"
+title = "火焰飞猪王 · 弧形持续喷火【预留，手动预览】 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 8 行。
+源码类：PigKing
+阶段与可达性：喷火分支（初始化缺失）
+组合数量：非弹丸，粒子扇形
+弹丸 / 机关：区域判定
+运动：每帧面向玩家，距离30..360px、半角0.55rad
+时序：设计分支持续2.4s，再等5.5–7.5s
+伤害口径：round(7×A)，反复调用p.hurt但受玩家无敌帧限制
+备注：flameBreathT未初始化；不能把分支存在视为正常可触发
+源码位置：js/bosses.js:106–113、141–178
+【未接入】不会进入 Boss 默认行为，仅保留独立可编辑预览。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+form = "area"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(720, 720)

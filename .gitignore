@@ -1,0 +1,8 @@
+.godot/
+*.tmp
+presets/working.tres
+tests/*_actual.png
+exports/
+.test_appdata/
+*.log
+tests/.game_ui_profile/

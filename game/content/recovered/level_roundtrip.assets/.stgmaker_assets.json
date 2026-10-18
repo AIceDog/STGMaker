@@ -1,0 +1,24 @@
+{
+	"files": {
+		"barrages/barrage_0so5f-737416b7.tres": "0bdbb762ad4935ffe817cd62fb5606d48f27e5230002a6fd522a14742694f752",
+		"barrages/barrage_1pe75-9876f9c9.tres": "4863b487a6d621c43a54a025502c579ba7c25049ef9ff2eaff3d3fe0d4cc3e03",
+		"barrages/barrage_4dng8-7c2c7ea5.tres": "92a2a0c55bc733e863bd91aa9b8cb49be05cd1218e5b83d83668e6c97ce7586b",
+		"barrages/barrage_pieln-36d200e1.tres": "a9311d45ad9bc88c9ea4a66cd6403c52640bf1cd5f44d9ea3009f92e10c73cb7",
+		"barrages/barrage_spcgf-0f604ec2.tres": "65019a419e4e025933855fe4d76458fdd46d4280b6049866fd314ed0689dbb0e",
+		"barrages/barrage_v0kyh-38b87d20.tres": "a362ce98946e010018d8cbc730c877af3b12e0e56daf97aaa9580e2b50cf0dc7",
+		"barrages/bullet_area_projectile-bdb67c76.tres": "80ed1627268b1c827dd815b4cde3a3063f78455873ea73d9e5557e567b86e02e",
+		"barrages/bullet_green_projectile-b8b6c03a.tres": "0472b2f2b72ad8e78acc8b2d4385fc38b604ac3f0744d0a393b4fac7af030333",
+		"barrages/bullet_laser_projectile-41f4b2a5.tres": "7f95a20659fd48d6873c4d29d92a53ea264268a0edf9c2d6a01f672ca70d1d78",
+		"barrages/bullet_trail_projectile-0d3b6f50.tres": "fe4b218625516b8af5b574b7eacbb6fa9cd7021163233bbf82a82ebe20a9d382",
+		"behaviors/barrage_pieln_demo_behavior-bbef71ca.tres": "5417e6ba2677b74ff20a05bcb26002813b07a236f5b912a32348c331c9e3d254",
+		"bosses/boss_ipuv3-7d4ab175.tres": "166b6568983bbe71fca049dd1aa5515d6455476820316e09269883f7e94bf1a0",
+		"bullets/bullet_area-61eec9ee.tres": "ed8c5d80f6d5e4e5ac9360ad3f05fba1bb66a4c03354d81049b097f9b83ebf12",
+		"bullets/bullet_green-da9193ab.tres": "464d712bb4bf1fee08bfafffb290f04ab2b84aacdf5c8c88c1b59bd3d1287aee",
+		"bullets/bullet_laser-b6c051fc.tres": "6ae8dcf11efd9a3b5f6795f9749c8878c4a50876dad37e009d587d555261ac18",
+		"bullets/bullet_trail-916f72b9.tres": "dd51a462f846621630143f4f13c6b4e63030f2630027520c7ac1669db8eeb284",
+		"levels/level_sqswr-8087c820.tres": "34c117aabcc739f80b47b8a65d910ed191db0fa8a1a85bb62a64fb86a82d2052",
+		"waves/wave_yyxrd-ad5cc640.tres": "79747f2d9dcb94f755efb1cd4cf7ac6fe8fff1915f2dbac03a3e74347ffd03d3"
+	},
+	"owner": "level_roundtrip.tres",
+	"version": 1.0
+}

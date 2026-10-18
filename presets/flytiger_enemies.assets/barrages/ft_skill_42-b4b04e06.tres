@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_6"]
+
+[sub_resource type="Curve2D" id="sub_1"]
+_data = {
+"points": PackedVector2Array(0, -16.666666, 0, 16.666666, 0, -100, 0, -33.333332, 0, 33.333332, 0, 0, 0, -16.666666, 0, 16.666666, 0, 100)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+path = SubResource("sub_1")
+direction = "parallel"
+angle = 180.0
+spread = 0.0
+count = 1
+interval = 0.0
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+warning = 1.1
+fade = 0.25
+damage = 24.0
+damage_falloff_start = 0.55
+damage_falloff_scale = 0.6
+hit_mode = "activation"
+
+[sub_resource type="Curve" id="sub_4"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_5"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_7"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_4")
+title = "停留"
+mode = "wait"
+duration = 0.02
+path = SubResource("sub_5")
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_6")
+visual_scale_curve = SubResource("sub_7")
+collision_scale_curve = SubResource("sub_4")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_5")
+bullet_id = "ft_bullet_flowerball_blast"
+motion_stages = Array[ExtResource("ext_4")]([SubResource("sub_8")])
+lifecycle = SubResource("sub_3")
+
+[resource]
+script = ExtResource("ext_6")
+id = "ft_skill_42"
+title = "花和尚无敌肉球 · 停球预警自爆"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），招式明细 B48:N48。
+招式：停球预警自爆
+每轮数量：无
+弹丸样式：玫红闪光/范围虚线圈
+弹道与瞄准逻辑：Boss指令设置explodeT；预警期间停止移动及射击，倒计时后爆炸移除
+初始速度(px/s)：非飞行弹
+触发条件/重复节奏：花和尚P3①、P4终段
+前摇/预警：P3=0.9s；P4=1.1s
+判定半径/宽度(px)：P3=67.5–81；P4=81
+弹丸寿命/有效期(s)：瞬时
+伤害与特殊效果：近区round(24×A)，远区round(14.4×A)
+实现说明：近区阈值0.55R；只能由Boss内部逻辑移除，不接受外部die。
+模板使用 A=1、speedMul=1；区间冷却取中值。血量缩放、自然刷新、奖励、角色护盾/倒地/最大生命伤害、地形破坏和龙身分裂由宿主游戏接入。
+默认 P4：预警 1.1 秒、半径 81。P3 可改为预警 0.9 秒、半径 67.5–81。仅作为 Boss 外部指令调用，普通机关循环不自动触发。"
+fire_pattern = SubResource("sub_2")
+projectile = SubResource("sub_9")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="STGWaveDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/wave_definition.gd" id="ext_1"]
+
+[resource]
+script = ExtResource("ext_1")
+id = "patrol_bats"
+title = "蝙蝠突击队"
+enemy_id = "ft_enemy_bat"
+count = 2
+interval = 0.7
+spacing = Vector2(0, 90)

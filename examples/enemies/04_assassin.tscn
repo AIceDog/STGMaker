@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://stg/runtime/prefab_root.gd" id="1_neqk7"]
+[ext_resource type="Resource" path="res://examples/shared/enemy_library.tres" id="2_bqclr"]
+
+[node name="04_assassin" type="Node2D" unique_id=447412601]
+script = ExtResource("1_neqk7")
+library = ExtResource("2_bqclr")
+kind = "bosses"
+resource_id = "04_assassin"

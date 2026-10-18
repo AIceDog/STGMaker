@@ -1,0 +1,157 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/fire_pattern.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/extension_binding.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/attack_lifecycle.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/motion_stage.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/projectile_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_6"]
+
+[sub_resource type="Curve2D" id="sub_1"]
+_data = {
+"points": PackedVector2Array(0, -16.666666, 0, 16.666666, 0, -100, 0, -33.333332, 0, 33.333332, 0, 0, 0, -16.666666, 0, 16.666666, 0, 100)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+path = SubResource("sub_1")
+direction = "aim"
+angle = 180.0
+aim_spread = true
+spread = 22.9183118052329
+count = 7
+interval = 0.0
+sound_unit = "projectile"
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+fade = 0.0
+damage = 13.0
+exit_mode = "bounds"
+bounds_margin = 80.0
+
+[sub_resource type="Curve" id="sub_4"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_5"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_7"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_4")
+title = "沿发射方向直飞"
+mode = "velocity"
+duration = 1.2
+path = SubResource("sub_5")
+speed = 260.0
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_6")
+visual_scale_curve = SubResource("sub_7")
+collision_scale_curve = SubResource("sub_4")
+
+[sub_resource type="Curve" id="sub_9"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_10"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_11"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_12"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_4")
+title = "停留"
+mode = "wait"
+duration = 0.2
+path = SubResource("sub_10")
+speed = 0.0
+sine_amplitude = 25.783100780887
+progress_curve = SubResource("sub_11")
+visual_scale_curve = SubResource("sub_12")
+collision_scale_curve = SubResource("sub_9")
+
+[sub_resource type="Curve" id="sub_14"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_15"]
+_data = {
+"points": PackedVector2Array(-8.333333, -58.333332, 8.333333, 58.333332, 0, 0, 0, -126.666664, 0, 126.666664, 50, 350, 8.333333, -68.333336, -8.333333, 68.333336, 0, 760)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="sub_16"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="sub_17"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 1, 1, Vector2(1, 1), 0.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Resource" id="sub_18"]
+script = ExtResource("ext_4")
+title = "追踪玩家"
+mode = "track"
+duration = 3.0
+path = SubResource("sub_15")
+speed = 361.0
+sine_amplitude = 25.783100780887
+turn_speed = 250.0
+preserve_heading = true
+progress_curve = SubResource("sub_16")
+visual_scale_curve = SubResource("sub_17")
+collision_scale_curve = SubResource("sub_14")
+
+[sub_resource type="Resource" id="sub_19"]
+script = ExtResource("ext_5")
+bullet_id = "ft_boss_skill_119_b01"
+motion_stages = Array[ExtResource("ext_4")]([SubResource("sub_8"), SubResource("sub_13"), SubResource("sub_18")])
+lifecycle = SubResource("sub_3")
+
+[resource]
+script = ExtResource("ext_6")
+id = "ft_boss_skill_119_part_02"
+title = "鸦伯爵 · 大宝石＋快速折返组 · 发射 2"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 125 行。
+源码类：CrowCount
+阶段与可达性：climax
+组合数量：A每拍1大，B每组4/5小
+弹丸 / 机关：gem fwd / ret
+运动：A不折返、有限转向；B提前70..260px折返，左右随Boss位置
+时序：A蓄0.5/0.3，cycle1.05＋蓄；B周期1.2、弹距0.18s
+伤害口径：均13×A
+备注：A/B并行且Boss每1.15s横向瞬移改变发射源
+源码位置：js/bosses.js:9618–9653、9830–9859
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+fire_pattern = SubResource("sub_2")
+projectile = SubResource("sub_19")

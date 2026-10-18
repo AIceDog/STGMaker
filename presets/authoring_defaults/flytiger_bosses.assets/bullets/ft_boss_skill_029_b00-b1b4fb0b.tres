@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_029_b00"
+title = "斧王 · 双手3路连斧 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 35 行。
+源码类：BossMan
+阶段与可达性：第一命P1
+组合数量：每手每轮3发
+弹丸 / 机关：axe
+运动：手伸至两侧，380px/s朝当前玩家扇射±0.13
+时序：手伸0.4s，首射0.35s，后每0.22s，动作5s
+伤害口径：14×A；命中给斧王+1s无敌，上限8s
+备注：回调仅实际hurt成功后调用
+源码位置：js/bosses.js:1290–1317、1367–1405
+【模板适配边界】双手射击已配置；Boss 受击保护次数由宿主接入。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(20, 20)

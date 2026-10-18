@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(96, 96)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(96, 96)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_119_b00"
+title = "鸦伯爵 · 大宝石＋快速折返组 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 125 行。
+源码类：CrowCount
+阶段与可达性：climax
+组合数量：A每拍1大，B每组4/5小
+弹丸 / 机关：gem fwd / ret
+运动：A不折返、有限转向；B提前70..260px折返，左右随Boss位置
+时序：A蓄0.5/0.3，cycle1.05＋蓄；B周期1.2、弹距0.18s
+伤害口径：均13×A
+备注：A/B并行且Boss每1.15s横向瞬移改变发射源
+源码位置：js/bosses.js:9618–9653、9830–9859
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(96, 96)

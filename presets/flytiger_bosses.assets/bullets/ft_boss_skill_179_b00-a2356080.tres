@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/area.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(240, 240)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(240, 240)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(1, 0.7372549, 0.39607844, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_179_b00"
+title = "刺客之王 · 王之环斩＋16火【预留，手动预览】 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 185 行。
+源码类：AssassinKing
+阶段与可达性：P4预留，常规不可达
+组合数量：1环＋16弹
+弹丸 / 机关：Slash / 狐火
+运动：r120预警0.7，0.85s后250px/s圆环
+时序：子段2s
+伤害口径：火13×A；环配置24×A但坐标缺失
+备注：p4n重置导致不选此序号
+源码位置：js/bosses.js:14197–14210
+【未接入】不会进入 Boss 默认行为，仅保留独立可编辑预览。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+form = "area"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(240, 240)

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+size = Vector2(12, 12)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(12, 12)
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(1, 0.23137255, 0.101960786, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_bullet_fire_redfire"
+title = "小火龙 · 红火弹"
+description = "来源：FlyTiger_小怪攻击模式与行为逻辑.xlsx（2026-10-13），弹丸样式 B34:G34。
+样式名称：红火配置弹（弹体绘制缺失）
+使用者：小火龙／火龙组
+实际外观与拖尾：配置红色#ff3b1a、fireTrail=true：生成火焰粒子；_renderBody未处理redfire
+弹道/特殊交互：220px/s直线；碰撞与伤害仍生效；无element灼烧
+判定与视觉差异：圆形r=6，即使未绘制也有判定
+编辑器使用可见红色弹体帮助检查判定；原游戏缺少 redfire 弹体绘制是表内记录的缺陷，不在模板中隐藏弹体。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(12, 12)

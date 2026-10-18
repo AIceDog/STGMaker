@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/laser.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(1500, 15)
+along_beam = true
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(1500, 15)
+along_beam = true
+points = PackedVector2Array()
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+color = Color(1, 0.7372549, 0.39607844, 1)
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_025_b00"
+title = "怒星使 · 瞬移向上激光 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 31 行。
+源码类：Homelander
+阶段与可达性：teleOut/teleAim
+组合数量：3束，角差0.13rad
+弹丸 / 机关：Beam
+运动：瞬移到玩家x下方贴地位置，三束向上
+时序：瞬移前0.35s，落点0.55s前摇，Beam另预警0.08s
+伤害口径：round(18×A)／束；长1500、宽15
+备注：rockBreak=false；发射后0.9s归位
+源码位置：js/bosses.js:1085–1120
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+form = "laser"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(1500, 15)

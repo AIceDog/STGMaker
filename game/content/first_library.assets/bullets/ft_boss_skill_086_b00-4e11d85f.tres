@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="PackedScene" path="res://stg/runtime/scenes/moving.tscn" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "ring"
+size = Vector2(110, 110)
+points = PackedVector2Array()
+inner_ratio = 0.7636363636363637
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "ring"
+size = Vector2(110, 110)
+points = PackedVector2Array()
+inner_ratio = 0.7636363636363637
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_4")
+geometry = SubResource("sub_2")
+
+[resource]
+script = ExtResource("ext_3")
+id = "ft_boss_skill_086_b00"
+title = "巨型骨龙王 · 飞行扩张骨环 · 弹体 1"
+description = "来源：《FlyTiger_Boss攻击模式与行为逻辑.xlsx》招式明细第 92 行。
+源码类：BoneDragonKing
+阶段与可达性：B1/B2/B3
+组合数量：B1=1；B2=3后4；B3=5
+弹丸 / 机关：bonering
+运动：300/310px/s，r每秒55/60/66/46增加；环带13
+时序：B1蓄0.25、等1.1；B2弹距0.34/0.26；B3弹距0.3
+伤害口径：16×A；9s；空心环专属判定
+备注：B2四环起始r26/32/38/44；B3 r32/42/52/62/72向下
+源码位置：js/bosses.js:6904–6915、6985–6994、7077–7100、7182–7196
+【模板适配边界】移动空心圈与扩张曲线已配置；内外圈等比扩张，带宽不保持固定。
+模板按 A=1 与 speedMul=1；随机范围取常用中值。召唤实体有预览存活上限。"
+scene = ExtResource("ext_2")
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")
+beam_path_size = Vector2(110, 110)

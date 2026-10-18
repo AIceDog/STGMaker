@@ -1,0 +1,884 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/boss_attack.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_movement.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/boss_presentation.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_action.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_9"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+body_radius = 24.0
+contact_damage = 0.0
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_090"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_3"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_4"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_5")
+path = SubResource("sub_4")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_7")
+title = "红火瞄准扇"
+attack = SubResource("sub_2")
+movement = SubResource("sub_5")
+presentation = SubResource("sub_6")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p0_n00"
+title = "红火瞄准扇"
+next_id = "ft_boss_FireDragonGeneral_p0_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_7")
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_091"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_10"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_11"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_12"]
+script = ExtResource("ext_5")
+path = SubResource("sub_11")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_10")
+
+[sub_resource type="Resource" id="sub_13"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_14"]
+script = ExtResource("ext_7")
+title = "持续弧形喷火"
+attack = SubResource("sub_9")
+movement = SubResource("sub_12")
+presentation = SubResource("sub_13")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_15"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p0_n01"
+title = "持续弧形喷火"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_14")
+
+[sub_resource type="Resource" id="sub_16"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_FireDragonGeneral_p0_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_8"), SubResource("sub_15")])
+
+[sub_resource type="Resource" id="sub_17"]
+script = ExtResource("ext_2")
+title = "头部"
+behavior_flow = SubResource("sub_16")
+
+[sub_resource type="Resource" id="sub_18"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_092"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_19"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_20"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_21"]
+script = ExtResource("ext_5")
+path = SubResource("sub_20")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_19")
+
+[sub_resource type="Resource" id="sub_22"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_23"]
+script = ExtResource("ext_7")
+title = "龙身冲撞与火龙组"
+attack = SubResource("sub_18")
+movement = SubResource("sub_21")
+presentation = SubResource("sub_22")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_24"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p1_n00"
+title = "龙身冲撞与火龙组"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_23")
+
+[sub_resource type="Resource" id="sub_25"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_FireDragonGeneral_p1_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_24")])
+
+[sub_resource type="Resource" id="sub_26"]
+script = ExtResource("ext_2")
+title = "召唤群演示"
+life = 1
+entry_mode = "sequence"
+behavior_flow = SubResource("sub_25")
+
+[sub_resource type="Resource" id="sub_27"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_093"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_28"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_29"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_30"]
+script = ExtResource("ext_5")
+path = SubResource("sub_29")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_28")
+
+[sub_resource type="Resource" id="sub_31"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_32"]
+script = ExtResource("ext_7")
+title = "低→高→低火焰斩【仅视觉，无伤害】"
+attack = SubResource("sub_27")
+movement = SubResource("sub_30")
+presentation = SubResource("sub_31")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_33"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p2_n00"
+title = "低→高→低火焰斩【仅视觉，无伤害】"
+next_id = "ft_boss_FireDragonGeneral_p2_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_32")
+
+[sub_resource type="Resource" id="sub_34"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_094"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_35"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_36"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_37"]
+script = ExtResource("ext_5")
+mode = "dash"
+duration = 0.7
+speed = 620.0
+path = SubResource("sub_36")
+target_mode = "player"
+target = Vector2(0, 0)
+body_attack = true
+body_radius = 26.0
+body_damage = 28.0
+orbit_progress_curve = SubResource("sub_35")
+
+[sub_resource type="Resource" id="sub_38"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_39"]
+script = ExtResource("ext_7")
+title = "跃空飞踢＋落点爆炸"
+attack = SubResource("sub_34")
+movement = SubResource("sub_37")
+presentation = SubResource("sub_38")
+windup = 0.7
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_40"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p2_n01"
+title = "跃空飞踢＋落点爆炸"
+next_id = "ft_boss_FireDragonGeneral_p2_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_39")
+
+[sub_resource type="Resource" id="sub_41"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_42"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_43"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_44"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 0.8
+path = SubResource("sub_43")
+target_mode = "world"
+target = Vector2(270, -30)
+orbit_progress_curve = SubResource("sub_42")
+
+[sub_resource type="Resource" id="sub_45"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_46"]
+script = ExtResource("ext_7")
+title = "返回攻击位置"
+attack = SubResource("sub_41")
+movement = SubResource("sub_44")
+presentation = SubResource("sub_45")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_47"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p2_n02"
+title = "返回攻击位置"
+next_id = "ft_boss_FireDragonGeneral_p2_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_46")
+
+[sub_resource type="Resource" id="sub_48"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_095"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_49"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_50"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_51"]
+script = ExtResource("ext_5")
+path = SubResource("sub_50")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_49")
+
+[sub_resource type="Resource" id="sub_52"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_53"]
+script = ExtResource("ext_7")
+title = "烈焰半圆回旋斩【仅视觉，无伤害】"
+attack = SubResource("sub_48")
+movement = SubResource("sub_51")
+presentation = SubResource("sub_52")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_54"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p2_n03"
+title = "烈焰半圆回旋斩【仅视觉，无伤害】"
+next_id = "ft_boss_FireDragonGeneral_p2_n04"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_53")
+
+[sub_resource type="Resource" id="sub_55"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_096"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_56"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_57"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_58"]
+script = ExtResource("ext_5")
+path = SubResource("sub_57")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_56")
+
+[sub_resource type="Resource" id="sub_59"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_60"]
+script = ExtResource("ext_7")
+title = "交替移动火柱【仅视觉，无伤害】"
+attack = SubResource("sub_55")
+movement = SubResource("sub_58")
+presentation = SubResource("sub_59")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_61"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p2_n04"
+title = "交替移动火柱【仅视觉，无伤害】"
+next_id = "ft_boss_FireDragonGeneral_p2_n05"
+choices = PackedStringArray()
+editor_position = Vector2(250, 790)
+action = SubResource("sub_60")
+
+[sub_resource type="Resource" id="sub_62"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_097"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_63"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_64"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_65"]
+script = ExtResource("ext_5")
+mode = "ballistic"
+duration = 0.65
+path = SubResource("sub_64")
+target_mode = "player"
+target = Vector2(0, 0)
+body_attack = true
+body_radius = 26.0
+body_damage = 28.0
+orbit_progress_curve = SubResource("sub_63")
+initial_velocity = Vector2(0, 780)
+gravity = 0.0
+
+[sub_resource type="Resource" id="sub_66"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_67"]
+script = ExtResource("ext_7")
+title = "空中斩落＋大爆炸"
+attack = SubResource("sub_62")
+movement = SubResource("sub_65")
+presentation = SubResource("sub_66")
+windup = 0.6
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_68"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p2_n05"
+title = "空中斩落＋大爆炸"
+next_id = "ft_boss_FireDragonGeneral_p2_n06"
+choices = PackedStringArray()
+editor_position = Vector2(250, 975)
+action = SubResource("sub_67")
+
+[sub_resource type="Resource" id="sub_69"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_70"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_71"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_72"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 0.8
+path = SubResource("sub_71")
+target_mode = "world"
+target = Vector2(270, -30)
+orbit_progress_curve = SubResource("sub_70")
+
+[sub_resource type="Resource" id="sub_73"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_74"]
+script = ExtResource("ext_7")
+title = "返回攻击位置"
+attack = SubResource("sub_69")
+movement = SubResource("sub_72")
+presentation = SubResource("sub_73")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_75"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p2_n06"
+title = "返回攻击位置"
+choices = PackedStringArray()
+editor_position = Vector2(250, 1160)
+action = SubResource("sub_74")
+
+[sub_resource type="Resource" id="sub_76"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_FireDragonGeneral_p2_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_33"), SubResource("sub_40"), SubResource("sub_47"), SubResource("sub_54"), SubResource("sub_61"), SubResource("sub_68"), SubResource("sub_75")])
+
+[sub_resource type="Resource" id="sub_77"]
+script = ExtResource("ext_2")
+title = "火龙 B1"
+life = 2
+entry_mode = "sequence"
+behavior_flow = SubResource("sub_76")
+
+[sub_resource type="Resource" id="sub_78"]
+script = ExtResource("ext_4")
+enabled = true
+behavior_id = "ft_boss_skill_093"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_79"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_80"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_81"]
+script = ExtResource("ext_5")
+path = SubResource("sub_80")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_79")
+
+[sub_resource type="Resource" id="sub_82"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_83"]
+script = ExtResource("ext_7")
+title = "低→高→低火焰斩【仅视觉，无伤害】"
+attack = SubResource("sub_78")
+movement = SubResource("sub_81")
+presentation = SubResource("sub_82")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_84"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p3_n00"
+title = "低→高→低火焰斩【仅视觉，无伤害】"
+next_id = "ft_boss_FireDragonGeneral_p3_n01"
+choices = PackedStringArray()
+editor_position = Vector2(250, 50)
+action = SubResource("sub_83")
+
+[sub_resource type="Resource" id="sub_85"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_094"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_86"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_87"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_88"]
+script = ExtResource("ext_5")
+mode = "dash"
+duration = 0.7
+speed = 620.0
+path = SubResource("sub_87")
+target_mode = "player"
+target = Vector2(0, 0)
+body_attack = true
+body_radius = 26.0
+body_damage = 28.0
+orbit_progress_curve = SubResource("sub_86")
+
+[sub_resource type="Resource" id="sub_89"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_90"]
+script = ExtResource("ext_7")
+title = "跃空飞踢＋落点爆炸"
+attack = SubResource("sub_85")
+movement = SubResource("sub_88")
+presentation = SubResource("sub_89")
+windup = 0.7
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_91"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p3_n01"
+title = "跃空飞踢＋落点爆炸"
+next_id = "ft_boss_FireDragonGeneral_p3_n02"
+choices = PackedStringArray()
+editor_position = Vector2(250, 235)
+action = SubResource("sub_90")
+
+[sub_resource type="Resource" id="sub_92"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_93"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_94"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_95"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 0.8
+path = SubResource("sub_94")
+target_mode = "world"
+target = Vector2(270, -30)
+orbit_progress_curve = SubResource("sub_93")
+
+[sub_resource type="Resource" id="sub_96"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_97"]
+script = ExtResource("ext_7")
+title = "返回攻击位置"
+attack = SubResource("sub_92")
+movement = SubResource("sub_95")
+presentation = SubResource("sub_96")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_98"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p3_n02"
+title = "返回攻击位置"
+next_id = "ft_boss_FireDragonGeneral_p3_n03"
+choices = PackedStringArray()
+editor_position = Vector2(250, 420)
+action = SubResource("sub_97")
+
+[sub_resource type="Resource" id="sub_99"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_095"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_100"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_101"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_102"]
+script = ExtResource("ext_5")
+path = SubResource("sub_101")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_100")
+
+[sub_resource type="Resource" id="sub_103"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_104"]
+script = ExtResource("ext_7")
+title = "烈焰半圆回旋斩【仅视觉，无伤害】"
+attack = SubResource("sub_99")
+movement = SubResource("sub_102")
+presentation = SubResource("sub_103")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_105"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p3_n03"
+title = "烈焰半圆回旋斩【仅视觉，无伤害】"
+next_id = "ft_boss_FireDragonGeneral_p3_n04"
+choices = PackedStringArray()
+editor_position = Vector2(250, 605)
+action = SubResource("sub_104")
+
+[sub_resource type="Resource" id="sub_106"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_096"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_107"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_108"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_109"]
+script = ExtResource("ext_5")
+path = SubResource("sub_108")
+target = Vector2(-100, 0)
+orbit_progress_curve = SubResource("sub_107")
+
+[sub_resource type="Resource" id="sub_110"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_111"]
+script = ExtResource("ext_7")
+title = "交替移动火柱【仅视觉，无伤害】"
+attack = SubResource("sub_106")
+movement = SubResource("sub_109")
+presentation = SubResource("sub_110")
+windup = 0.0
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "attack"
+
+[sub_resource type="Resource" id="sub_112"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p3_n04"
+title = "交替移动火柱【仅视觉，无伤害】"
+next_id = "ft_boss_FireDragonGeneral_p3_n05"
+choices = PackedStringArray()
+editor_position = Vector2(250, 790)
+action = SubResource("sub_111")
+
+[sub_resource type="Resource" id="sub_113"]
+script = ExtResource("ext_4")
+enabled = true
+barrage_id = "ft_boss_skill_097"
+finish_event = "emission"
+
+[sub_resource type="Curve" id="sub_114"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_115"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_116"]
+script = ExtResource("ext_5")
+mode = "ballistic"
+duration = 0.65
+path = SubResource("sub_115")
+target_mode = "player"
+target = Vector2(0, 0)
+body_attack = true
+body_radius = 26.0
+body_damage = 28.0
+orbit_progress_curve = SubResource("sub_114")
+initial_velocity = Vector2(0, 780)
+gravity = 0.0
+
+[sub_resource type="Resource" id="sub_117"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_118"]
+script = ExtResource("ext_7")
+title = "空中斩落＋大爆炸"
+attack = SubResource("sub_113")
+movement = SubResource("sub_116")
+presentation = SubResource("sub_117")
+windup = 0.6
+recovery = 0.7
+movement_start = "attack_start"
+end_when = "both"
+
+[sub_resource type="Resource" id="sub_119"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p3_n05"
+title = "空中斩落＋大爆炸"
+next_id = "ft_boss_FireDragonGeneral_p3_n06"
+choices = PackedStringArray()
+editor_position = Vector2(250, 975)
+action = SubResource("sub_118")
+
+[sub_resource type="Resource" id="sub_120"]
+script = ExtResource("ext_4")
+
+[sub_resource type="Curve" id="sub_121"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.0, 1, 1, Vector2(1, 1), 1.0, 0.0, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve2D" id="sub_122"]
+_data = {
+"points": PackedVector2Array(13.333333, -8.333333, -13.333333, 8.333333, 0, 0, 25, 0, -25, 0, -80, 50, 11.666667, 8.333333, -11.666667, -8.333333, -150, 0)
+}
+point_count = 3
+
+[sub_resource type="Resource" id="sub_123"]
+script = ExtResource("ext_5")
+mode = "line"
+duration = 0.8
+path = SubResource("sub_122")
+target_mode = "world"
+target = Vector2(270, -30)
+orbit_progress_curve = SubResource("sub_121")
+
+[sub_resource type="Resource" id="sub_124"]
+script = ExtResource("ext_6")
+
+[sub_resource type="Resource" id="sub_125"]
+script = ExtResource("ext_7")
+title = "返回攻击位置"
+attack = SubResource("sub_120")
+movement = SubResource("sub_123")
+presentation = SubResource("sub_124")
+windup = 0.0
+recovery = 0.0
+end_when = "movement"
+
+[sub_resource type="Resource" id="sub_126"]
+script = ExtResource("ext_3")
+id = "ft_boss_FireDragonGeneral_p3_n06"
+title = "返回攻击位置"
+choices = PackedStringArray()
+editor_position = Vector2(250, 1160)
+action = SubResource("sub_125")
+
+[sub_resource type="Resource" id="sub_127"]
+script = ExtResource("ext_8")
+entry_id = "ft_boss_FireDragonGeneral_p3_n00"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_84"), SubResource("sub_91"), SubResource("sub_98"), SubResource("sub_105"), SubResource("sub_112"), SubResource("sub_119"), SubResource("sub_126")])
+
+[sub_resource type="Resource" id="sub_128"]
+script = ExtResource("ext_2")
+title = "火龙 B2"
+life = 3
+entry_mode = "sequence"
+behavior_flow = SubResource("sub_127")
+
+[resource]
+script = ExtResource("ext_9")
+id = "ft_boss_FireDragonGeneral"
+title = "火龙将军"
+description = "来源：Boss总览 / 阶段与转换，源码类 FireDragonGeneral。
+出现条件：火焰山（volcano）限定；普通模式仅Boss序号5/7/11/13（注册早轮forceChance被此限制过滤）
+阶段结构：头血→火龙组总血→人形B1满头血→B2满血
+招式组合：红火扇、喷火、火龙分裂、三连火斩、跳踢、半圆回旋斩、移动火柱、斩落爆炸
+移动：继承骨龙分节/崩解系统；红火龙→火龙组→人形距离格斗→火龙风暴
+本体触碰：28
+注意事项：与骨龙不是换皮同招：人形B阶段完全重写。B入场提前设fight，bInvulnT未在takeDamage核查，宣称10s无敌实际只保证入场；B2子函数额外累加stateT，名义5s锁血约2.5s。；人形火斩与火柱均noTouch=true，Bullet更新仅处理视觉，没有自管伤害，所以当前不会扣玩家血。
+源码位置：js/bosses.js:7347–7993；js/game.js:2276–2355
+模板是可编辑战斗编排。贴图、动画、地图刷怪条件、玩家抓取 / 治疗、龙身 / 肢体 / 分身实体共享血量需要宿主游戏接入；详见各招式适配边界。"
+color = Color(0.9137255, 0.5921569, 0.40392157, 1)
+start_position = Vector2(270, -30)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_17"), SubResource("sub_26"), SubResource("sub_77"), SubResource("sub_128")])
+entity_settings = SubResource("sub_1")

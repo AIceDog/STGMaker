@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="STGLevelDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/background_layer.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/level_definition.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/level_segment.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/level_event.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/level_exit_rule.gd" id="ext_5"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+title = "远景"
+scroll_ratio = 0.2
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+title = "近景"
+scroll_ratio = 0.7
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_5")
+mode = "time"
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_3")
+id = "patrol_cruise"
+title = "起飞"
+duration = 2.0
+scroll_speed = 35.0
+exit_rule = SubResource("sub_3")
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_4")
+id = "event_ftda1"
+wave_id = "patrol_demons"
+spawn_position = Vector2(260, -90)
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_5")
+mode = "condition"
+wait_attacks = false
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_3")
+id = "patrol_skirmish"
+title = "恶魔巡逻队"
+scroll_speed = 0.0
+exit_rule = SubResource("sub_6")
+events = Array[ExtResource("ext_4")]([SubResource("sub_5")])
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_4")
+id = "event_ofuh2"
+wave_id = "patrol_bats"
+spawn_position = Vector2(300, -45)
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_5")
+mode = "condition"
+wait_attacks = false
+
+[sub_resource type="Resource" id="sub_10"]
+script = ExtResource("ext_3")
+id = "patrol_ambush"
+title = "蝙蝠突击队"
+duration = 6.0
+scroll_speed = 0.0
+exit_rule = SubResource("sub_9")
+events = Array[ExtResource("ext_4")]([SubResource("sub_8")])
+
+[resource]
+script = ExtResource("ext_2")
+id = "border_patrol"
+title = "边境巡航"
+background_layers = Array[ExtResource("ext_1")]([SubResource("sub_1"), SubResource("sub_2")])
+segments = Array[ExtResource("ext_3")]([SubResource("sub_4"), SubResource("sub_7"), SubResource("sub_10")])
