@@ -74,9 +74,9 @@ func run() -> void:
 	actor = ProbeActor.new()
 	check(Collision.build(material).hits(actor, Vector2.ZERO, 0.1), "独立激光矩形仍以弹体原点为中心")
 	check(not Collision.build(material).hits(actor, Vector2(90, 0), 0.1), "独立矩形不会隐式延伸成路径激光")
-	material.collision.along_beam = true
-	check(Collision.build(material).hits(actor, Vector2(90, 0), 0.1), "显式路径带从起点向前延伸")
-	check(not Collision.build(material).hits(actor, Vector2(-40, 0), 0.1), "路径激光不被额外居中平移")
+	material.collision.offset = Vector2(50, 0)
+	check(Collision.build(material).hits(actor, Vector2(90, 0), 0.1), "局部偏移可显式调整直线激光起点")
+	check(not Collision.build(material).hits(actor, Vector2(-40, 0), 0.1), "局部偏移后的激光仍使用同一几何判定")
 	actor.free()
 	material.form = "moving"
 	var original_angle = geometry.rotation_degrees

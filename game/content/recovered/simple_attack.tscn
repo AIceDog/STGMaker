@@ -1,9 +1,0 @@
-[gd_scene format=3]
-
-[ext_resource type="Script" path="res://stg/runtime/prefab_root.gd" id="1_jjto0"]
-[ext_resource type="Resource" path="res://game/content/recovered/simple_attack_library.tres" id="2_3d0yt"]
-
-[node name="AttackPrefab" type="Node2D" unique_id=965483182]
-script = ExtResource("1_jjto0")
-library = ExtResource("2_3d0yt")
-resource_id = "barrage_kfenm"

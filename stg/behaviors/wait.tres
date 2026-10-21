@@ -1,0 +1,151 @@
+[gd_resource type="Resource" script_class="STGBehaviorProgramDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/behavior_program_definition.gd" id="1"]
+[ext_resource type="Script" path="res://stg/behaviors/wait.gd" id="2"]
+
+[resource]
+script = ExtResource("1")
+capabilities = PackedStringArray()
+child_flow_fields = PackedStringArray()
+kind = "behavior"
+id = "behavior.wait"
+title = "等待"
+implementation = ExtResource("2")
+fields = Array[Dictionary]([{
+"default": 0.0,
+"group": "时序与动画",
+"label": "前摇时间 s",
+"max": 600.0,
+"min": 0.0,
+"name": "windup",
+"step": 0.001,
+"type": "float"
+}, {
+"default": 1.0,
+"group": "时序与动画",
+"label": "执行时间 s",
+"max": 3600.0,
+"min": 0.0,
+"name": "execution_duration",
+"step": 0.001,
+"type": "float"
+}, {
+"default": 0.0,
+"group": "时序与动画",
+"label": "后摇时间 s",
+"max": 600.0,
+"min": 0.0,
+"name": "recovery",
+"step": 0.001,
+"type": "float"
+}, {
+"default": "fit_cycles",
+"group": "时序与动画",
+"label": "执行动画播放方式",
+"labels": ["循环并对齐执行时间", "播一次后保持末帧"],
+"name": "active_animation_mode",
+"type": "enum",
+"values": ["fit_cycles", "once_hold"]
+}, {
+"default": 0,
+"group": "时序与动画",
+"label": "执行动画次数（0 自动）",
+"max": 1000000,
+"min": 0,
+"name": "active_cycles",
+"step": 1,
+"type": "int"
+}, {
+"default": false,
+"group": "时序与动画",
+"label": "受击立即中断",
+"name": "interrupt_on_hit",
+"type": "bool"
+}, {
+"default": "",
+"group": "时序与动画",
+"label": "前摇动画",
+"name": "windup_animation",
+"presentation": "enemy_animation",
+"type": "string"
+}, {
+"default": null,
+"group": "时序与动画",
+"label": "前摇声音",
+"name": "windup_sound",
+"resource_class": "AudioStream",
+"type": "resource"
+}, {
+"default": 0.0,
+"group": "时序与动画",
+"label": "前摇音量 dB",
+"max": 12.0,
+"min": -80.0,
+"name": "windup_volume_db",
+"step": 0.1,
+"type": "float"
+}, {
+"default": false,
+"group": "时序与动画",
+"label": "前摇声音循环",
+"name": "windup_sound_loop",
+"type": "bool"
+}, {
+"default": "",
+"group": "时序与动画",
+"label": "执行中动画",
+"name": "active_animation",
+"presentation": "enemy_animation",
+"type": "string"
+}, {
+"default": null,
+"group": "时序与动画",
+"label": "执行中声音",
+"name": "active_sound",
+"resource_class": "AudioStream",
+"type": "resource"
+}, {
+"default": 0.0,
+"group": "时序与动画",
+"label": "执行中音量 dB",
+"max": 12.0,
+"min": -80.0,
+"name": "active_volume_db",
+"step": 0.1,
+"type": "float"
+}, {
+"default": false,
+"group": "时序与动画",
+"label": "执行中声音循环",
+"name": "active_sound_loop",
+"type": "bool"
+}, {
+"default": "",
+"group": "时序与动画",
+"label": "后摇动画",
+"name": "recovery_animation",
+"presentation": "enemy_animation",
+"type": "string"
+}, {
+"default": null,
+"group": "时序与动画",
+"label": "后摇声音",
+"name": "recovery_sound",
+"resource_class": "AudioStream",
+"type": "resource"
+}, {
+"default": 0.0,
+"group": "时序与动画",
+"label": "后摇音量 dB",
+"max": 12.0,
+"min": -80.0,
+"name": "recovery_volume_db",
+"step": 0.1,
+"type": "float"
+}, {
+"default": false,
+"group": "时序与动画",
+"label": "后摇声音循环",
+"name": "recovery_sound_loop",
+"type": "bool"
+}])

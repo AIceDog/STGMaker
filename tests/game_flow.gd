@@ -77,12 +77,12 @@ func run() -> void:
 	var world = session.simulation
 	for hit_index in 3:
 		var enemy_simulation = world.entities[0].simulation
-		enemy_simulation.emit_projectile(game.library.barrages[0].id, world.player, PI, enemy_simulation.allocate_owner())
+		enemy_simulation.play_barrage("straight", world.player, enemy_simulation.allocate_owner(),PI)
 		advance(session, 0.05)
 		check(session.health == 2 - hit_index, "敌弹实际碰撞扣一格生命：%d" % hit_index)
 		if hit_index < 2:
 			# 同一无敌窗口再放一颗弹；不能因为敌弹密集而瞬间扣完生命。
-			enemy_simulation.emit_projectile(game.library.barrages[0].id, world.player, PI, enemy_simulation.allocate_owner())
+			enemy_simulation.play_barrage("straight", world.player, enemy_simulation.allocate_owner(),PI)
 			advance(session, 0.15)
 			check(session.health == 2 - hit_index, "受击后无敌窗口阻止重复伤害")
 			advance(session, 1.05)

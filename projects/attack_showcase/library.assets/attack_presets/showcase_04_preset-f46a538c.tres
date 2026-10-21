@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="STGAttackPreset" format=3]
+
+[ext_resource type="Resource" path="res://stg/programs/stop_aim.tres" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/attack_preset.gd" id="ext_2"]
+
+[resource]
+script = ExtResource("ext_2")
+id = "showcase_04_preset"
+title = "刹停狙击"
+category = "像素招式展示"
+description = "初段散开，停住蓄势，再锁定当时的玩家位置发射。"
+program = ExtResource("ext_1")
+reference_id = "showcase_04_arrow"
+default_parameters = {
+"angle": 180.0,
+"count": 3,
+"damage": 1.0,
+"damage_on_contact": true,
+"effect_duration": 2.0,
+"end_effect": null,
+"end_sound": null,
+"expire_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"flight_speed": 380.0,
+"flight_time": 2.0,
+"hit_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_effect": null,
+"hit_interval": 0.2,
+"hit_mode": "persistent",
+"hit_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_sound": null,
+"pause_time": 0.55,
+"run_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"run_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"run_sound": null,
+"spawn_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"spawn_effect": null,
+"spawn_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"spawn_sound": null,
+"spread": 45.0,
+"texture_override": {
+"mode": "inherit",
+"value": null
+},
+"tint": Color(1, 1, 1, 1),
+"travel_speed": 180.0,
+"travel_time": 0.45
+}
+exposed_parameters = PackedStringArray("count", "angle", "spread", "travel_speed", "travel_time", "pause_time", "flight_speed", "flight_time", "damage", "hit_mode", "hit_interval", "tint", "texture_override", "expire_clip_override")

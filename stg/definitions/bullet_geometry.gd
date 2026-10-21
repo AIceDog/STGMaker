@@ -7,7 +7,6 @@ extends Resource
 @export var size: Vector2 = Vector2(20, 20)
 @export var rotation_degrees: float = 0
 @export var offset: Vector2 = Vector2.ZERO
-@export var along_beam: bool = false # 激光矩形可沿路径延伸；关闭时仍是独立的居中矩形。
 @export_range(3, 64, 1) var sides: int = 5
 @export_enum("regular", "custom") var polygon_mode: String = "regular"
 @export var points: PackedVector2Array = PackedVector2Array([Vector2(0.5, 0), Vector2(-0.25, -0.4330127), Vector2(-0.25, 0.4330127)])
@@ -51,7 +50,6 @@ func validate() -> PackedStringArray:
 	if not kind in ["circle", "diamond", "rectangle", "triangle", "polygon", "ring", "sector"]: issues.append("未知几何形状。")
 	if not size.is_finite() or size.x <= 0 or size.y <= 0: issues.append("几何宽高必须是有限正数。")
 	if not offset.is_finite() or not is_finite(rotation_degrees): issues.append("几何偏移与旋转必须是有限值。")
-	if along_beam and kind != "rectangle": issues.append("只有矩形几何可以沿激光路径延伸。")
 	if sides < 3 or sides > 64: issues.append("正多边形边数必须在 3 到 64 之间。")
 	if polygon_mode not in ["regular", "custom"]: issues.append("未知多边形编辑模式。")
 	if kind == "polygon" and polygon_mode == "custom":

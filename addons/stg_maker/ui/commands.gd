@@ -23,7 +23,7 @@ static func add_template(host, source: STGProject, id: String) -> void:
 		for entry in bundle.entries: project.get(entry[0]).append(entry[1]))
 
 static func set_field(host, path: Array, key: String, value, rebuild: bool = false) -> void:
-	host.edit_configuration(path, func(target, _project): target.set(key, Copy.copy(value)), rebuild)
+	host.edit_configuration(path, func(target, _project): target.set(key, Copy.copy(value)), rebuild, key)
 
 static func add(host, template: String = "moving") -> void:
 	host.inspector_dirty = true
@@ -38,28 +38,8 @@ static func add(host, template: String = "moving") -> void:
 			item = Defaults.flow()
 			item.id = Defaults.uid("behavior")
 			item.title = "新行为子流程"
-		"barrages":
-			var form = "laser" if template == "cross" else ("area" if template == "area" else ("trail" if template == "trail" else "moving"))
-			var materials = host.session.project.bullets.filter(func(bullet): return bullet.form == form)
-			if materials.is_empty(): host.message("请先在子弹素材中创建对应类型的素材，再新建招式。"); return
-			item = Defaults.trail_attack(materials[0].id) if template == "trail" else Defaults.barrage(materials[0].id, template)
-		_:
-			var identifier = host.session.project.barrages[0].id if not host.session.project.barrages.is_empty() else ""
-			if template == "shrinking_trail_boss":
-				var trails = host.session.project.barrages.filter(func(skill):
-					var material = host.session.project.find("bullets", skill.projectile.bullet_id) if skill.projectile != null else null
-					return material != null and material.form == "trail")
-				if not trails.is_empty(): identifier = trails[0].id
-				else:
-					var materials = host.session.project.bullets.filter(func(material): return material.form == "trail")
-					if materials.is_empty(): host.message("请先在子弹素材中创建尾迹素材，再使用尾迹敌人模板。"); return
-					var skill = Defaults.trail_attack(materials[0].id)
-					identifier = skill.id
-					dependencies.append(["barrages", skill])
-			item = Defaults.trail_boss(identifier) if template == "shrinking_trail_boss" else (Defaults.animated_boss(identifier) if template == "animated_boss" else Defaults.boss(identifier, template == "conditional_boss"))
-			if template == "enemy":
-				item.title = "普通卷轴敌人"
-				item.entity_settings = Defaults.entity_settings(true)
+		"barrages":item=Defaults.barrage("",template)
+		"bosses":item=Defaults.boss()
 	if item == null: return
 	host.selected_id = item.id
 	host.reset_selection()
@@ -188,15 +168,3 @@ static func export_prefab(host, path: String) -> String:
 	if error == OK: error = ResourceSaver.save(scene, path)
 	node.free()
 	return "" if error == OK else "导出失败：" + error_string(error)
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://dqnv8p205gooy"]
+
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/text_field.tscn" id="c1"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/form_section.tscn" id="c2"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/asset_field.tscn" id="c3"]
+[ext_resource type="Theme" uid="uid://01e6bsphrlyf" path="res://addons/stg_maker/ui/studio_theme.tres" id="theme"]
+
+[node name="material_presentation" type="VBoxContainer" unique_id=1496585314]
+offset_right = 380.0
+size_flags_horizontal = 3
+theme = ExtResource("theme")
+metadata/form_root = true
+
+[node name="名称_01" parent="." unique_id=269233739 instance=ExtResource("c1")]
+layout_mode = 2
+metadata/form_key = "/text:名称"
+
+[node name="Caption" parent="名称_01" index="0"]
+text = "名称"
+
+[node name="激光随招式立即生成；攻击准备与收招在敌人行为流程中配置，当前不提供激光粒子配置。_02" type="Label" parent="." unique_id=1310261916]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "激光随招式立即生成；攻击准备与收招在敌人行为流程中配置，当前不提供激光粒子配置。"
+autowrap_mode = 3
+metadata/form_key = "/note:激光随招式立即生成；攻击准备与收招在敌人行为流程中配置，当前不提供激光粒子配置。"
+
+[node name="子弹粒子_03" parent="." unique_id=1757148628 instance=ExtResource("c2")]
+layout_mode = 2
+title = "子弹粒子"
+metadata/form_key = "/section:子弹粒子"
+metadata/form_scope = "/section:子弹粒子"
+
+[node name="Heading" parent="子弹粒子_03" index="0"]
+visible = false
+theme_type_variation = &"STGFormHeading"
+
+[node name="Caption" parent="子弹粒子_03" index="1"]
+theme_type_variation = &"STGFormTitle"
+text = "子弹粒子"
+
+[node name="Panel" parent="子弹粒子_03/Indent" index="0"]
+theme_type_variation = &"STGFormPanel"
+
+[node name="刚发射粒子_04" parent="子弹粒子_03/Indent/Panel/Content" index="0" unique_id=868637009 instance=ExtResource("c3")]
+layout_mode = 2
+metadata/form_key = "/section:子弹粒子/asset:刚发射粒子"
+
+[node name="Caption" parent="子弹粒子_03/Indent/Panel/Content/刚发射粒子_04" index="0"]
+text = "刚发射粒子"
+
+[node name="Status" parent="子弹粒子_03/Indent/Panel/Content/刚发射粒子_04/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="子弹粒子_03/Indent/Panel/Content/刚发射粒子_04/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="子弹粒子_03/Indent/Panel/Content/刚发射粒子_04/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="运行中粒子_05" parent="子弹粒子_03/Indent/Panel/Content" index="1" unique_id=1576224438 instance=ExtResource("c3")]
+layout_mode = 2
+metadata/form_key = "/section:子弹粒子/asset:运行中粒子"
+
+[node name="Caption" parent="子弹粒子_03/Indent/Panel/Content/运行中粒子_05" index="0"]
+text = "运行中粒子"
+
+[node name="Status" parent="子弹粒子_03/Indent/Panel/Content/运行中粒子_05/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="子弹粒子_03/Indent/Panel/Content/运行中粒子_05/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="子弹粒子_03/Indent/Panel/Content/运行中粒子_05/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="命中后粒子_06" parent="子弹粒子_03/Indent/Panel/Content" index="2" unique_id=1168524178 instance=ExtResource("c3")]
+layout_mode = 2
+metadata/form_key = "/section:子弹粒子/asset:命中后粒子"
+
+[node name="Caption" parent="子弹粒子_03/Indent/Panel/Content/命中后粒子_06" index="0"]
+text = "命中后粒子"
+
+[node name="Status" parent="子弹粒子_03/Indent/Panel/Content/命中后粒子_06/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="子弹粒子_03/Indent/Panel/Content/命中后粒子_06/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="子弹粒子_03/Indent/Panel/Content/命中后粒子_06/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="所有普通子弹形状均可使用粒子。运行粒子跟随弹体，发射与命中粒子留在事件_08" type="Label" parent="子弹粒子_03/Indent/Panel/Content" index="3" unique_id=1755550749]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "所有普通子弹形状均可使用粒子。运行粒子跟随弹体，发射与命中粒子留在事件发生位置。"
+autowrap_mode = 3
+metadata/form_key = "/section:子弹粒子/note:所有普通子弹形状均可使用粒子。运行粒子跟随弹体，发射与命中粒子留在事件发生位置。"
+
+[editable path="名称_01"]
+[editable path="子弹粒子_03"]
+[editable path="子弹粒子_03/Indent/Panel/Content/刚发射粒子_04"]
+[editable path="子弹粒子_03/Indent/Panel/Content/运行中粒子_05"]
+[editable path="子弹粒子_03/Indent/Panel/Content/命中后粒子_06"]

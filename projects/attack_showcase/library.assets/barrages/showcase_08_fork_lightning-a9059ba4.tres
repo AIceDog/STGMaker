@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Resource" path="res://stg/programs/fork_lightning.tres" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/attack_preset.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_3"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_2")
+id = "showcase_08_preset"
+title = "分叉雷电"
+category = "像素招式展示"
+description = "向锁定落点生成主干与侧向分叉，按固定随机种子闪击。"
+program = ExtResource("ext_1")
+reference_id = "showcase_08_lightning"
+default_parameters = {
+"active_time": 0.15,
+"branch_angle": 60.0,
+"branch_length": 0.35,
+"branches": 3,
+"damage": 1.0,
+"damage_on_contact": true,
+"effect_duration": 2.0,
+"end_effect": null,
+"end_sound": null,
+"expire_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"gap": 0.18,
+"hit_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_effect": null,
+"hit_interval": 0.2,
+"hit_mode": "repeat",
+"hit_sound": null,
+"jitter": 26.0,
+"points": 9,
+"pulses": 3,
+"run_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"run_sound": null,
+"spawn_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"spawn_effect": null,
+"spawn_sound": null,
+"texture_override": {
+"mode": "inherit",
+"value": null
+},
+"tint": Color(1, 1, 1, 1),
+"warning": 0.4,
+"width": 10.0
+}
+exposed_parameters = PackedStringArray("branches", "points", "jitter", "width", "branch_angle", "branch_length", "warning", "pulses", "active_time", "gap", "damage", "hit_mode", "hit_interval", "tint", "texture_override", "expire_clip_override")
+
+[resource]
+script = ExtResource("ext_3")
+id = "showcase_08_fork_lightning"
+title = "分叉雷电"
+description = "向锁定落点生成主干与侧向分叉，按固定随机种子闪击。"
+attack_preset = SubResource("sub_1")

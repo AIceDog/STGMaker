@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_3"]
+[ext_resource type="Texture2D" path="res://projects/attack_showcase/assets/beam.png" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(800, 12)
+points = PackedVector2Array(0.5, 0, -0.25, -0.4330127, -0.25, 0.4330127)
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+kind = "rectangle"
+size = Vector2(800, 18)
+points = PackedVector2Array(0.5, 0, -0.25, -0.4330127, -0.25, 0.4330127)
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+mode = "texture"
+geometry = SubResource("sub_2")
+texture = ExtResource("ext_4")
+color = Color(1, 1, 1, 1)
+
+[resource]
+script = ExtResource("ext_2")
+id = "showcase_07_beam"
+title = "蓝白能量条带"
+description = "像素贴图提供外观，独立碰撞覆盖主体并内缩。"
+form = "laser"
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")

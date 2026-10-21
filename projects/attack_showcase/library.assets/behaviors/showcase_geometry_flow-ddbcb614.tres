@@ -1,0 +1,205 @@
+[gd_resource type="Resource" script_class="STGBehaviorFlow" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_1"]
+[ext_resource type="Resource" path="res://stg/behaviors/attack.tres" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_preset.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_3")
+id = "b15_attack_06"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+id = "attack_06"
+title = "伸缩激光"
+editor_position = Vector2(250, 0)
+behavior_preset = SubResource("sub_1")
+program_parameters = {
+"barrage_id": "showcase_07_telescoping_beam",
+&"execution_duration": 2.216666666666667,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "attack_07"
+}
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+id = "b15_attack_07"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_1")
+id = "attack_07"
+title = "分叉雷电"
+editor_position = Vector2(250, 260)
+behavior_preset = SubResource("sub_3")
+program_parameters = {
+"barrage_id": "showcase_08_fork_lightning",
+&"execution_duration": 1.2266666666666666,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "attack_08"
+}
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_3")
+id = "b15_attack_08"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_1")
+id = "attack_08"
+title = "追踪尾迹"
+editor_position = Vector2(250, 520)
+behavior_preset = SubResource("sub_5")
+program_parameters = {
+"barrage_id": "showcase_09_seeking_trail",
+&"execution_duration": 4.116666666666666,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "attack_09"
+}
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_3")
+id = "b15_attack_09"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_1")
+id = "attack_09"
+title = "预警地雷"
+editor_position = Vector2(250, 780)
+behavior_preset = SubResource("sub_7")
+program_parameters = {
+"barrage_id": "showcase_10_warning_mine",
+&"execution_duration": 1.3166666666666667,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": ""
+}
+
+[resource]
+script = ExtResource("ext_4")
+id = "showcase_geometry_flow"
+title = "几何攻击演示"
+entry_id = "attack_06"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_2"), SubResource("sub_4"), SubResource("sub_6"), SubResource("sub_8")])

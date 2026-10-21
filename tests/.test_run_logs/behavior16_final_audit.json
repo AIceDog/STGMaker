@@ -1,0 +1,99 @@
+{
+  "groups": 22,
+  "checks": 987,
+  "failures": 0,
+  "log_errors": false,
+  "preserved_asset_files": 50,
+  "changed_original_assets": [],
+  "backup": "F:\\Portfolio\\STGMaker\\.recovery\\behavior16_before.zip",
+  "results": {
+    "UNIFIED16 BEHAVIOR RESULT": {
+      "checks": 87,
+      "failures": 0
+    },
+    "UNIFIED15 BEHAVIOR RESULT": {
+      "checks": 98,
+      "failures": 0
+    },
+    "UNIFIED15 BEHAVIOR UI RESULT": {
+      "checks": 43,
+      "failures": 0
+    },
+    "UNIFIED14 CORE RESULT": {
+      "checks": 33,
+      "failures": 0
+    },
+    "UNIFIED14 CONTRACT RESULT": {
+      "checks": 38,
+      "failures": 0
+    },
+    "UNIFIED14 PREVIEW RESULT": {
+      "checks": 40,
+      "failures": 0
+    },
+    "BULLET GEOMETRY RESULT": {
+      "checks": 31,
+      "failures": 0
+    },
+    "UNIFIED14 BEHAVIOR RESULT": {
+      "checks": 12,
+      "failures": 0
+    },
+    "ARCHITECTURE BOUNDARIES RESULT": {
+      "checks": 13,
+      "failures": 0
+    },
+    "ASSET STORAGE RESULT": {
+      "checks": 32,
+      "failures": 0
+    },
+    "GAME FLOW RESULT": {
+      "checks": 56,
+      "failures": 0
+    },
+    "RESPONSIVE RESULT": {
+      "checks": 18,
+      "failures": 0
+    },
+    "UI SCENE AUTHORING RESULT": {
+      "checks": 30,
+      "failures": 0
+    },
+    "EDITOR PERFORMANCE RESULT": {
+      "checks": 39,
+      "failures": 0
+    },
+    "UNIFIED14 UI RESULT": {
+      "checks": 25,
+      "failures": 0
+    },
+    "WORKSHOP RENDER MATRIX RESULT": {
+      "checks": 54,
+      "failures": 0
+    },
+    "ATTACK PROGRAM BUILD RESULT": {
+      "checks": 12,
+      "failures": 0
+    },
+    "ATTACK SHOWCASE RESULT": {
+      "checks": 114,
+      "failures": 0
+    },
+    "ATTACK SHOWCASE UI RESULT": {
+      "checks": 52,
+      "failures": 0
+    },
+    "ATTACK SHOWCASE BUILD RESULT": {
+      "checks": 26,
+      "failures": 0
+    },
+    "ATTACK PROGRAM EDITOR RESULT": {
+      "checks": 108,
+      "failures": 0
+    },
+    "UI SCENE EDITOR RESULT": {
+      "checks": 26,
+      "failures": 0
+    }
+  }
+}

@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://addons/stg_maker/ui/form_section.gd" id="script"]
+
+[node name="Section" type="VBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("script")
+theme_override_constants/separation = 5
+
+[node name="Heading" type="Button" parent="."]
+layout_mode = 2
+text = "属性分组"
+theme_type_variation = "STGFormHeading"
+toggle_mode = true
+button_pressed = true
+alignment = 0
+clip_text = true
+custom_minimum_size = Vector2(0, 34)
+
+[node name="Caption" type="Label" parent="."]
+layout_mode = 2
+text = "属性分组"
+theme_type_variation = "STGFormTitle"
+text_overrun_behavior = 3
+
+[node name="Indent" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+
+[node name="Panel" type="PanelContainer" parent="Indent"]
+layout_mode = 2
+theme_type_variation = "STGFormPanel"
+
+[node name="Content" type="VBoxContainer" parent="Indent/Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+

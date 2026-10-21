@@ -9,21 +9,20 @@ var _heading: float = 0
 func origin() -> Vector2: return _origin
 func heading() -> float: return _heading
 
-func emit_projectile(identifier: String, at: Vector2, angle: float) -> void:
-	if _active and _world != null and at.is_finite() and is_finite(angle): _world.emit_projectile(identifier, at, angle, _owner_id)
+
 
 func play_barrage(identifier: String, at: Vector2, angle: float = 0) -> void:
-	if _active and _world != null and at.is_finite() and is_finite(angle): _world.play_barrage(identifier, at, _owner_id, angle)
+    if _active and _world != null and at.is_finite() and is_finite(angle): _world.play_barrage(identifier, at, _owner_id, angle)
 
 func play_behavior(identifier: String, at: Vector2, angle: float = 0) -> void:
-	if _active and _world != null and at.is_finite() and is_finite(angle): _world.play_behavior(identifier, at, _owner_id, angle)
+    if _active and _world != null and at.is_finite() and is_finite(angle): _world.play_behavior(identifier, at, _owner_id, angle)
 
 func summon(identifier: String, at: Vector2, lifetime: float = 12) -> void:
-	if _active and _world != null and at.is_finite() and is_finite(lifetime) and lifetime > 0: _world.spawn_summon(identifier, at, _owner_id, lifetime)
+    if _active and _world != null and at.is_finite() and is_finite(lifetime) and lifetime > 0: _world.spawn_summon(identifier, at, _owner_id, lifetime)
 
 func damage_player(amount: float) -> void:
-	if _active and is_finite(amount) and amount > 0: _world.register_hit(amount)
+    if _active and is_finite(amount) and amount > 0: _world.register_hit(amount)
 
 func damage_enemy(percent: float) -> void:
-	if _active and is_finite(percent) and percent > 0: _world.damage_boss(percent)
+    if _active and is_finite(percent) and percent > 0: _world.damage_boss(percent)
 

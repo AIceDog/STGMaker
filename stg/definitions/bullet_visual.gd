@@ -24,6 +24,5 @@ func validate() -> PackedStringArray:
 		if clip == null: continue
 		if mode != "texture": issues.append("几何外形不能引用贴图动画。")
 		issues.append_array(Frames.validate(clip))
-	if mode == "texture" and geometry != null and geometry.along_beam: issues.append("贴图外形不沿激光几何路径延伸。")
 	if not is_finite(color.r) or not is_finite(color.g) or not is_finite(color.b) or not is_finite(color.a): issues.append("外形颜色必须是有限值。")
 	return issues

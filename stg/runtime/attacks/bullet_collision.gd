@@ -7,11 +7,6 @@ var transforms: Array[Transform2D] = []
 
 static func build(material: STGBulletDefinition):
 	var geometry = material.collision
-	if material.form == "laser" and geometry.along_beam:
-		var result = new()
-		var path = material.beam_points(geometry)
-		for i in range(1, path.size()): result.segment(path[i - 1], path[i], geometry.size.y, geometry.local_transform())
-		return result
 	return for_geometry(geometry)
 
 static func for_geometry(geometry: STGBulletGeometry):

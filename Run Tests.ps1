@@ -1,57 +1,42 @@
 param(
     [string]$GodotExe = 'F:\Software\Godot\Godot_v4.7.2-stable_win64.exe\Godot_v4.7.2-stable_win64_console.exe',
-    [string]$StartAt = ''
+    [string]$StartAt = '',
+    [string[]]$Only = @()
 )
 $ErrorActionPreference = 'Stop'
 $env:STG_TEST_POWERSHELL = (Get-Process -Id $PID).Path
-# 按“战斗规则 → 编辑交互 → 关卡与资产”的顺序定位失败模块。
+# 当前格式16：统一程序、几何、行为/游戏框架、资产保存及真实编辑器回归。
 $testScripts = @(
-    'tests/smoke.gd'
-    'tests/behavior_flow.gd'
-    'tests/trail_interaction.gd'
-    'tests/authoring.gd'
-    'tests/draft_safety.gd'
-    'tests/planner_diagnostics.gd'
-    'tests/flow_editor.gd'
-    'tests/responsive_ui.gd'
-    'tests/planner_ui.gd'
-    'tests/interaction_ui.gd'
-    'tests/ui_help.gd'
-    'tests/control_help_catalog.gd'
-    'tests/workspace_navigation.gd'
-    'tests/emission_motion.gd'
-    'tests/authoring_boundary_ui.gd'
+    'tests/unified16_behavior.gd'
+    'tests/unified15_behavior.gd'
+    'tests/unified15_behavior_ui.gd'
+    'tests/unified14_core.gd'
+    'tests/unified14_contract.gd'
+    'tests/unified14_preview.gd'
     'tests/bullet_geometry.gd'
-    'tests/attack_lifecycle.gd'
-    'tests/authoring_design.gd'
-    'tests/projectile_presentation.gd'
-    'tests/trajectory_preview.gd'
-    'tests/enemy_examples.gd'
-    'tests/horizontal_preview.gd'
-    'tests/level_runtime.gd'
-    'tests/level_editor.gd'
-    'tests/level_conditions.gd'
-    'tests/level_timeline.gd'
-    'tests/timeline_efficiency.gd'
-    'tests/timeline_demo.gd'
-    'tests/flytiger_physics.gd'
-    'tests/flytiger_templates.gd'
-    'tests/flytiger_bosses.gd'
-    'tests/extensions.gd'
-    'tests/extension_protocol.gd'
-    'tests/current_architecture.gd'
-    'tests/asset_storage.gd'
+    'tests/unified14_behavior.gd'
     'tests/architecture_boundaries.gd'
-    'tests/extension_authoring.gd'
-    'tests/editor_extensions.gd'
-    'tests/project_dialogs.gd'
+    'tests/asset_storage.gd'
     'tests/game_flow.gd'
-    'tests/first_game_content.gd'
-    'tests/game_project_ui.gd'
-    'tests/game_build.gd'
-    'tests/modular_build.gd'
+    'tests/responsive_ui.gd'
+    'tests/ui_scene_authoring.gd'
+    'tests/editor_performance.gd'
+    'tests/unified14_ui.gd'
+    'tests/workshop_render_matrix.gd'
+    'tests/attack_program_build.gd'
+    'tests/attack_showcase.gd'
+    'tests/attack_showcase_ui.gd'
+    'tests/attack_showcase_build.gd'
+    'tests/attack_program_editor.gd'
+    'tests/ui_scene_editor.gd'
 )
 
+if ($Only.Count) {
+    if ($StartAt) { throw 'Only 和 StartAt 不能同时指定。' }
+    $taskRequested = @($Only | ForEach-Object { $taskItem = $_.Replace('\','/'); if (-not $taskItem.StartsWith('tests/')) { $taskItem = 'tests/' + $taskItem }; if (-not $taskItem.EndsWith('.gd')) { $taskItem += '.gd' }; $taskItem })
+    foreach ($taskItem in $taskRequested) { if ($taskItem -notin $testScripts) { throw "未知测试入口：$taskItem" } }
+    $testScripts = @($testScripts | Where-Object { $_ -in $taskRequested })
+}
 if ($StartAt) {
     $taskStartIndex = [Array]::IndexOf($testScripts, $StartAt)
     if ($taskStartIndex -lt 0) { throw "未知测试入口：$StartAt" }
@@ -59,29 +44,32 @@ if ($StartAt) {
 }
 foreach ($testScript in $testScripts) {
     # 运行时脚本异常可能让 SceneTree 停在空转状态；限制帧数并要求完成报告。
-    if ($testScript -in @('tests/editor_extensions.gd', 'tests/project_dialogs.gd')) {
+    if ($testScript -in @('tests/unified15_behavior_ui.gd', 'tests/editor_performance.gd', 'tests/workshop_render_matrix.gd', 'tests/unified14_core.gd', 'tests/unified14_contract.gd', 'tests/unified14_preview.gd', 'tests/unified14_ui.gd', 'tests/attack_showcase.gd', 'tests/attack_showcase_ui.gd')) {
+        $taskRendered = $testScript -in @('tests/unified15_behavior_ui.gd', 'tests/workshop_render_matrix.gd', 'tests/unified14_ui.gd', 'tests/attack_showcase_ui.gd')
+        $taskName = [IO.Path]::GetFileNameWithoutExtension($testScript)
+        $output = & (Join-Path $PSScriptRoot 'tests/run_performance_checks.ps1') -GodotExe ($GodotExe.Replace('_console.exe','.exe')) -Name $taskName -TestScript ('res://' + $testScript) -Rendered:$taskRendered
+        $engineExit = $LASTEXITCODE
+    } elseif ($testScript -in @('tests/ui_scene_editor.gd', 'tests/attack_program_editor.gd')) {
         $taskLogDirectory = Join-Path $PSScriptRoot 'tests/.test_run_logs'
         New-Item -ItemType Directory -Path $taskLogDirectory -Force | Out-Null
         $taskName = [IO.Path]::GetFileNameWithoutExtension($testScript)
         $output = & (Join-Path $PSScriptRoot 'tests/run_editor_checks.ps1') -GodotExe $GodotExe -TestScript $taskName -OutputPath (Join-Path $taskLogDirectory "$taskName.stdout.log") -ErrorPath (Join-Path $taskLogDirectory "$taskName.stderr.log")
         $engineExit = $LASTEXITCODE
-    } elseif ($testScript -in @('tests/game_project_ui.gd', 'tests/draft_safety.gd', 'tests/timeline_efficiency.gd', 'tests/extension_authoring.gd', 'tests/authoring_boundary_ui.gd', 'tests/horizontal_preview.gd')) {
-        # 原生子窗口 / Tree 控件的 UI 验收使用实际渲染器，覆盖用户真实使用的后端。
-        # Dummy 后端曾在完成断言后原生崩溃；非零退出仍视为失败，不重试吞错。
-        # 隐藏启动，保留全部控件断言、日志和非零退出检查，不以重试掩盖失败。
+    } else {
         $taskLogDirectory = Join-Path $PSScriptRoot 'tests/.test_run_logs'
         New-Item -ItemType Directory -Path $taskLogDirectory -Force | Out-Null
-        $taskOutputPath = Join-Path $taskLogDirectory ([IO.Path]::GetFileNameWithoutExtension($testScript) + '.stdout.log')
-        $taskErrorPath = Join-Path $taskLogDirectory ([IO.Path]::GetFileNameWithoutExtension($testScript) + '.stderr.log')
-        $taskProcess = Start-Process -FilePath $GodotExe -WindowStyle Hidden -PassThru `
-            -ArgumentList @('--path', ('"{0}"' -f $PSScriptRoot), '--quit-after', '2000', '--script', $testScript) `
-            -RedirectStandardOutput $taskOutputPath -RedirectStandardError $taskErrorPath
-        $taskProcess.WaitForExit()
+        $taskName = [IO.Path]::GetFileNameWithoutExtension($testScript)
+        $taskOutputPath = Join-Path $taskLogDirectory ($taskName + '.headless.stdout.log')
+        $taskErrorPath = Join-Path $taskLogDirectory ($taskName + '.headless.stderr.log')
+        $taskProcess = Start-Process -FilePath ($GodotExe.Replace('_console.exe','.exe')) -WindowStyle Hidden -PassThru -ArgumentList @('--headless','--path', ('"{0}"' -f $PSScriptRoot), '--quit-after', '2000', '--script', $testScript) -RedirectStandardOutput $taskOutputPath -RedirectStandardError $taskErrorPath
+        if (-not $taskProcess.WaitForExit(60000)) {
+            $taskProcess.Kill($true)
+            Write-Output "测试超出60秒：$testScript；日志：$taskOutputPath"
+            exit 1
+        }
+        $taskProcess.Refresh()
         $engineExit = $taskProcess.ExitCode
         $output = @(Get-Content -LiteralPath $taskOutputPath) + @(Get-Content -LiteralPath $taskErrorPath)
-    } else {
-        $output = & $GodotExe --headless --path $PSScriptRoot --quit-after 2000 --script $testScript 2>&1
-        $engineExit = $LASTEXITCODE
     }
     $output | Write-Output
     if ($engineExit -ne 0) {

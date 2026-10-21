@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="STGMaker · 飞行射击工坊"
-run/main_scene="res://main.tscn"
+run/main_scene="res://addons/stg_maker/studio.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="STGMaker"
 config/features=PackedStringArray("4.7", "GL Compatibility")

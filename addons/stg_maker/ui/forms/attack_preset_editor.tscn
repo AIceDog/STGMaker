@@ -1,0 +1,143 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Theme" path="res://addons/stg_maker/ui/studio_theme.tres" id="theme"]
+
+[node name="PresetEditor" type="PanelContainer"]
+unique_name_in_owner = true
+theme = ExtResource("theme")
+theme_type_variation = &"STGWorkspacePanel"
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OuterScroll" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="Body" type="VBoxContainer" parent="OuterScroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="OuterScroll/Body"]
+unique_name_in_owner = true
+text = "程序预设制作 · 选择算法并开放参数"
+autowrap_mode = 3
+theme_type_variation = &"STGFormTitle"
+
+[node name="Toolbar" type="HFlowContainer" parent="OuterScroll/Body"]
+unique_name_in_owner = true
+
+[node name="New" type="Button" parent="OuterScroll/Body/Toolbar"]
+unique_name_in_owner = true
+text = "新建预设"
+
+[node name="Remove" type="Button" parent="OuterScroll/Body/Toolbar"]
+unique_name_in_owner = true
+text = "删除预设"
+
+[node name="Undo" type="Button" parent="OuterScroll/Body/Toolbar"]
+unique_name_in_owner = true
+text = "撤销"
+
+[node name="Redo" type="Button" parent="OuterScroll/Body/Toolbar"]
+unique_name_in_owner = true
+text = "重做"
+
+[node name="CreateSkill" type="Button" parent="OuterScroll/Body/Toolbar"]
+unique_name_in_owner = true
+text = "生成招式并预览"
+
+[node name="Save" type="Button" parent="OuterScroll/Body/Toolbar"]
+unique_name_in_owner = true
+text = "保存资源库…"
+
+[node name="Close" type="Button" parent="OuterScroll/Body/Toolbar"]
+unique_name_in_owner = true
+text = "关闭"
+
+[node name="Split" type="HSplitContainer" parent="OuterScroll/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 220)
+size_flags_vertical = 3
+split_offset = 240
+
+[node name="List" type="ItemList" parent="OuterScroll/Body/Split"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 0)
+size_flags_vertical = 3
+
+[node name="Scroll" type="ScrollContainer" parent="OuterScroll/Body/Split"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 1
+follow_focus = true
+
+[node name="Properties" type="VBoxContainer" parent="OuterScroll/Body/Split/Scroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+text = "预设名称"
+
+[node name="Name" type="LineEdit" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+
+[node name="CategoryLabel" type="Label" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+text = "分类"
+
+[node name="Category" type="LineEdit" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+
+[node name="ProgramLabel" type="Label" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+text = "攻击程序"
+
+[node name="Program" type="OptionButton" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+
+[node name="MaterialLabel" type="Label" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+text = "兼容子弹素材"
+
+[node name="Material" type="OptionButton" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+
+[node name="MaterialOverride" type="CheckButton" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+text = "允许策划更换引用内容"
+button_pressed = true
+
+[node name="DescriptionLabel" type="Label" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+text = "预设说明"
+
+[node name="Description" type="TextEdit" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+wrap_mode = 1
+
+[node name="ParameterHeading" type="Label" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+text = "程序参数 · 默认值 / 对外开放 / 显示名称 / 范围 / 说明"
+autowrap_mode = 3
+
+[node name="Parameters" type="VBoxContainer" parent="OuterScroll/Body/Split/Scroll/Properties"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+metadata/form_dynamic_zone = true
+
+[node name="Status" type="Label" parent="OuterScroll/Body"]
+unique_name_in_owner = true
+autowrap_mode = 3
+text = "选择程序并包装参数；保存随当前资源库落盘。"

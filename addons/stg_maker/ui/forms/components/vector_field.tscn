@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[node name="Field" type="HFlowContainer"]
+size_flags_horizontal = 3
+
+[node name="Caption" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "参数"
+autowrap_mode = 0
+metadata/form_part = "caption"
+
+[node name="Axes" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="XLabel" type="Label" parent="Axes"]
+layout_mode = 2
+text = "X:"
+
+[node name="X" type="SpinBox" parent="Axes"]
+layout_mode = 2
+custom_minimum_size = Vector2(76, 30)
+size_flags_horizontal = 3
+max_value = 10000.0
+metadata/form_part = "x"
+
+[node name="YLabel" type="Label" parent="Axes"]
+layout_mode = 2
+text = "Y:"
+
+[node name="Y" type="SpinBox" parent="Axes"]
+layout_mode = 2
+custom_minimum_size = Vector2(76, 30)
+size_flags_horizontal = 3
+max_value = 10000.0
+metadata/form_part = "y"
+

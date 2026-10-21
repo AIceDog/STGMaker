@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[node name="Field" type="HBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Caption" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "参数"
+autowrap_mode = 3
+metadata/form_part = "caption"
+custom_minimum_size = Vector2(40, 0)
+
+[node name="Input" type="SpinBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(115, 30)
+metadata/form_part = "input"
+max_value = 10000.0
+

@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[node name="Field" type="VBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Caption" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "参数"
+autowrap_mode = 0
+metadata/form_part = "caption"
+
+[node name="Input" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 34)
+metadata/form_part = "input"
+

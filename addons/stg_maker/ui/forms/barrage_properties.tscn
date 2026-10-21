@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Theme" path="res://addons/stg_maker/ui/studio_theme.tres" id="theme"]
+[node name="BarrageProperties" type="VBoxContainer"]
+theme = ExtResource("theme")
+size_flags_horizontal = 3
+[node name="TitleLabel" type="Label" parent="."]
+text = "招式名称"
+[node name="Title" type="LineEdit" parent="."]
+unique_name_in_owner = true
+[node name="TypeHeading" type="Label" parent="."]
+text = "招式类型与引用"
+theme_type_variation = &"STGFormTitle"
+[node name="TypeLabel" type="Label" parent="."]
+text = "招式类型"
+[node name="Program" type="OptionButton" parent="."]
+unique_name_in_owner = true
+[node name="ReferenceLabel" type="Label" parent="."]
+unique_name_in_owner = true
+text = "子弹素材"
+[node name="Reference" type="OptionButton" parent="."]
+unique_name_in_owner = true
+[node name="EditReference" type="Button" parent="."]
+unique_name_in_owner = true
+text = "编辑引用内容 →"
+[node name="Parameters" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+metadata/form_dynamic_zone = true
+[node name="Status" type="Label" parent="."]
+unique_name_in_owner = true
+autowrap_mode = 3
+[node name="Maker" type="Button" parent="."]
+unique_name_in_owner = true
+text = "制作 / 管理程序预设…"

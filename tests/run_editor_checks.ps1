@@ -2,7 +2,8 @@ param(
     [Parameter(Mandatory = $true)][string]$GodotExe,
     [Parameter(Mandatory = $true)][string]$OutputPath,
     [Parameter(Mandatory = $true)][string]$ErrorPath,
-    [ValidateSet('editor_extensions', 'project_dialogs')][string]$TestScript = 'editor_extensions'
+    [ValidateSet('ui_scene_editor', 'attack_program_editor')][string]$TestScript = 'attack_program_editor',
+    [switch]$VerboseEngine
 )
 $ErrorActionPreference = 'Stop'
 $taskProject = [IO.Path]::GetFullPath((Split-Path $PSScriptRoot -Parent))
@@ -23,7 +24,11 @@ try {
     [IO.File]::WriteAllText((Join-Path $taskProbe 'plugin.cfg'), "[plugin]`nname=`"STGMaker Editor Validation`"`ndescription=`"Temporary test probe`"`nauthor=`"STGMaker`"`nversion=`"1`"`nscript=`"plugin.gd`"`n", [Text.UTF8Encoding]::new($false))
     [IO.File]::WriteAllText((Join-Path $taskProbe 'plugin.gd'), "@tool`nextends `"res://tests/$TestScript.gd`"`n", [Text.UTF8Encoding]::new($false))
     [IO.File]::WriteAllText($taskConfig, $taskText.Replace($taskMatch.Value, $taskEnabled), [Text.UTF8Encoding]::new($false))
-    $taskProcess = Start-Process -FilePath $GodotExe -WindowStyle Hidden -PassThru -ArgumentList @('--editor', '--path', ('"{0}"' -f $taskProject), '--quit-after', '2000') -RedirectStandardOutput $OutputPath -RedirectStandardError $ErrorPath
+    $taskArguments = @('--editor', '--path', ('"{0}"' -f $taskProject), '--quit-after', '2000')
+    if ($VerboseEngine) { $taskArguments += '--verbose' }
+    # 显式指定设计场景，避免启动时恢复上次场景与测试打开场景相互覆盖。
+    if ($TestScript -eq 'ui_scene_editor') { $taskArguments += @('--scene', 'res://addons/stg_maker/studio.tscn') }
+    $taskProcess = Start-Process -FilePath $GodotExe -WindowStyle Hidden -PassThru -ArgumentList $taskArguments -RedirectStandardOutput $OutputPath -RedirectStandardError $ErrorPath
     if (-not $taskProcess.WaitForExit(60000)) { $taskProcess.Kill(); throw '编辑器测试超出 60 秒。' }
     $taskProcess.Refresh()
     $taskCode = $taskProcess.ExitCode

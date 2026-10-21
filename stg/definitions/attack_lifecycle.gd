@@ -2,8 +2,6 @@
 class_name STGAttackLifecycle
 extends Resource
 ## 每颗弹体读取的只读配置，年龄、命中记录和冷却始终属于运行实例。
-@export var warning: float = 0.0
-@export var fade: float = 0.2
 @export var damage: float = 1.0
 @export var damage_on_contact: bool = true
 @export var damage_falloff_start: float = 1.0

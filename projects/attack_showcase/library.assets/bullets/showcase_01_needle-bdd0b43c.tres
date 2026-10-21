@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_3"]
+[ext_resource type="Texture2D" path="res://projects/attack_showcase/assets/needle.png" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "polygon"
+size = Vector2(32, 32)
+polygon_mode = "custom"
+points = PackedVector2Array(-0.23124999, -0.098540306, -0.23124999, -0.056447178, -0.23832843, -0.04662624, -0.33925468, -0.012984365, -0.34223843, -0.012499988, -0.3489856, -0.012499988, -0.33023563, 0.043749988, -0.23747155, 0.043749988, -0.2278828, 0.06689936, -0.2625, 0.10151625, -0.2625, 0.10180622, 0.15328968, 0.012708724, 0.15525967, 0.012499988, 0.325, 0.012499988, 0.325, -0.015102804)
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(32, 32)
+points = PackedVector2Array(0.5, 0, -0.25, -0.4330127, -0.25, 0.4330127)
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+mode = "texture"
+geometry = SubResource("sub_2")
+texture = ExtResource("ext_4")
+color = Color(1, 1, 1, 1)
+
+[resource]
+script = ExtResource("ext_2")
+id = "showcase_01_needle"
+title = "黄色针弹"
+description = "像素贴图提供外观，独立碰撞覆盖主体并内缩。"
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")

@@ -3,18 +3,18 @@ extends EditorPlugin
 ## Godot 主工作区的挂载入口；独立运行 studio.tscn 使用完全相同的制作工作台。
 ## 本模块只管理界面的生命周期，玩法与制作数据不依赖 EditorInterface。
 
-const Studio = preload("res://addons/stg_maker/ui/studio_workspace.gd")
+const Studio = preload("res://addons/stg_maker/studio.tscn")
 var screen: Control
 
 
 func _enter_tree() -> void: # Godot 回调：启用插件时挂载工作台。
-	screen = Control.new()
-	screen.set_script(Studio)
+	screen = Studio.instantiate()
 	# 主工作区是 VBoxContainer；Expand 让 Godot 容器分配完整高度。
 	screen.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	screen.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	EditorInterface.get_editor_main_screen().add_child(screen)
 	screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	screen.activate_workspace()
 	_make_visible(false)
 
 

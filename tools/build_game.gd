@@ -11,7 +11,7 @@ func run() -> void:
 	var index = 0
 	while index < args.size():
 		if not args[index].begins_with("--") or index + 1 >= args.size():
-			push_error("参数格式：--definition game/content/first_game.tres --output exports/FirstGame [--windows exports/Release/Game.exe] [--engine 引擎路径]")
+			push_error("参数格式：--definition game/content/my_game.tres --output exports/MyGame [--windows exports/Release/Game.exe] [--engine 引擎路径]")
 			quit(1)
 			return
 		options[args[index].trim_prefix("--")] = args[index + 1]
@@ -21,7 +21,11 @@ func run() -> void:
 			push_error("未知构建参数：--" + key)
 			quit(1)
 			return
-	var path: String = options.get("definition", "res://game/content/first_game.tres")
+	if not options.has("definition"):
+		push_error("请显式指定 --definition 游戏配置路径。")
+		quit(1)
+		return
+	var path: String = options.definition
 	if not path.is_absolute_path() and not path.begins_with("res://"):
 		path = "res://" + path
 	var definition = ResourceLoader.load(path)
@@ -29,7 +33,7 @@ func run() -> void:
 		push_error("无法读取游戏定义：" + path)
 		quit(1)
 		return
-	var output: String = options.get("output", "res://exports/FirstGame")
+	var output: String = options.get("output", "res://exports/MyGame")
 	var result = Builder.build(definition, output)
 	if not result.issue.is_empty():
 		push_error(result.issue)

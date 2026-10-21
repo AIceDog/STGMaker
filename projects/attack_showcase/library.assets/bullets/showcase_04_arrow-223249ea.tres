@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_3"]
+[ext_resource type="Texture2D" path="res://projects/attack_showcase/assets/arrow.png" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "polygon"
+size = Vector2(32, 32)
+polygon_mode = "custom"
+points = PackedVector2Array(-0.13749999, -0.25523594, -0.13749999, -0.23033842, -0.08060062, -0.20188844, -0.07499999, -0.19282657, -0.07499999, -0.054733425, -0.085983425, -0.043749988, -0.1599797, -0.043749988, -0.16687095, -0.046604365, -0.28901625, -0.16874999, -0.3446619, -0.16874999, -0.30091187, -0.08125001, -0.23608658, -0.08125001, -0.22802249, -0.05461687, -0.33565938, 0.017140925, -0.34097373, 0.018750012, -0.3759119, 0.018750012, -0.36341187, 0.043749988, -0.23747155, 0.043749988, -0.2278828, 0.06689936, -0.35245436, 0.19147032, -0.28574532, 0.1692344, -0.28276157, 0.16874999, -0.22878468, 0.16874999, -0.1692428, 0.079437196, -0.16095188, 0.07499999, -0.052404374, 0.07499999, -0.04128906, 0.09185654, -0.12781468, 0.29375, -0.09894374, 0.29375, 0.05503875, 0.20136064, 0.059951246, 0.19999999, 0.11723375, 0.19999999, 0.16874999, 0.14848375, 0.16874999, 0.11967343, 0.17435062, 0.11061156, 0.35557312, 0.01999998, 0.110687196, -0.1432572, 0.10624999, -0.15154812, 0.10624999, -0.17398593)
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(32, 32)
+points = PackedVector2Array(0.5, 0, -0.25, -0.4330127, -0.25, 0.4330127)
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+mode = "texture"
+geometry = SubResource("sub_2")
+texture = ExtResource("ext_4")
+color = Color(1, 1, 1, 1)
+
+[resource]
+script = ExtResource("ext_2")
+id = "showcase_04_arrow"
+title = "红色箭头弹"
+description = "像素贴图提供外观，独立碰撞覆盖主体并内缩。"
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")

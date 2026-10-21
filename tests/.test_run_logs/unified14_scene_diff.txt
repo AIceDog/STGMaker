@@ -1,0 +1,49 @@
+--- 
+
++++ 
+
+@@ -150,17 +150,10 @@
+
+ popup/item_2/id = 2
+ popup/item_3/text = "打开游戏资源库…"
+ popup/item_3/id = 8
+-popup/item_4/text = "打开10个敌人示例…"
+-popup/item_4/id = 3
+-popup/item_5/text = "恢复本机草稿…"
+-popup/item_5/id = 11
+-popup/item_6/text = "检查所有配置…"
+-popup/item_6/id = 10
+-popup/item_7/id = -1
+-popup/item_7/separator = true
+-popup/item_8/text = "当前模板说明…"
+-popup/item_8/id = 9
+-popup/item_8/disabled = true
++popup/item_4/text = "恢复本机草稿…"
++popup/item_4/id = 11
++popup/item_5/text = "检查所有配置…"
++popup/item_5/id = 10
+ metadata/interaction_role = "default"
+ 
+ [node name="save_button" type="Button" parent="WorkspaceScroll/layout_margin/layout_outer/HeaderPanel/HeaderBody/HeaderRow/toolbar" unique_id=1379179869]
+@@ -531,20 +524,6 @@
+
+ icon = SubResource("DPITexture_2653a")
+ flat = false
+ icon_alignment = 2
+-popup/item_0/text = "扇形连射"
+-popup/item_0/id = 0
+-popup/item_1/text = "圆环齐射"
+-popup/item_1/id = 1
+-popup/item_2/text = "螺旋发射"
+-popup/item_2/id = 2
+-popup/item_3/text = "瞄准连射"
+-popup/item_3/id = 3
+-popup/item_4/text = "交叉激光"
+-popup/item_4/id = 4
+-popup/item_5/text = "区域预警"
+-popup/item_5/id = 5
+-popup/item_6/text = "持续路径尾迹"
+-popup/item_6/id = 6
+ metadata/interaction_role = "default"
+ 
+ [node name="LibraryOperations" type="HBoxContainer" parent="WorkspaceScroll/layout_margin/layout_outer/MainSplit/LibraryPanel/library_panel" unique_id=1697606711]

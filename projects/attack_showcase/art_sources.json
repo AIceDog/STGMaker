@@ -1,0 +1,83 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "name": "needle",
+      "size": 32,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-7fee82ac-f8d1-44bf-a323-5b3e3ccb6860.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 32x32 logical-pixel asset: yellow needle bullet, narrow pointed horizontal bolt, points toward the RIGHT; warm gold shell, pale yellow center, dark amber outline. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 32x32; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 32x32 if possible."
+    },
+    {
+      "name": "boomerang",
+      "size": 32,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-4237f944-8671-4020-99da-eff86e2d6cb5.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 32x32 logical-pixel asset: cyan boomerang blade, two angular curved wings, sharp pixel crescent pointing toward the RIGHT; teal dark outline and white cyan highlights. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 32x32; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 32x32 if possible."
+    },
+    {
+      "name": "crystal",
+      "size": 32,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-421ef28c-eae8-457d-93e1-9c961c56777f.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 32x32 logical-pixel asset: violet faceted diamond crystal bullet, symmetrical four-sided jewel, lavender bright center, deep purple outline. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 32x32; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 32x32 if possible."
+    },
+    {
+      "name": "arrow",
+      "size": 32,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-1b702f19-91ea-48fb-8d9a-ceddb930a759.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 32x32 logical-pixel asset: red arrowhead projectile, broad triangular head points to the RIGHT, small trailing fins; scarlet body and pale pink highlights. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 32x32; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 32x32 if possible."
+    },
+    {
+      "name": "scale",
+      "size": 32,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-8a301382-1864-4e13-ab5b-4f8205f54aa5.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 32x32 logical-pixel asset: green serpentine scale projectile, leaflike segmented elongated dart pointing toward the RIGHT; emerald green, lime center and dark forest outline. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 32x32; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 32x32 if possible."
+    },
+    {
+      "name": "block",
+      "size": 32,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-2eabf454-b34c-42fa-a809-7ab4b98ed082.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 32x32 logical-pixel asset: orange square metal bullet, compact square with bevelled pixel corners, orange armor and golden central square, dark brown outline. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 32x32; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 32x32 if possible."
+    },
+    {
+      "name": "beam",
+      "size": 16,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-8063d747-5cd7-4f25-83ed-9be12e2cb33a.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 16x16 logical-pixel asset: blue-white energy beam STRIP TEXTURE; a horizontal glowing core across the ENTIRE image left to right, white central two-pixel band, light blue shoulders and dark blue outer rows; perfectly seamless left and right edges, transparency above and below, NO end caps. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 16x16; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 16x16 if possible.",
+      "packing_rect": [
+        0,
+        516,
+        1279,
+        259
+      ]
+    },
+    {
+      "name": "lightning",
+      "size": 16,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-b3064fc2-36e7-432f-9185-9d31876289a9.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 16x16 logical-pixel asset: purple-white lightning STRIP TEXTURE; horizontal thin electric core across the ENTIRE image left to right, white central pixels and violet border stepped ragged edges, seamlessly repeating left to right, transparent above and below; NO separate lightning icon, NO end caps. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 16x16; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 16x16 if possible.",
+      "packing_rect": [
+        0,
+        432,
+        1536,
+        249
+      ]
+    },
+    {
+      "name": "flame",
+      "size": 16,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-51ab6d80-ef0d-42d1-9076-7baaa7b40a65.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 16x16 logical-pixel asset: red-orange flame trail STRIP TEXTURE; horizontal hot yellow core across the ENTIRE image left to right, orange body and dark red pixel fringes, seamlessly repeating left to right, transparent above and below; NO separate flame icon, NO end caps. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 16x16; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 16x16 if possible.",
+      "packing_rect": [
+        0,
+        391,
+        1536,
+        292
+      ]
+    },
+    {
+      "name": "mine",
+      "size": 64,
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14d23-463f-7b02-8570-482ef6e66fab\\exec-a3d6deab-42f8-4f4f-91ef-f7753a118671.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D top-down bullet-hell game sprite. Create ONE 64x64 logical-pixel asset: red pixel landmine seen exactly top down; circular dark crimson metal plate, cardinal red warning accents, white-red central light and a sparse faint red perimeter, symmetrical centered hazard sprite. Strict retro pixel art: large crisp square pixel clusters, limited 5-color ramp, no antialiasing, no gradient blur, no shadows outside sprite, no text, no contact sheet, no mockup, no checkerboard. Sprite must remain legible when reduced to 64x64; grid-aligned, centered with transparent margins (strip textures must reach both horizontal edges). Use a clean readable arcade style consistent with a small sci-fi bullet-hell sprite set. Transparent background with real alpha. Output requested logical sprite size 64x64 if possible."
+    }
+  ]
+}

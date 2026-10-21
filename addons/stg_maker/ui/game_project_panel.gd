@@ -9,11 +9,10 @@ const Builder = preload("res://addons/stg_maker/build/project_builder.gd")
 const GameShell = preload("res://game/game_shell.gd")
 const GameDocument = preload("res://addons/stg_maker/authoring/game_document.gd")
 const Drafts = preload("res://addons/stg_maker/authoring/draft_store.gd")
-const DEFAULT_GAME = "res://game/content/first_game.tres"
 var disk_revision: Dictionary = {}
 var host: Control
 var game: STGGameDefinition
-var game_path: String = DEFAULT_GAME
+var game_path: String = ""
 var library_source_path: String = ""
 var selected_location: int = 0
 var body: VBoxContainer
@@ -33,8 +32,8 @@ var close_dialog: ConfirmationDialog
 var recovery_dialog: ConfirmationDialog
 var recovery_timer: Timer
 var recovery_folder: String = Drafts.ROOT
-var recovery_source: String = DEFAULT_GAME
-var recovery_slot: String = DEFAULT_GAME
+var recovery_source: String = ""
+var recovery_slot: String = ""
 var last_recovery_revision: int = -1
 var recovery_offer: Dictionary = {}
 var synced_editor_project: STGProject
@@ -42,14 +41,23 @@ var close_after_save: bool = false
 
 func open_for(workspace: Control) -> void:
 	host = workspace
-	var loaded = GameDocument.load_definition(game_path)
-	if not loaded is STGGameDefinition:
-		host.message("游戏配置不存在：" + game_path)
-		queue_free()
-		return
-	disk_revision = Assets.capture(game_path)
-	library_source_path = loaded.library.resource_path if loaded.library != null else ""
-	game = Copy.copy(loaded)
+	if game_path.is_empty():
+		game = STGGameDefinition.new()
+		game.library = host.session.project.snapshot()
+		game.player = STGPlayerDefinition.new()
+		game.world = STGWorldDefinition.new()
+		library_source_path = host.session.file_path
+		synced_editor_project = host.session.project
+		saved_revision = -1
+	else:
+		var loaded = GameDocument.load_definition(game_path)
+		if not loaded is STGGameDefinition:
+			host.message("游戏配置不存在：" + game_path)
+			queue_free()
+			return
+		disk_revision = Assets.capture(game_path)
+		library_source_path = loaded.library.resource_path if loaded.library != null else ""
+		game = Copy.copy(loaded)
 	title = "游戏配置 · 主角与世界地图"
 	min_size = Vector2i(780, 600)
 	close_requested.connect(request_close)
@@ -101,7 +109,7 @@ func _dialogs() -> void:
 	save_dialog.access = FileDialog.ACCESS_FILESYSTEM
 	save_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	save_dialog.filters = PackedStringArray(["*.tres ; 游戏配置"])
-	save_dialog.current_path = ProjectSettings.globalize_path(game_path)
+	save_dialog.current_path = ProjectSettings.globalize_path(game_path if not game_path.is_empty() else "res://game/content/my_game.tres")
 	add_child(save_dialog)
 	save_dialog.file_selected.connect(func(path):
 		var issue = save_game(ProjectSettings.localize_path(path))
@@ -241,6 +249,7 @@ func add_location() -> void:
 		var location = STGWorldLocation.new()
 		location.id = "location_%s" % Time.get_ticks_usec()
 		location.map_position = Vector2(game.world.locations.size(), 0)
+		if game.world.locations.is_empty(): game.start_location_id = location.id
 		if not game.library.levels.is_empty(): location.level_id = game.library.levels[0].id
 		game.world.locations.append(location)
 		selected_location = game.world.locations.size() - 1, true)
@@ -255,7 +264,7 @@ func remove_location() -> void:
 
 func save_game(path: String) -> String:
 	_sync_editor_library()
-	var library_path = "res://game/content/first_library.tres" if path == DEFAULT_GAME else path.get_basename() + "_library.tres"
+	var library_path = path.get_basename() + "_library.tres"
 	var issue = Assets.save_game(game, path, library_path, disk_revision if path == game_path else {})
 	if not issue.is_empty(): return issue
 	disk_revision = Assets.capture(path)

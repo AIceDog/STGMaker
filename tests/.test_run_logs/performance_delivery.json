@@ -1,0 +1,72 @@
+{
+  "project": "F:\\Portfolio\\STGMaker",
+  "schema_version": 13,
+  "regression_groups": 46,
+  "regression_checks": 2417,
+  "failures": 0,
+  "real_render_measurements": [
+    {
+      "extra_resources": 0,
+      "memory_after100": 85286816,
+      "memory_after50": 85283072,
+      "nodes": 1455.0,
+      "resources": 166.0,
+      "samples": 100,
+      "submit_p95_ms": 0.567,
+      "total_p95_ms": 10.593
+    },
+    {
+      "extra_resources": 1000,
+      "memory_after100": 110004988,
+      "memory_after50": 110001244,
+      "nodes": 1455.0,
+      "resources": 166.0,
+      "samples": 100,
+      "submit_p95_ms": 0.563,
+      "total_p95_ms": 11.716
+    }
+  ],
+  "plugin_p95_ms": 10.736,
+  "angle_sweep_libraries": [
+    {
+      "source": "res://presets/demo.tres",
+      "skills": 14
+    },
+    {
+      "source": "res://presets/enemy_library.tres",
+      "skills": 31
+    },
+    {
+      "source": "res://presets/level_demo.tres",
+      "skills": 31
+    },
+    {
+      "source": "res://game/content/modular_example/library.tres",
+      "skills": 4
+    },
+    {
+      "source": "res://examples/shared/enemy_library.tres",
+      "skills": 31
+    },
+    {
+      "source": "res://examples/shared/level_demo.tres",
+      "skills": 31
+    },
+    {
+      "source": "res://examples/shared/timeline_demo.tres",
+      "skills": 31
+    },
+    {
+      "source": "res://presets/timeline_demo.tres",
+      "skills": 31
+    }
+  ],
+  "preserved_static_node_layouts": true,
+  "watchdog_selftest": {
+    "memory_limit_bytes": 2147483648,
+    "timeout_ms": 10000,
+    "exit_code": 124,
+    "status": "timeout",
+    "elapsed_ms": 10039
+  }
+}

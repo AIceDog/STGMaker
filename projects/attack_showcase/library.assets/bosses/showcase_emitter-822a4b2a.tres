@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="STGBossDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/entity_settings.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_phase.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_3"]
+[ext_resource type="Resource" path="res://stg/behaviors/call.tres" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_preset.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_7"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_5")
+id = "b15_body"
+title = "调用行为"
+program = ExtResource("ext_4")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"behavior_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"interrupt_on_hit": false,
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "returned",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("behavior_id", "wait_mode", "follow_enemy")
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+id = "body"
+title = "调用弹丸演示"
+editor_position = Vector2(250, 70.2703)
+behavior_preset = SubResource("sub_2")
+program_parameters = {
+"behavior_id": "showcase_body_flow",
+&"execution_duration": 20.28,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "geometry"
+}
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_5")
+id = "b15_geometry"
+title = "调用行为"
+program = ExtResource("ext_4")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"behavior_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"interrupt_on_hit": false,
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "returned",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("behavior_id", "wait_mode", "follow_enemy")
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_3")
+id = "geometry"
+title = "调用几何攻击演示"
+editor_position = Vector2(250, 330.27)
+behavior_preset = SubResource("sub_4")
+program_parameters = {
+"behavior_id": "showcase_geometry_flow",
+&"execution_duration": 8.916666666666655,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": ""
+}
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_6")
+entry_id = "body"
+nodes = Array[ExtResource("ext_3")]([SubResource("sub_3"), SubResource("sub_5")])
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_2")
+behavior_flow = SubResource("sub_6")
+
+[resource]
+script = ExtResource("ext_7")
+id = "showcase_emitter"
+title = "像素招式演示发射台"
+description = "依次调用弹丸演示与几何攻击演示，等待清理后继续，整轮循环。"
+color = Color(0.54509807, 0.7764706, 0.9098039, 1)
+start_position = Vector2(320, 0)
+phases = Array[ExtResource("ext_2")]([SubResource("sub_7")])
+entity_settings = SubResource("sub_1")

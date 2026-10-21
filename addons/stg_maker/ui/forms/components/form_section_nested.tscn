@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/form_section.tscn" id="base"]
+
+[node name="Section" instance=ExtResource("base")]
+depth = 1
+
+[node name="Indent" parent="." index=2]
+theme_override_constants/margin_left = 7
+
+[node name="Panel" parent="Indent" index=0]
+theme_type_variation = "STGNestedFormPanel"

@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="STGAttackPreset" format=3]
+
+[ext_resource type="Resource" path="res://stg/programs/delayed_split.tres" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/attack_preset.gd" id="ext_2"]
+
+[resource]
+script = ExtResource("ext_2")
+id = "showcase_03_preset"
+title = "延时散花"
+category = "像素招式展示"
+description = "核心移动并停留后分裂为环形弹群；核心阶段不判伤。"
+program = ExtResource("ext_1")
+reference_id = "showcase_03_crystal"
+default_parameters = {
+"angle": 180.0,
+"child_life": 2.4,
+"child_speed": 230.0,
+"count": 10,
+"damage": 1.0,
+"damage_on_contact": true,
+"effect_duration": 2.0,
+"end_effect": null,
+"end_sound": null,
+"expire_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_effect": null,
+"hit_interval": 0.2,
+"hit_mode": "persistent",
+"hit_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_sound": null,
+"pause_time": 0.4,
+"run_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"run_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"run_sound": null,
+"spawn_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"spawn_effect": null,
+"spawn_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"spawn_sound": null,
+"texture_override": {
+"mode": "inherit",
+"value": null
+},
+"tint": Color(1, 1, 1, 1),
+"travel_speed": 220.0,
+"travel_time": 0.65
+}
+exposed_parameters = PackedStringArray("angle", "travel_speed", "travel_time", "pause_time", "count", "child_speed", "child_life", "damage", "hit_mode", "hit_interval", "tint", "texture_override", "expire_clip_override")

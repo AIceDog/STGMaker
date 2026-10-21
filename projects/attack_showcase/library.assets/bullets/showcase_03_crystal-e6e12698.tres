@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="STGBulletDefinition" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_geometry.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_visual.gd" id="ext_3"]
+[ext_resource type="Texture2D" path="res://projects/attack_showcase/assets/crystal.png" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_1")
+kind = "polygon"
+size = Vector2(32, 32)
+polygon_mode = "custom"
+points = PackedVector2Array(0.012499988, -0.29375, -0.012499988, -0.29375, -0.012499988, -0.2462703, -0.015354365, -0.23937905, -0.19999999, -0.054733753, -0.19999999, -0.023483425, -0.21098343, -0.012499988, -0.29375, -0.012499988, -0.29375, 0.043749988, -0.2146447, 0.043749988, -0.20718563, 0.047180653, -0.014829367, 0.27159625, -0.012499988, 0.27789313, -0.012499988, 0.29375, 0.021875024, 0.29375, 0.20640564, 0.047709048, 0.21432376, 0.043749988, 0.29375, 0.043749988, 0.29375, -0.012499988, 0.21464467, -0.012499988, 0.20718563, -0.015930623, 0.014829397, -0.24034625, 0.012499988, -0.24664313)
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+size = Vector2(32, 32)
+points = PackedVector2Array(0.5, 0, -0.25, -0.4330127, -0.25, 0.4330127)
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+mode = "texture"
+geometry = SubResource("sub_2")
+texture = ExtResource("ext_4")
+color = Color(1, 1, 1, 1)
+
+[resource]
+script = ExtResource("ext_2")
+id = "showcase_03_crystal"
+title = "紫色晶体弹"
+description = "像素贴图提供外观，独立碰撞覆盖主体并内缩。"
+visual = SubResource("sub_3")
+collision = SubResource("sub_1")

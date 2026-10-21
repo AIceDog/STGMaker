@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="STGBarrageSkill" format=3]
+
+[ext_resource type="Resource" path="res://stg/programs/ricochet.tres" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/attack_preset.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_3"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_2")
+id = "showcase_06_preset"
+title = "边界反弹"
+category = "像素招式展示"
+description = "按战斗边界反射，达到反弹上限或寿命后结束。"
+program = ExtResource("ext_1")
+reference_id = "showcase_06_block"
+default_parameters = {
+"angle": 155.0,
+"bounces": 3,
+"count": 3,
+"damage": 1.0,
+"damage_on_contact": true,
+"duration": 4.5,
+"effect_duration": 2.0,
+"end_effect": null,
+"end_sound": null,
+"expire_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_effect": null,
+"hit_interval": 0.4,
+"hit_mode": "repeat",
+"hit_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"hit_sound": null,
+"margin": 14.0,
+"run_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"run_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"run_sound": null,
+"spawn_clip_override": {
+"mode": "inherit",
+"value": null
+},
+"spawn_effect": null,
+"spawn_particles_override": {
+"mode": "inherit",
+"value": null
+},
+"spawn_sound": null,
+"speed": 300.0,
+"spread": 50.0,
+"texture_override": {
+"mode": "inherit",
+"value": null
+},
+"tint": Color(1, 1, 1, 1)
+}
+exposed_parameters = PackedStringArray("count", "angle", "spread", "speed", "bounces", "margin", "duration", "damage", "hit_mode", "hit_interval", "tint", "texture_override", "expire_clip_override")
+
+[resource]
+script = ExtResource("ext_3")
+id = "showcase_06_ricochet"
+title = "边界反弹"
+description = "按战斗边界反射，达到反弹上限或寿命后结束。"
+attack_preset = SubResource("sub_1")

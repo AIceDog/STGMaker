@@ -41,6 +41,11 @@ func tick(dt: float) -> void:
 	implementation.tick(context, dt)
 	_settle()
 
+func settle_behavior() -> void:
+	if implementation==null or not implementation is STGBehaviorProgram:return
+	implementation.settle(context)
+	_settle()
+
 func _settle() -> void:
 	if context != null and context.is_finished():
 		failed = context._failed

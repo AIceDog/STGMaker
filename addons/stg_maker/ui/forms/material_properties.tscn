@@ -1,0 +1,460 @@
+[gd_scene format=3 uid="uid://btmn5onv3k71b"]
+
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/text_field.tscn" id="c1"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/form_section.tscn" id="c2"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/select_field.tscn" id="c3"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/form_section_nested.tscn" id="c4"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/asset_field.tscn" id="c5"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/vector_field.tscn" id="c6"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/number_field.tscn" id="c8"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/action_button.tscn" id="c9"]
+[ext_resource type="PackedScene" path="res://addons/stg_maker/ui/forms/components/color_field.tscn" id="c10"]
+[ext_resource type="Theme" uid="uid://01e6bsphrlyf" path="res://addons/stg_maker/ui/studio_theme.tres" id="theme"]
+
+[node name="material_properties" type="VBoxContainer" unique_id=1484904312]
+offset_right = 380.0
+size_flags_horizontal = 3
+theme = ExtResource("theme")
+metadata/form_root = true
+
+[node name="名称_01" parent="." unique_id=1150814364 instance=ExtResource("c1")]
+visible = false
+layout_mode = 2
+metadata/form_key = "/text:名称"
+
+[node name="Caption" parent="名称_01" index="0"]
+text = "名称"
+
+[node name="素材类型：子弹_02" type="Label" parent="." unique_id=1246446207]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "素材类型：子弹"
+autowrap_mode = 3
+metadata/form_key = "/note:material_type"
+
+[node name="外观_03" parent="." unique_id=1500797115 instance=ExtResource("c2")]
+layout_mode = 2
+title = "外观"
+metadata/form_key = "/section:外观"
+metadata/form_scope = "/section:外观"
+
+[node name="Heading" parent="外观_03" index="0"]
+visible = false
+theme_type_variation = &"STGFormHeading"
+
+[node name="Caption" parent="外观_03" index="1"]
+theme_type_variation = &"STGFormTitle"
+text = "外观"
+
+[node name="Panel" parent="外观_03/Indent" index="0"]
+theme_type_variation = &"STGFormPanel"
+
+[node name="形状_04" parent="外观_03/Indent/Panel/Content" index="0" unique_id=845144226 instance=ExtResource("c3")]
+layout_mode = 2
+metadata/form_key = "/section:外观/select:形状"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/形状_04" index="0"]
+text = "形状"
+
+[node name="贴图与阶段动画_05" parent="外观_03/Indent/Panel/Content" index="1" unique_id=1835804994 instance=ExtResource("c4")]
+layout_mode = 2
+title = "贴图与阶段动画"
+metadata/form_key = "/section:外观/section:贴图与阶段动画"
+metadata/form_scope = "/section:外观/section:贴图与阶段动画"
+
+[node name="Heading" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05" index="0"]
+visible = false
+theme_type_variation = &"STGFormHeading"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05" index="1"]
+theme_type_variation = &"STGFormTitle"
+text = "贴图与阶段动画"
+
+[node name="Panel" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent" index="0"]
+theme_type_variation = &"STGNestedFormPanel"
+
+[node name="运行中（静态图_GIF）_06" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content" index="0" unique_id=103681633 instance=ExtResource("c5")]
+layout_mode = 2
+metadata/form_key = "/section:外观/section:贴图与阶段动画/asset:运行中（静态图 / GIF）"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/运行中（静态图_GIF）_06" index="0"]
+text = "运行中（静态图 / GIF）"
+
+[node name="Status" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/运行中（静态图_GIF）_06/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/运行中（静态图_GIF）_06/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/运行中（静态图_GIF）_06/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="刚发射_前摇_07" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content" index="1" unique_id=995167961 instance=ExtResource("c5")]
+layout_mode = 2
+metadata/form_key = "/section:外观/section:贴图与阶段动画/asset:刚发射"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚发射_前摇_07" index="0"]
+text = "刚发射"
+
+[node name="Status" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚发射_前摇_07/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚发射_前摇_07/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚发射_前摇_07/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="碰撞_命中_08" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content" index="2" unique_id=470186686 instance=ExtResource("c5")]
+layout_mode = 2
+metadata/form_key = "/section:外观/section:贴图与阶段动画/asset:碰撞 / 命中"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/碰撞_命中_08" index="0"]
+text = "碰撞 / 命中"
+
+[node name="Status" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/碰撞_命中_08/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/碰撞_命中_08/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/碰撞_命中_08/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="未命中消失_后摇_09" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content" index="3" unique_id=1165320391 instance=ExtResource("c5")]
+layout_mode = 2
+metadata/form_key = "/section:外观/section:贴图与阶段动画/asset:未命中消失"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/未命中消失_后摇_09" index="0"]
+text = "未命中消失"
+
+[node name="Status" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/未命中消失_后摇_09/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/未命中消失_后摇_09/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/未命中消失_后摇_09/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="刚生成_10" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content" index="4" unique_id=126160396 instance=ExtResource("c5")]
+layout_mode = 2
+metadata/form_key = "/section:外观/section:贴图与阶段动画/asset:刚生成"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚生成_10" index="0"]
+text = "刚生成"
+
+[node name="Status" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚生成_10/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚生成_10/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚生成_10/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="自然结束_11" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content" index="5" unique_id=580240459 instance=ExtResource("c5")]
+layout_mode = 2
+metadata/form_key = "/section:外观/section:贴图与阶段动画/asset:自然结束"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/自然结束_11" index="0"]
+text = "自然结束"
+
+[node name="Status" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/自然结束_11/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/自然结束_11/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/自然结束_11/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="选择静态图片、GIF_或已保存的帧动画。GIF_保留逐帧时长，运行中循_12" type="Label" parent="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content" index="6" unique_id=1179671567]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "选择静态图片、GIF 或已保存的帧动画。GIF 保留逐帧时长，运行中循环；其他阶段可不填。发射与消失动画使用资源自身时长，不阻塞攻击。"
+autowrap_mode = 3
+metadata/form_key = "/section:外观/section:贴图与阶段动画/note:选择静态图片、GIF 或已保存的帧动画。GIF 保留逐帧时长，运行中循环；其他阶段可不填。发射与消失动画使用资源自身时长，不阻塞攻击。"
+
+[node name="自定义贴图_13" parent="外观_03/Indent/Panel/Content" index="2" unique_id=985577636 instance=ExtResource("c5")]
+layout_mode = 2
+metadata/form_key = "/section:外观/asset:自定义贴图"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/自定义贴图_13" index="0"]
+text = "自定义贴图"
+
+[node name="Status" parent="外观_03/Indent/Panel/Content/自定义贴图_13/Row" index="0"]
+theme_type_variation = &"STGMutedLabel"
+
+[node name="Choose" parent="外观_03/Indent/Panel/Content/自定义贴图_13/Row" index="1"]
+theme_type_variation = &"STGActionButton"
+
+[node name="Clear" parent="外观_03/Indent/Panel/Content/自定义贴图_13/Row" index="2"]
+theme_type_variation = &"STGActionButton"
+
+[node name="大小_14" parent="外观_03/Indent/Panel/Content" index="3" unique_id=1483702853 instance=ExtResource("c6")]
+layout_mode = 2
+metadata/form_key = "/section:外观/vector:大小"
+metadata/form_dynamic_caption = true
+metadata/form_aliases = ["/section:外观/vector:段长 / 宽", "/section:外观/vector:长 / 宽"]
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/大小_14" index="0"]
+text = "大小"
+
+[node name="局部旋转_°_16" parent="外观_03/Indent/Panel/Content" index="4" unique_id=1468765366 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:外观/number:局部旋转 °"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/局部旋转_°_16" index="0"]
+text = "局部旋转 °"
+
+[node name="局部偏移_17" parent="外观_03/Indent/Panel/Content" index="5" unique_id=2032398220 instance=ExtResource("c6")]
+layout_mode = 2
+metadata/form_key = "/section:外观/vector:局部偏移"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/局部偏移_17" index="0"]
+text = "局部偏移"
+
+[node name="边数_18" parent="外观_03/Indent/Panel/Content" index="6" unique_id=962022241 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:外观/number:边数"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/边数_18" index="0"]
+text = "边数"
+
+[node name="内径_外径_19" parent="外观_03/Indent/Panel/Content" index="7" unique_id=8861165 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:外观/number:内径 / 外径"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/内径_外径_19" index="0"]
+text = "内径 / 外径"
+
+[node name="扇形角度_°_20" parent="外观_03/Indent/Panel/Content" index="8" unique_id=1083713552 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:外观/number:扇形角度 °"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/扇形角度_°_20" index="0"]
+text = "扇形角度 °"
+
+[node name="使用素材提供的自定义轮廓；大小、旋转和偏移作用于整条轮廓。_21" type="Label" parent="外观_03/Indent/Panel/Content" index="9" unique_id=1690240584]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "使用素材提供的自定义轮廓；大小、旋转和偏移作用于整条轮廓。"
+autowrap_mode = 3
+metadata/form_key = "/section:外观/note:使用素材提供的自定义轮廓；大小、旋转和偏移作用于整条轮廓。"
+
+[node name="改用正多边形_22" parent="外观_03/Indent/Panel/Content" index="10" unique_id=93963422 instance=ExtResource("c9")]
+layout_mode = 2
+theme_type_variation = &"STGActionButton"
+text = "改用正多边形"
+metadata/form_key = "/section:外观/button:改用正多边形"
+
+[node name="颜色_23" parent="外观_03/Indent/Panel/Content" index="11" unique_id=561399784 instance=ExtResource("c10")]
+layout_mode = 2
+metadata/form_key = "/section:外观/color:颜色"
+
+[node name="Caption" parent="外观_03/Indent/Panel/Content/颜色_23" index="0"]
+text = "颜色"
+
+[node name="旋转与偏移使用弹体局部坐标，只改变外观，不改变飞行方向或碰撞形状。_24" type="Label" parent="外观_03/Indent/Panel/Content" index="12" unique_id=1602919934]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "旋转与偏移使用弹体局部坐标，只改变外观，不改变飞行方向或碰撞形状。"
+autowrap_mode = 3
+metadata/form_key = "/section:外观/note:旋转与偏移使用弹体局部坐标，只改变外观，不改变飞行方向或碰撞形状。"
+
+[node name="碰撞_25" parent="." unique_id=1506686460 instance=ExtResource("c2")]
+layout_mode = 2
+title = "碰撞"
+metadata/form_key = "/section:碰撞"
+metadata/form_scope = "/section:碰撞"
+
+[node name="Heading" parent="碰撞_25" index="0"]
+visible = false
+theme_type_variation = &"STGFormHeading"
+
+[node name="Caption" parent="碰撞_25" index="1"]
+theme_type_variation = &"STGFormTitle"
+text = "碰撞"
+
+[node name="Panel" parent="碰撞_25/Indent" index="0"]
+theme_type_variation = &"STGFormPanel"
+
+[node name="形状_26" parent="碰撞_25/Indent/Panel/Content" index="0" unique_id=534244623 instance=ExtResource("c3")]
+layout_mode = 2
+metadata/form_key = "/section:碰撞/select:形状"
+
+[node name="Caption" parent="碰撞_25/Indent/Panel/Content/形状_26" index="0"]
+text = "形状"
+
+[node name="复制当前外观几何_27" parent="碰撞_25/Indent/Panel/Content" index="1" unique_id=931484468 instance=ExtResource("c9")]
+layout_mode = 2
+theme_type_variation = &"STGActionButton"
+text = "复制当前外观几何"
+metadata/form_key = "/section:碰撞/button:复制当前外观几何"
+
+[node name="大小_28" parent="碰撞_25/Indent/Panel/Content" index="2" unique_id=916586395 instance=ExtResource("c6")]
+layout_mode = 2
+metadata/form_key = "/section:碰撞/vector:大小"
+metadata/form_dynamic_caption = true
+metadata/form_aliases = ["/section:碰撞/vector:段长 / 宽", "/section:碰撞/vector:长 / 宽"]
+
+[node name="Caption" parent="碰撞_25/Indent/Panel/Content/大小_28" index="0"]
+text = "大小"
+
+[node name="局部旋转_°_30" parent="碰撞_25/Indent/Panel/Content" index="3" unique_id=1502679208 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:碰撞/number:局部旋转 °"
+
+[node name="Caption" parent="碰撞_25/Indent/Panel/Content/局部旋转_°_30" index="0"]
+text = "局部旋转 °"
+
+[node name="局部偏移_31" parent="碰撞_25/Indent/Panel/Content" index="4" unique_id=1397758021 instance=ExtResource("c6")]
+layout_mode = 2
+metadata/form_key = "/section:碰撞/vector:局部偏移"
+
+[node name="Caption" parent="碰撞_25/Indent/Panel/Content/局部偏移_31" index="0"]
+text = "局部偏移"
+
+[node name="边数_32" parent="碰撞_25/Indent/Panel/Content" index="5" unique_id=669454462 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:碰撞/number:边数"
+
+[node name="Caption" parent="碰撞_25/Indent/Panel/Content/边数_32" index="0"]
+text = "边数"
+
+[node name="内径_外径_33" parent="碰撞_25/Indent/Panel/Content" index="6" unique_id=12681289 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:碰撞/number:内径 / 外径"
+
+[node name="Caption" parent="碰撞_25/Indent/Panel/Content/内径_外径_33" index="0"]
+text = "内径 / 外径"
+
+[node name="扇形角度_°_34" parent="碰撞_25/Indent/Panel/Content" index="7" unique_id=478880734 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:碰撞/number:扇形角度 °"
+
+[node name="Caption" parent="碰撞_25/Indent/Panel/Content/扇形角度_°_34" index="0"]
+text = "扇形角度 °"
+
+[node name="使用素材提供的自定义轮廓；大小、旋转和偏移作用于整条轮廓。_35" type="Label" parent="碰撞_25/Indent/Panel/Content" index="8" unique_id=88787174]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "使用素材提供的自定义轮廓；大小、旋转和偏移作用于整条轮廓。"
+autowrap_mode = 3
+metadata/form_key = "/section:碰撞/note:使用素材提供的自定义轮廓；大小、旋转和偏移作用于整条轮廓。"
+
+[node name="改用正多边形_36" parent="碰撞_25/Indent/Panel/Content" index="9" unique_id=1797155114 instance=ExtResource("c9")]
+layout_mode = 2
+theme_type_variation = &"STGActionButton"
+text = "改用正多边形"
+metadata/form_key = "/section:碰撞/button:改用正多边形"
+
+[node name="碰撞与外观独立。圆环空洞、扇形开口和自由多边形凹口均保留；贴图本身不参_37" type="Label" parent="碰撞_25/Indent/Panel/Content" index="10" unique_id=832036350]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "碰撞与外观独立。圆环空洞、扇形开口和自由多边形凹口均保留；贴图本身不参与命中判定。"
+autowrap_mode = 3
+metadata/form_key = "/section:碰撞/note:碰撞与外观独立。圆环空洞、扇形开口和自由多边形凹口均保留；贴图本身不参与命中判定。"
+
+[node name="伤害、命中频率与命中后的声音、特效、追加招式在招式页配置。_38" type="Label" parent="碰撞_25/Indent/Panel/Content" index="11" unique_id=793222370]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "伤害、命中频率与命中后的声音、特效、追加招式在招式页配置。"
+autowrap_mode = 3
+metadata/form_key = "/section:碰撞/note:伤害、命中频率与命中后的声音、特效、追加招式在招式页配置。"
+
+[node name="拖尾路径_43" parent="." unique_id=1429549819 instance=ExtResource("c2")]
+layout_mode = 2
+title = "拖尾路径"
+metadata/form_key = "/section:拖尾路径"
+metadata/form_scope = "/section:拖尾路径"
+
+[node name="Heading" parent="拖尾路径_43" index="0"]
+visible = false
+theme_type_variation = &"STGFormHeading"
+
+[node name="Caption" parent="拖尾路径_43" index="1"]
+theme_type_variation = &"STGFormTitle"
+text = "拖尾路径"
+
+[node name="Panel" parent="拖尾路径_43/Indent" index="0"]
+theme_type_variation = &"STGFormPanel"
+
+[node name="离发射者尾部距离_44" parent="拖尾路径_43/Indent/Panel/Content" index="0" unique_id=617966104 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:拖尾路径/number:离发射者尾部距离"
+
+[node name="Caption" parent="拖尾路径_43/Indent/Panel/Content/离发射者尾部距离_44" index="0"]
+text = "离发射者尾部距离"
+
+[node name="采样间距_45" parent="拖尾路径_43/Indent/Panel/Content" index="1" unique_id=1517011787 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:拖尾路径/number:采样间距"
+
+[node name="Caption" parent="拖尾路径_43/Indent/Panel/Content/采样间距_45" index="0"]
+text = "采样间距"
+
+[node name="瞬移断线距离_46" parent="拖尾路径_43/Indent/Panel/Content" index="2" unique_id=1968689762 instance=ExtResource("c8")]
+layout_mode = 2
+metadata/form_key = "/section:拖尾路径/number:瞬移断线距离"
+
+[node name="Caption" parent="拖尾路径_43/Indent/Panel/Content/瞬移断线距离_46" index="0"]
+text = "瞬移断线距离"
+
+[node name="沿发射者实际走过的路径采样。每段生效时长在招式中设置。_47" type="Label" parent="拖尾路径_43/Indent/Panel/Content" index="3" unique_id=1860656121]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"STGMutedLabel"
+text = "沿发射者实际走过的路径采样。每段生效时长在招式中设置。"
+autowrap_mode = 3
+metadata/form_key = "/section:拖尾路径/note:沿发射者实际走过的路径采样。每段生效时长在招式中设置。"
+
+[editable path="名称_01"]
+[editable path="外观_03"]
+[editable path="外观_03/Indent/Panel/Content/形状_04"]
+[editable path="外观_03/Indent/Panel/Content/贴图与阶段动画_05"]
+[editable path="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/运行中（静态图_GIF）_06"]
+[editable path="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚发射_前摇_07"]
+[editable path="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/碰撞_命中_08"]
+[editable path="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/未命中消失_后摇_09"]
+[editable path="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/刚生成_10"]
+[editable path="外观_03/Indent/Panel/Content/贴图与阶段动画_05/Indent/Panel/Content/自然结束_11"]
+[editable path="外观_03/Indent/Panel/Content/自定义贴图_13"]
+[editable path="外观_03/Indent/Panel/Content/大小_14"]
+[editable path="外观_03/Indent/Panel/Content/局部旋转_°_16"]
+[editable path="外观_03/Indent/Panel/Content/局部偏移_17"]
+[editable path="外观_03/Indent/Panel/Content/边数_18"]
+[editable path="外观_03/Indent/Panel/Content/内径_外径_19"]
+[editable path="外观_03/Indent/Panel/Content/扇形角度_°_20"]
+[editable path="外观_03/Indent/Panel/Content/改用正多边形_22"]
+[editable path="外观_03/Indent/Panel/Content/颜色_23"]
+[editable path="碰撞_25"]
+[editable path="碰撞_25/Indent/Panel/Content/形状_26"]
+[editable path="碰撞_25/Indent/Panel/Content/复制当前外观几何_27"]
+[editable path="碰撞_25/Indent/Panel/Content/大小_28"]
+[editable path="碰撞_25/Indent/Panel/Content/局部旋转_°_30"]
+[editable path="碰撞_25/Indent/Panel/Content/局部偏移_31"]
+[editable path="碰撞_25/Indent/Panel/Content/边数_32"]
+[editable path="碰撞_25/Indent/Panel/Content/内径_外径_33"]
+[editable path="碰撞_25/Indent/Panel/Content/扇形角度_°_34"]
+[editable path="碰撞_25/Indent/Panel/Content/改用正多边形_36"]
+[editable path="拖尾路径_43"]
+[editable path="拖尾路径_43/Indent/Panel/Content/离发射者尾部距离_44"]
+[editable path="拖尾路径_43/Indent/Panel/Content/采样间距_45"]
+[editable path="拖尾路径_43/Indent/Panel/Content/瞬移断线距离_46"]

@@ -27,6 +27,7 @@ static func build(box, kind: String, title: String, library: STGProject, get_bin
 		change.call(null if definition == null else Factory.extension_binding(definition), true))
 	F.help(selector, "选择技术策划提供的能力模块。\n参数随当前资产保存；预览和正式游戏使用相同实现。")
 	if selected == null: return
+	box = F.dynamic(box, "扩展参数")
 	if not selected.help.is_empty(): F.note(box, selected.help)
 	var issues = selected.validate_fields()
 	if not issues.is_empty():
@@ -67,8 +68,9 @@ static func build(box, kind: String, title: String, library: STGProject, get_bin
 static func effects(host, parent, scope: Array, bullet: STGAttackLifecycle) -> void:
 	var box = F.fold(parent, "脚本命中效果", not bullet.hit_effects.is_empty(), "bullet.effects")
 	F.note(box, "命中后依次执行；基础伤害和现有命中招式仍按各自配置生效。")
+	var entries = F.dynamic(box, "命中效果列表")
 	for index in bullet.hit_effects.size():
-		var row = F.group(box, "效果 %d" % (index + 1))
+		var row = F.group(entries, "效果 %d" % (index + 1))
 		build(row, "effect", "效果模块", host.session.project, func(): return host.config_at(scope).hit_effects[index], func(value, rebuild):
 			R.edit(host, scope, func(target, _project): target.hit_effects[index] = value)
 			if rebuild: host.refresh(true), false)

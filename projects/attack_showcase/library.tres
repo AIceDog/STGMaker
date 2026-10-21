@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="STGProject" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/attack_preset.gd" id="ext_1"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_preset.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_4"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="ext_5"]
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="ext_6"]
+[ext_resource type="Script" path="res://stg/definitions/level_definition.gd" id="ext_7"]
+[ext_resource type="Script" path="res://stg/definitions/obstacle_definition.gd" id="ext_8"]
+[ext_resource type="Script" path="res://stg/definitions/project_document.gd" id="ext_9"]
+[ext_resource type="Script" path="res://stg/definitions/wave_definition.gd" id="ext_10"]
+
+[ext_resource type="Script" path="res://stg/definitions/bullet_definition.gd" id="type_bullets"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_01_needle-bdd0b43c.tres" id="bullets_0"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_02_boomerang-b26b9c15.tres" id="bullets_1"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_03_crystal-e6e12698.tres" id="bullets_2"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_04_arrow-223249ea.tres" id="bullets_3"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_05_scale-fa235117.tres" id="bullets_4"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_06_block-496ae09a.tres" id="bullets_5"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_07_beam-1ba4b4f5.tres" id="bullets_6"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_08_lightning-6fb4be6e.tres" id="bullets_7"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_09_flame-9cb9f7ba.tres" id="bullets_8"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bullets/showcase_10_mine-6ea18528.tres" id="bullets_9"]
+[ext_resource type="Script" path="res://stg/definitions/barrage_skill.gd" id="type_barrages"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_01_five_shot-1f99b3d1.tres" id="barrages_0"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_02_boomerang-b26b9c15.tres" id="barrages_1"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_03_delayed_split-44a61253.tres" id="barrages_2"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_04_stop_aim-c23c904e.tres" id="barrages_3"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_05_sine_wave-ca2cd77b.tres" id="barrages_4"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_06_ricochet-39a0dede.tres" id="barrages_5"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_07_telescoping_beam-6dbeb851.tres" id="barrages_6"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_08_fork_lightning-a9059ba4.tres" id="barrages_7"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_09_seeking_trail-41370c23.tres" id="barrages_8"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/barrages/showcase_10_warning_mine-fdf18eab.tres" id="barrages_9"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="type_behaviors"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/behaviors/showcase_body_flow-4a17d852.tres" id="behaviors_0"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/behaviors/showcase_geometry_flow-ddbcb614.tres" id="behaviors_1"]
+[ext_resource type="Script" path="res://stg/definitions/boss_definition.gd" id="type_bosses"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/bosses/showcase_emitter-822a4b2a.tres" id="bosses_0"]
+[ext_resource type="Script" path="res://stg/definitions/wave_definition.gd" id="type_waves"]
+[ext_resource type="Script" path="res://stg/definitions/level_definition.gd" id="type_levels"]
+[ext_resource type="Script" path="res://stg/definitions/obstacle_definition.gd" id="type_obstacles"]
+[ext_resource type="Script" path="res://stg/definitions/attack_preset.gd" id="type_attack_presets"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_01_preset-759462e9.tres" id="attack_presets_0"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_02_preset-f9bf0a05.tres" id="attack_presets_1"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_03_preset-bfae1cc9.tres" id="attack_presets_2"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_04_preset-f46a538c.tres" id="attack_presets_3"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_05_preset-5f30d727.tres" id="attack_presets_4"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_06_preset-b99d84f7.tres" id="attack_presets_5"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_07_preset-7dbea95d.tres" id="attack_presets_6"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_08_preset-91548de8.tres" id="attack_presets_7"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_09_preset-5f8dfd7a.tres" id="attack_presets_8"]
+[ext_resource type="Resource" path="res://projects/attack_showcase/library.assets/attack_presets/showcase_10_preset-ed957b4f.tres" id="attack_presets_9"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_preset.gd" id="type_behavior_presets"]
+
+[resource]
+script = ExtResource("ext_9")
+schema_version = 16
+
+bullets = Array[ExtResource("type_bullets")]([ExtResource("bullets_0"), ExtResource("bullets_1"), ExtResource("bullets_2"), ExtResource("bullets_3"), ExtResource("bullets_4"), ExtResource("bullets_5"), ExtResource("bullets_6"), ExtResource("bullets_7"), ExtResource("bullets_8"), ExtResource("bullets_9")])
+barrages = Array[ExtResource("type_barrages")]([ExtResource("barrages_0"), ExtResource("barrages_1"), ExtResource("barrages_2"), ExtResource("barrages_3"), ExtResource("barrages_4"), ExtResource("barrages_5"), ExtResource("barrages_6"), ExtResource("barrages_7"), ExtResource("barrages_8"), ExtResource("barrages_9")])
+behaviors = Array[ExtResource("type_behaviors")]([ExtResource("behaviors_0"), ExtResource("behaviors_1")])
+bosses = Array[ExtResource("type_bosses")]([ExtResource("bosses_0")])
+waves = Array[ExtResource("type_waves")]([])
+levels = Array[ExtResource("type_levels")]([])
+obstacles = Array[ExtResource("type_obstacles")]([])
+attack_presets = Array[ExtResource("type_attack_presets")]([ExtResource("attack_presets_0"), ExtResource("attack_presets_1"), ExtResource("attack_presets_2"), ExtResource("attack_presets_3"), ExtResource("attack_presets_4"), ExtResource("attack_presets_5"), ExtResource("attack_presets_6"), ExtResource("attack_presets_7"), ExtResource("attack_presets_8"), ExtResource("attack_presets_9")])
+behavior_presets = Array[ExtResource("type_behavior_presets")]([])

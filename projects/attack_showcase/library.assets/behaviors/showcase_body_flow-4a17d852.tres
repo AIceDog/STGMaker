@@ -1,0 +1,301 @@
+[gd_resource type="Resource" script_class="STGBehaviorFlow" format=3]
+
+[ext_resource type="Script" path="res://stg/definitions/flow_node.gd" id="ext_1"]
+[ext_resource type="Resource" path="res://stg/behaviors/attack.tres" id="ext_2"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_preset.gd" id="ext_3"]
+[ext_resource type="Script" path="res://stg/definitions/behavior_flow.gd" id="ext_4"]
+
+[sub_resource type="Resource" id="sub_1"]
+script = ExtResource("ext_3")
+id = "b15_attack_00"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_2"]
+script = ExtResource("ext_1")
+id = "attack_00"
+title = "五连点射"
+editor_position = Vector2(250, 0)
+behavior_preset = SubResource("sub_1")
+program_parameters = {
+"barrage_id": "showcase_01_five_shot",
+&"execution_duration": 2.9966666666666666,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "attack_01"
+}
+
+[sub_resource type="Resource" id="sub_3"]
+script = ExtResource("ext_3")
+id = "b15_attack_01"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_4"]
+script = ExtResource("ext_1")
+id = "attack_01"
+title = "折返飞镖"
+editor_position = Vector2(250, 260)
+behavior_preset = SubResource("sub_3")
+program_parameters = {
+"barrage_id": "showcase_02_boomerang",
+&"execution_duration": 2.466666666666667,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "attack_02"
+}
+
+[sub_resource type="Resource" id="sub_5"]
+script = ExtResource("ext_3")
+id = "b15_attack_02"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_6"]
+script = ExtResource("ext_1")
+id = "attack_02"
+title = "延时散花"
+editor_position = Vector2(250, 520)
+behavior_preset = SubResource("sub_5")
+program_parameters = {
+"barrage_id": "showcase_03_delayed_split",
+&"execution_duration": 3.466666666666667,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "attack_03"
+}
+
+[sub_resource type="Resource" id="sub_7"]
+script = ExtResource("ext_3")
+id = "b15_attack_03"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_8"]
+script = ExtResource("ext_1")
+id = "attack_03"
+title = "刹停狙击"
+editor_position = Vector2(250, 780)
+behavior_preset = SubResource("sub_7")
+program_parameters = {
+"barrage_id": "showcase_04_stop_aim",
+&"execution_duration": 3.0166666666666666,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "attack_04"
+}
+
+[sub_resource type="Resource" id="sub_9"]
+script = ExtResource("ext_3")
+id = "b15_attack_04"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_10"]
+script = ExtResource("ext_1")
+id = "attack_04"
+title = "蛇行弹"
+editor_position = Vector2(250, 1040)
+behavior_preset = SubResource("sub_9")
+program_parameters = {
+"barrage_id": "showcase_05_sine_wave",
+&"execution_duration": 3.8166666666666664,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": "attack_05"
+}
+
+[sub_resource type="Resource" id="sub_11"]
+script = ExtResource("ext_3")
+id = "b15_attack_05"
+title = "释放招式"
+program = ExtResource("ext_2")
+default_parameters = {
+"active_animation": "",
+"active_animation_mode": "fit_cycles",
+"active_cycles": 0,
+"active_sound": null,
+"active_sound_loop": false,
+"active_volume_db": 0.0,
+"barrage_id": "",
+"execution_duration": 1.0,
+"follow_enemy": false,
+"heading": 0.0,
+"interrupt_on_hit": false,
+"offset": Vector2(0, 0),
+"origin_mode": "enemy",
+"recovery": 0.0,
+"recovery_animation": "",
+"recovery_sound": null,
+"recovery_sound_loop": false,
+"recovery_volume_db": 0.0,
+"wait_mode": "immediate",
+"windup": 0.0,
+"windup_animation": "",
+"windup_sound": null,
+"windup_sound_loop": false,
+"windup_volume_db": 0.0
+}
+exposed_parameters = PackedStringArray("barrage_id", "wait_mode", "follow_enemy", "origin_mode", "offset", "heading")
+
+[sub_resource type="Resource" id="sub_12"]
+script = ExtResource("ext_1")
+id = "attack_05"
+title = "边界反弹"
+editor_position = Vector2(250, 1300)
+behavior_preset = SubResource("sub_11")
+program_parameters = {
+"barrage_id": "showcase_06_ricochet",
+&"execution_duration": 4.516666666666667,
+"wait_mode": "cleared"
+}
+connections = {
+"completed": ""
+}
+
+[resource]
+script = ExtResource("ext_4")
+id = "showcase_body_flow"
+title = "弹丸演示"
+entry_id = "attack_00"
+nodes = Array[ExtResource("ext_1")]([SubResource("sub_2"), SubResource("sub_4"), SubResource("sub_6"), SubResource("sub_8"), SubResource("sub_10"), SubResource("sub_12")])

@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[node name="Field" type="VBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Caption" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "参数"
+autowrap_mode = 0
+metadata/form_part = "caption"
+
+[node name="Row" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="Row"]
+layout_mode = 2
+text = "未设置"
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+theme_type_variation = "STGMutedLabel"
+metadata/form_part = "status"
+
+[node name="Choose" type="Button" parent="Row"]
+layout_mode = 2
+text = "选择…"
+custom_minimum_size = Vector2(0, 34)
+theme_type_variation = "STGActionButton"
+metadata/form_part = "choose"
+
+[node name="Clear" type="Button" parent="Row"]
+layout_mode = 2
+text = "清除"
+custom_minimum_size = Vector2(0, 34)
+theme_type_variation = "STGActionButton"
+metadata/form_part = "clear"
+

@@ -1,7 +1,7 @@
 @tool
 extends RefCounted
-## 通用表单接口；只创建 Godot 控件并发出值，不知道子弹、Boss 或文档。
-const FormSection = preload("res://addons/stg_maker/ui/form_section.gd")
+## 通用表单接口：绑定保存的字段，或实例化共用组件；不承担子弹、Boss 或文档规则。
+const Form = preload("res://addons/stg_maker/ui/form_scene.gd")
 const Style = preload("res://addons/stg_maker/ui/interaction_style.gd")
 const Help = preload("res://addons/stg_maker/ui/control_help.gd")
 
@@ -21,92 +21,98 @@ static func help(control: Control, description: String) -> Control:
 				caption.mouse_filter = Control.MOUSE_FILTER_PASS
 	return control
 
+static func authored(parent: Node) -> bool:
+	return Form.root_of(parent) != null
+
+static func field(parent: Node, kind: String, title: String, component: String) -> Control:
+	var control = Form.lookup(parent, kind, title) if authored(parent) else Form.fragment(component, parent)
+	if kind in ["text", "number", "select", "vector", "asset", "color"]: help(Form.part(control, "caption"), Help.text(title))
+	if control.get_meta("form_dynamic_caption", false): Form.part(control, "caption").text = title
+	return control
+
 static func label(parent: Node, text: String) -> Label:
-	var control = Label.new()
-	control.text = text
-	control.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var control: Label
+	if authored(parent): control = Form.lookup(parent, "label", text)
+	else:
+		control = Label.new(); control.text = text; parent.add_child(control)
+		control.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if parent is VBoxContainer: control.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	control.set_meta("display_only", true)
-	if parent is VBoxContainer:
-		control.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	parent.add_child(control)
 	help(control, Help.text(text))
 	return control
 
-static func note(parent: Node, text: String) -> Label:
+static func note(parent: Node, text: String, binding_id: String = "") -> Label:
+	if authored(parent):
+		var control: Label = Form.lookup(parent, "note", binding_id if not binding_id.is_empty() else text)
+		if not binding_id.is_empty(): control.text = text
+		return control
 	var control = label(parent, text)
-	control.add_theme_color_override("font_color", Color("a4b7ca"))
+	control.theme_type_variation = "STGMutedLabel"
 	return control
 
 static func button(parent: Node, text: String, action: Callable, role: String = "default") -> Button:
-	var control = Button.new()
-	control.text = text
+	var control: Button
+	if authored(parent): control = Form.lookup(parent, "button", text)
+	else:
+		control = Form.fragment("action_button", parent)
+		control.text = text
+		Style.button(control, role)
 	control.pressed.connect(action)
-	Style.button(control, role)
-	parent.add_child(control)
 	help(control, Help.text(text))
 	return control
 
 static func text(parent: Node, title: String, value: String, change: Callable) -> LineEdit:
-	label(parent, title)
-	var control = LineEdit.new()
+	var row = field(parent, "text", title, "text_field")
+	var control: LineEdit = Form.part(row, "input")
+	if not authored(parent): Form.part(row, "caption").text = title
 	control.text = value
+	_bind_configuration(control, change)
 	control.set_meta("help_title", title)
 	control.set_meta("committed", value)
-	# 按 Enter 与失去焦点都提交；committed 防止同一次输入产生两个撤销步骤。
 	var commit = func(next):
 		if next != control.get_meta("committed"):
 			control.set_meta("committed", next)
 			change.call(next)
 	control.text_submitted.connect(commit)
 	control.focus_exited.connect(func(): commit.call(control.text))
-	parent.add_child(control)
 	help(control, Help.text(title))
 	return control
 
-static func number(parent: Node, title: String, value: float, change: Callable, minimum: float = 0, maximum: float = 1000, step: float = 0.1) -> SpinBox:
-	var row = HBoxContainer.new()
-	parent.add_child(row)
-	var caption = label(row, title)
-	caption.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	caption.custom_minimum_size.x = 40
-	caption.set_meta("numeric_caption", true)
-	var control = SpinBox.new()
+static func setup_number(control: SpinBox, title: String, value: float, change: Callable, minimum: float, maximum: float, step: float) -> void:
 	control.set_meta("help_title", title)
-	control.custom_minimum_size.x = 115
-	control.min_value = minimum
-	control.max_value = maximum
-	# 草稿可能暂时超出合法范围，忠实显示原值，不能只夹显示值而悄悄掩盖问题。
-	if is_finite(value):
-		control.min_value = minf(minimum, value)
-		control.max_value = maxf(maximum, value)
+	control.min_value = minf(minimum, value) if is_finite(value) else minimum
+	control.max_value = maxf(maximum, value) if is_finite(value) else maximum
 	control.step = step
 	control.value = value
 	control.value_changed.connect(change)
-	row.add_child(control)
-	help(row, Help.text(title))
+	_bind_configuration(control, change)
 	help(control, Help.text(title))
+
+static func number(parent: Node, title: String, value: float, change: Callable, minimum: float = 0, maximum: float = 1000, step: float = 0.1) -> SpinBox:
+	var row = field(parent, "number", title, "number_field")
+	if not authored(parent): Form.part(row, "caption").text = title
+	var control: SpinBox = Form.part(row, "input")
+	setup_number(control, title, value, change, minimum, maximum, step)
+	help(row, Help.text(title))
 	return control
 
-static func select(parent: Node, title: String, value: String, keys: Array, names: Array, change: Callable) -> OptionButton:
-	# names 给策划看，keys 写入配置；Godot 控件的数字索引不作为游戏资源 ID。
-	label(parent, title)
-	var control = OptionButton.new()
+static func select(parent: Node, title: String, value: String, keys: Array, names: Array, change: Callable, component: String = "select_field") -> OptionButton:
+	var row = field(parent, "select", title, component)
+	if not authored(parent): Form.part(row, "caption").text = title
+	var control: OptionButton = Form.part(row, "input")
 	control.set_meta("help_title", title)
-	control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	control.fit_to_longest_item = false
-	control.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	control.clear()
 	for index in names.size():
 		control.add_item(str(names[index]))
 		control.get_popup().set_item_tooltip(index, Help.option(title, str(keys[index])))
-	if keys.is_empty():
-		control.add_item("没有可选资源")
-		control.disabled = true
+	if keys.is_empty(): control.add_item("没有可选资源")
+	control.disabled = keys.is_empty()
 	control.select(keys.find(value))
+	control.set_meta("config_keys", keys.duplicate())
+	_bind_configuration(control, change)
 	control.item_selected.connect(func(index):
 		help(control, _selection_help(title, str(keys[index]), str(names[index])))
 		change.call(keys[index]))
-	parent.add_child(control)
 	help(control, _selection_help(title, value, str(names[keys.find(value)]) if keys.has(value) else ""))
 	return control
 
@@ -118,27 +124,30 @@ static func _selection_help(title: String, key: String, selected: String) -> Str
 	return description
 
 static func toggle(parent: Node, title: String, value: bool, change: Callable) -> CheckButton:
-	var control = CheckButton.new()
+	var control: CheckButton = field(parent, "toggle", title, "toggle_field")
+	if not authored(parent): control.text = title
 	control.set_meta("help_title", title)
-	control.text = title
-	control.clip_text = parent is VBoxContainer
-	control.tooltip_text = title
 	control.button_pressed = value
 	control.toggled.connect(change)
-	control.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	parent.add_child(control)
+	_bind_configuration(control, change)
 	help(control, Help.text(title))
 	return control
 
 static func select_inline(parent: Node, title: String, value: String, keys: Array, names: Array, change: Callable) -> OptionButton:
-	# 常用参数一行完成，保留原生下拉框的焦点、键盘和不可用状态。
-	var row = HBoxContainer.new()
-	parent.add_child(row)
-	var selector = select(row, title, value, keys, names, change)
-	row.get_child(0).size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	selector.size_flags_horizontal = Control.SIZE_SHRINK_END
-	selector.custom_minimum_size.x = 145
-	return selector
+	# 横排与否由组件场景决定，绑定接口与普通选择框相同。
+	return select(parent, title, value, keys, names, change, "select_inline_field")
+
+static func color(parent: Node, title: String, value: Color, change: Callable) -> ColorPickerButton:
+	var row = field(parent, "color", title, "color_field")
+	if not authored(parent): Form.part(row, "caption").text = title
+	var control: ColorPickerButton = Form.part(row, "input")
+	control.color = value
+	control.color_changed.connect(change)
+	_bind_configuration(control, change)
+	return control
+
+static func dynamic(parent: Node, key: String) -> Node:
+	return Form.lookup(parent, "zone", key) if authored(parent) else parent
 
 static func fold(parent: Node, title: String, open: bool = false, key: String = "") -> VBoxContainer:
 	return _section(parent, title, true, open, key)
@@ -152,31 +161,13 @@ static func section(parent: Node, title: String) -> VBoxContainer:
 	return _section(parent, title, false, true, "")
 
 static func vector_inline(parent: Node, title: String, value: Vector2, change: Callable, minimum: float = -2000, maximum: float = 2000, step: float = 0.1) -> Array[SpinBox]:
-	# 空间不足时把完整标签换到上一行；XY 作为整体同行，禁止中文逐字换行。
-	var row = HFlowContainer.new()
+	var row = field(parent, "vector", title, "vector_field")
 	row.set_meta("vector_row", true)
-	parent.add_child(row)
-	var caption = label(row, title)
-	# 标签按字体自然宽度占位；固定 80px 在大字号下会把中文逐字挤成竖排。
-	caption.autowrap_mode = TextServer.AUTOWRAP_OFF
-	caption.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	var axes = HBoxContainer.new()
-	axes.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(axes)
+	if not authored(parent): Form.part(row, "caption").text = title
 	var controls: Array[SpinBox] = []
 	for axis in 2:
-		label(axes, "X:" if axis == 0 else "Y:")
-		var control = SpinBox.new()
-		control.set_meta("inline_axis", true)
-		control.set_meta("help_title", title)
-		control.custom_minimum_size.x = 76
-		control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		control.min_value = minf(minimum, value[axis]) if is_finite(value[axis]) else minimum
-		control.max_value = maxf(maximum, value[axis]) if is_finite(value[axis]) else maximum
-		control.step = step
-		control.value = value[axis]
-		control.value_changed.connect(func(next): change.call(axis, next))
-		axes.add_child(control)
+		var control: SpinBox = Form.part(row, "x" if axis == 0 else "y")
+		setup_number(control, title, value[axis], func(next): change.call(axis, next), minimum, maximum, step)
 		help(control, Help.text(title) + "\n" + ("X" if axis == 0 else "Y") + " 分量。")
 		controls.append(control)
 	return controls
@@ -187,14 +178,31 @@ static func _section(parent: Node, title: String, collapsible: bool, opened: boo
 	while owner != null and not owner.has_meta("section_states"):
 		owner = owner.get_parent()
 	var path: String = key if not key.is_empty() else str(parent.get_meta("section_path", "")) + "/" + title
-	var section = FormSection.new()
+	var section = Form.lookup(parent, "section", title) if authored(parent) else Form.fragment("form_section_nested" if int(parent.get_meta("section_depth", -1)) >= 0 else "form_section", parent)
 	if owner != null:
 		section.states = owner.get_meta("section_states")
 		section.state_key = str(owner.get_meta("section_context")) + "/" + path
 		if collapsible:
 			opened = section.states.get(section.state_key, opened)
-	parent.add_child(section)
-	section.configure(title, int(parent.get_meta("section_depth", -1)) + 1, collapsible, opened)
+	if not authored(parent): section.configure(title, int(parent.get_meta("section_depth", -1)) + 1, collapsible, opened)
+	else:
+		section.collapsible = collapsible
+		section.expanded = opened
+		if section.get_meta("form_dynamic_title", false): section.title = title
+		section._update_heading()
 	section.set_help(Help.text(title))
+	section.content.set_meta("section_depth", section.depth)
 	section.content.set_meta("section_path", path)
+	if authored(parent): section.content.set_meta("form_scope", section.get_meta("form_scope"))
 	return section.content
+
+static func _bind_configuration(control: Control, change: Callable) -> void:
+	var args = change.get_bound_arguments()
+	if args.size() != 4 or not args[0] is Object or not args[0].has_method("edit_path"): return
+	control.set_meta("config_scope", args[1])
+	control.set_meta("config_field", args[2])
+
+static func close_popups(node: Node) -> void:
+	# OptionButton / ColorPickerButton 的窗口可能是内部节点，必须在脱离树前关闭。
+	for child in node.get_children(true): close_popups(child)
+	if node is Window and node.visible: node.hide()
